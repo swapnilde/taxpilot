@@ -1,6 +1,6 @@
 === TaxPilot for WooCommerce ===
-Contributors: taxpilot
-Donate link: https://taxpilotwc.com
+Contributors: swapnilde
+Donate link: https://paypal.me/SwapnilDeshpandeIN
 Tags: woocommerce, tax, vat, sales-tax, gst
 Requires at least: 6.7
 Tested up to: 6.9
