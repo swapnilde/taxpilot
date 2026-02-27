@@ -80,6 +80,12 @@ class WooIntegration {
 
 		// --- Ensure tax is enabled ---
 		add_action( 'admin_init', [ $this, 'maybe_enable_taxes' ] );
+
+		// --- Order List Admin Columns (Legacy & HPOS) ---
+		add_filter( 'manage_edit-shop_order_columns', [ $this, 'add_order_tax_column' ] );
+		add_action( 'manage_shop_order_posts_custom_column', [ $this, 'render_order_tax_column' ], 10, 2 );
+		add_filter( 'manage_woocommerce_page_wc-orders_columns', [ $this, 'add_order_tax_column' ] );
+		add_action( 'manage_woocommerce_page_wc-orders_custom_column', [ $this, 'render_order_tax_column_hpos' ], 10, 2 );
 	}
 
 	/*
@@ -370,6 +376,62 @@ class WooIntegration {
 		}
 
 		echo '</div>';
+	}
+
+	/**
+	 * Add custom column to WooCommerce Orders list.
+	 *
+	 * @param array $columns Existing columns.
+	 * @return array Modified columns.
+	 */
+	public function add_order_tax_column( array $columns ): array {
+		$columns['taxpilot_source'] = __( 'Tax Source', 'taxpilot' );
+		return $columns;
+	}
+
+	/**
+	 * Render the custom column for Legacy Orders.
+	 *
+	 * @param string $column_name Column name.
+	 * @param int    $post_id     Post ID.
+	 */
+	public function render_order_tax_column( string $column_name, int $post_id ): void {
+		if ( 'taxpilot_source' === $column_name ) {
+			$order = wc_get_order( $post_id );
+			if ( $order ) {
+				$this->output_tax_column_content( $order );
+			}
+		}
+	}
+
+	/**
+	 * Render the custom column for HPOS Orders.
+	 *
+	 * @param string    $column_name Column name.
+	 * @param \WC_Order $order       The order object.
+	 */
+	public function render_order_tax_column_hpos( string $column_name, $order ): void {
+		if ( 'taxpilot_source' === $column_name ) {
+			$this->output_tax_column_content( $order );
+		}
+	}
+
+	/**
+	 * Main output logic for the Tax Source column.
+	 *
+	 * @param \WC_Order $order The order object.
+	 */
+	private function output_tax_column_content( $order ): void {
+		$version = $order->get_meta( '_taxpilot_version' );
+		$source  = $order->get_meta( '_taxpilot_rates_source' );
+
+		if ( $version && $source ) {
+			echo '<mark class="order-status status-completed tips" data-tip="' . esc_attr__( 'Processed by TaxPilot', 'taxpilot' ) . '">';
+			echo '<span>🧙 ' . esc_html( ucfirst( $source ) ) . '</span>';
+			echo '</mark>';
+		} else {
+			echo '<span class="na">&ndash;</span>';
+		}
 	}
 
 	/*
