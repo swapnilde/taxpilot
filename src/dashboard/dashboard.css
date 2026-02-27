@@ -1,0 +1,12 @@
+/* Dashboard-specific styles */
+
+.taxpilot-dashboard-actions {
+    display: flex;
+    gap: var(--tw-space-3);
+    margin-bottom: var(--tw-space-6);
+    flex-wrap: wrap;
+}
+
+.taxpilot-dashboard .taxpilot-card {
+    margin-bottom: var(--tw-space-6);
+}

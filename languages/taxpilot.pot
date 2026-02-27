@@ -1,0 +1,650 @@
+# Copyright (C) 2026 TaxPilot
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: TaxPilot for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/your-org/taxpilot/issues\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-02-27T20:41:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: taxpilot\n"
+
+#. Plugin Name of the plugin
+#: taxpilot.php
+#: taxpilot.php:57
+msgid "TaxPilot for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: taxpilot.php
+msgid "https://taxpilotwc.com"
+msgstr ""
+
+#. Description of the plugin
+#: taxpilot.php
+msgid "Smart tax configuration wizard for WooCommerce — auto-detect rates, one-click setup, compliance monitoring & alerts."
+msgstr ""
+
+#. Author of the plugin
+#: taxpilot.php
+#: includes/Admin/AdminMenu.php:32
+#: includes/Admin/AdminMenu.php:33
+#: includes/Admin/SettingsPage.php:35
+msgid "TaxPilot"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:44
+#: includes/Admin/AdminMenu.php:45
+msgid "Dashboard"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:54
+#: includes/Admin/AdminMenu.php:55
+msgid "Setup Wizard"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:64
+#: includes/Admin/AdminMenu.php:65
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:78
+msgid "TaxPilot Dashboard"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:91
+msgid "Tax Setup Wizard"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:111
+#: includes/Admin/SettingsPage.php:61
+msgid "TaxPilot Settings"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:121
+msgid "Tax Rate Source"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:123
+msgid "Static Bundle"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:124
+msgid "VATSense API"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:126
+msgid "Choose the source for tax rate data."
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:131
+msgid "API Key"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:133
+msgid "Required for VATSense API. Your key is stored encrypted."
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:138
+msgid "Alert Email"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:140
+msgid "Email address for tax rate change alerts."
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:147
+msgid "Enable email alerts for tax rate changes"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:153
+msgid "Rate Refresh Interval"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:155
+msgid "Daily"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:156
+msgid "Weekly"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:157
+msgid "Manual Only"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:161
+msgid "Save Settings"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:193
+msgid "Settings saved."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:63
+msgid "Configure TaxPilot integration with WooCommerce."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:67
+msgid "Enable Tax Wizard"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:68
+msgid "Allow TaxPilot to manage tax rates in WooCommerce."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:74
+msgid "Override Existing Rates"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:75
+msgid "When applying rates, replace any existing WooCommerce tax rates."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:81
+msgid "Tax Display"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:82
+msgid "How to display tax in the cart/checkout."
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:87
+msgid "Use WooCommerce default"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:88
+msgid "Including tax"
+msgstr ""
+
+#: includes/Admin/SettingsPage.php:89
+msgid "Excluding tax"
+msgstr ""
+
+#: includes/Export/PDFExporter.php:35
+msgid "PDF export requires the Dompdf library. Run: composer require dompdf/dompdf"
+msgstr ""
+
+#: includes/Export/PDFExporter.php:36
+msgid "PDF Export Unavailable"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:302
+msgid "EU VAT Number"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:303
+msgid "e.g. DE123456789"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:307
+msgid "Enter your VAT number for B2B tax exemption."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:362
+msgid "Tax Source:"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:365
+msgid "VAT Number:"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:369
+msgid "VAT Exempt (B2B)"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:489
+msgid "🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:491
+msgid "Start Wizard →"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:499
+msgid "⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won't apply at checkout."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:501
+msgid "Enable Taxes →"
+msgstr ""
+
+#. translators: %d: unread alert count
+#: includes/Integration/WooIntegration.php:511
+#, php-format
+msgid "🚨 You have %d unread TaxPilot alerts that may require attention."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:513
+msgid "View Alerts →"
+msgstr ""
+
+#. translators: %s: TaxPilot dashboard link
+#: includes/Integration/WooIntegration.php:534
+#, php-format
+msgid "🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href=\"%s\">Open TaxPilot Dashboard</a> to manage your rates."
+msgstr ""
+
+#. translators: %d: number of rate changes detected
+#: includes/Services/AlertService.php:30
+#, php-format
+msgid "%d tax rate change(s) detected"
+msgstr ""
+
+#. translators: 1: alert message, 2: admin URL
+#: includes/Services/AlertService.php:105
+#, php-format
+msgid ""
+"TaxPilot for WooCommerce has detected tax rate changes:\n"
+"\n"
+"%1$s\n"
+"\n"
+"Review these changes in your dashboard:\n"
+"%2$s"
+msgstr ""
+
+#: includes/Services/VIESValidator.php:38
+msgid "VAT number is too short."
+msgstr ""
+
+#: includes/Services/VIESValidator.php:86
+msgid "Unexpected response from VIES."
+msgstr ""
+
+#: taxpilot.php:58
+msgid "This plugin requires WooCommerce to be installed and active."
+msgstr ""
+
+#: src/dashboard/App.jsx:82
+msgid "Loading dashboard…"
+msgstr ""
+
+#: src/dashboard/App.jsx:97
+msgid "Welcome to TaxPilot!"
+msgstr ""
+
+#: src/dashboard/App.jsx:100
+msgid "Run the setup wizard to configure your tax rates."
+msgstr ""
+
+#: src/dashboard/App.jsx:113
+msgid "Start Setup Wizard →"
+msgstr ""
+
+#: src/dashboard/App.jsx:125
+msgid "Total Rates"
+msgstr ""
+
+#: src/dashboard/App.jsx:131
+msgid "Active tax rates"
+msgstr ""
+
+#: src/dashboard/App.jsx:136
+msgid "Countries"
+msgstr ""
+
+#: src/dashboard/App.jsx:142
+msgid "Countries configured"
+msgstr ""
+
+#: src/dashboard/App.jsx:147
+msgid "Alerts"
+msgstr ""
+
+#: src/dashboard/App.jsx:151
+msgid "Unread notifications"
+msgstr ""
+
+#: src/dashboard/App.jsx:156
+msgid "Last Updated"
+msgstr ""
+
+#: src/dashboard/App.jsx:167
+msgid "Rate data refresh"
+msgstr ""
+
+#: src/dashboard/App.jsx:180
+msgid "Refreshing…"
+msgstr ""
+
+#: src/dashboard/App.jsx:181
+msgid "↻ Refresh Rates"
+msgstr ""
+
+#: src/dashboard/App.jsx:187
+msgid "📄 Export CSV"
+msgstr ""
+
+#: src/dashboard/App.jsx:196
+msgid "🧙 Re-run Wizard"
+msgstr ""
+
+#: src/dashboard/App.jsx:204
+msgid "Current Tax Rates"
+msgstr ""
+
+#: src/dashboard/App.jsx:207
+msgid "rates"
+msgstr ""
+
+#: src/dashboard/App.jsx:214
+#: src/wizard/steps/PreviewRates.jsx:74
+msgid "Country"
+msgstr ""
+
+#: src/dashboard/App.jsx:215
+#: src/wizard/steps/PreviewRates.jsx:75
+msgid "State"
+msgstr ""
+
+#: src/dashboard/App.jsx:216
+#: src/wizard/steps/PreviewRates.jsx:76
+msgid "Rate"
+msgstr ""
+
+#: src/dashboard/App.jsx:217
+#: src/wizard/steps/PreviewRates.jsx:77
+msgid "Name"
+msgstr ""
+
+#: src/dashboard/App.jsx:218
+#: src/wizard/steps/PreviewRates.jsx:78
+msgid "Type"
+msgstr ""
+
+#: src/dashboard/App.jsx:219
+msgid "Source"
+msgstr ""
+
+#: src/dashboard/App.jsx:283
+msgid "No tax rates configured yet."
+msgstr ""
+
+#: src/dashboard/App.jsx:293
+msgid "Recent Alerts"
+msgstr ""
+
+#: src/dashboard/App.jsx:309
+msgid "Mark all read"
+msgstr ""
+
+#: src/dashboard/App.jsx:352
+msgid "No alerts. Everything looks good! ✅"
+msgstr ""
+
+#: src/wizard/App.jsx:70
+msgid "Failed to load wizard state."
+msgstr ""
+
+#: src/wizard/App.jsx:113
+msgid "Wizard reset! Starting fresh."
+msgstr ""
+
+#: src/wizard/App.jsx:181
+msgid "Loading wizard…"
+msgstr ""
+
+#: src/wizard/components/Stepper.jsx:51
+msgid "Go back to"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:38
+msgid "Applying…"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:42
+msgid "Confirm & Apply"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:43
+msgid "Apply"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:44
+msgid "Rates"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:59
+msgid "tax rates applied to WooCommerce!"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:66
+msgid "Failed to apply rates. Please try again."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:80
+msgid "Tax Setup Complete!"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:83
+msgid "tax rates have been applied to your WooCommerce store."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:92
+msgid "errors occurred"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:111
+msgid "and"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:113
+msgid "more"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:134
+msgid "Go to Dashboard →"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:143
+msgid "View WooCommerce Tax Settings"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:150
+msgid "🔄 Start Over"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:167
+msgid "Loading rate preview…"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:175
+msgid "Apply Tax Rates"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:177
+msgid "Review the summary below and click \"Apply\" to configure your WooCommerce tax tables."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:184
+msgid "Setup Summary"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:187
+#: src/wizard/steps/StoreSetup.jsx:136
+msgid "Store Country"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:196
+#: src/wizard/steps/ProductTypes.jsx:59
+msgid "Product Types"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:209
+#: src/wizard/steps/TargetCountries.jsx:100
+msgid "Target Countries"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:217
+msgid "Tax Rates to Apply"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:239
+msgid "This will update your WooCommerce tax tables. Any manually added rates may be affected. Click \"Apply\" again to confirm."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:251
+#: src/wizard/steps/PreviewRates.jsx:158
+#: src/wizard/steps/ProductTypes.jsx:97
+#: src/wizard/steps/TargetCountries.jsx:175
+msgid "← Back"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:259
+msgid "Cancel"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:31
+msgid "Failed to fetch rates. Check your settings."
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:48
+msgid "Fetching tax rates for"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:50
+msgid "countries…"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:58
+msgid "Preview Tax Rates"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:60
+msgid "Review the tax rates we found. These will be applied to your WooCommerce tax tables."
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:65
+msgid "Source:"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:79
+msgid "Shipping"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:132
+msgid "No rates found. Try selecting different countries."
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:150
+msgid "rates found"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:165
+msgid "↻ Refresh"
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:172
+#: src/wizard/steps/ProductTypes.jsx:106
+#: src/wizard/steps/StoreSetup.jsx:163
+#: src/wizard/steps/TargetCountries.jsx:184
+msgid "Continue →"
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:29
+msgid "Please select at least one product type."
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:41
+msgid "Product types saved! Tax classes created:"
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:49
+msgid "Failed to save product types."
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:61
+msgid "Select all product types you sell. We'll create the appropriate WooCommerce tax classes."
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:105
+#: src/wizard/steps/StoreSetup.jsx:162
+#: src/wizard/steps/TargetCountries.jsx:183
+msgid "Saving…"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:40
+msgid "— Select Country —"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:48
+msgid "— Select Currency —"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:58
+msgid "Please select both country and currency."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:70
+msgid "Store setup saved!"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:74
+msgid "Failed to save store setup."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:87
+msgid "Detecting store settings…"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:97
+msgid "Update Store Setup"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:98
+msgid "Store Setup"
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:102
+msgid "Your current settings are pre-filled below. Update anything you need and continue through the wizard."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:106
+msgid "Tell us about your store location and currency. We auto-detected your WooCommerce settings."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:126
+msgid "You are re-running the wizard. Your existing settings are pre-filled. Walk through each step to make changes, then re-apply your rates."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:144
+msgid "Store Currency"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:72
+msgid "Please select at least one country."
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:82
+msgid "countries selected!"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:90
+msgid "Failed to save countries."
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:102
+msgid "Select the countries where you sell. We'll fetch the correct tax rates for each one."
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:120
+msgid "Select All"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:123
+msgid "Clear All"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:131
+msgid "Search countries…"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:167
+msgid "countries selected"
+msgstr ""

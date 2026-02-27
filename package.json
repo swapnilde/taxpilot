@@ -1,0 +1,35 @@
+{
+	"name": "taxpilot",
+	"version": "1.0.0",
+	"description": "Smart tax configuration wizard for WooCommerce.",
+	"scripts": {
+		"build": "wp-scripts build",
+		"start": "wp-scripts start",
+		"lint:js": "wp-scripts lint-js src/",
+		"lint:css": "wp-scripts lint-style 'src/**/*.css'",
+		"lint:php": "vendor/bin/phpcs",
+		"format": "wp-scripts format",
+		"check:textdomain": "vendor/bin/phpcs --standard=WordPress --sniffs=WordPress.WP.I18n --runtime-set text_domain taxpilot ./taxpilot.php ./includes/ ./uninstall.php && echo '✅ PHP text domains OK'",
+		"check:readme": "bash scripts/check-readme.sh",
+		"readme:md": "bash scripts/readme-txt-to-md.sh",
+		"i18n:pot": "wp i18n make-pot . languages/taxpilot.pot --slug=taxpilot --domain=taxpilot --exclude=node_modules,vendor,build --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/your-org/taxpilot/issues\",\"Language-Team\":\"LANGUAGE <EMAIL@ADDRESS>\"}'",
+		"i18n:js": "wp i18n make-json languages/ --no-purge",
+		"i18n": "npm run i18n:pot && npm run i18n:js",
+		"check:all": "npm run lint:php && npm run lint:js && npm run lint:css && npm run check:textdomain && npm run check:readme"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.0.0"
+	},
+	"dependencies": {
+		"@wordpress/api-fetch": "^7.0.0",
+		"@wordpress/components": "^28.0.0",
+		"@wordpress/element": "^6.0.0",
+		"@wordpress/i18n": "^5.0.0",
+		"@wordpress/icons": "^10.0.0",
+		"@wordpress/notices": "^5.0.0",
+		"@wordpress/data": "^10.0.0"
+	},
+	"browserslist": [
+		"extends @wordpress/browserslist-config"
+	]
+}

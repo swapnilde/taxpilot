@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build artifacts
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Composer
+composer.phar
+
+# npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Testing
+coverage/
+.phpunit.result.cache
+phpunit.xml
+
+# Logs
+*.log

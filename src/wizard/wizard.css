@@ -1,0 +1,208 @@
+/* Wizard-specific styles (supplement admin.css) */
+
+.taxpilot-wizard {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Clickable completed stepper steps */
+.taxpilot-step--clickable {
+    cursor: pointer;
+}
+
+.taxpilot-step--clickable:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: all 0.15s ease;
+}
+
+/* Product type cards */
+.taxpilot-product-type-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--tw-space-4);
+    margin: var(--tw-space-6) 0;
+}
+
+.taxpilot-product-type-card {
+    position: relative;
+    border: 2px solid var(--tw-gray-200);
+    border-radius: var(--tw-radius-lg);
+    padding: var(--tw-space-5);
+    cursor: pointer;
+    transition: all var(--tw-transition-fast);
+    background: #fff;
+}
+
+.taxpilot-product-type-card:hover {
+    border-color: var(--tw-primary);
+    box-shadow: var(--tw-shadow-md);
+    transform: translateY(-2px);
+}
+
+.taxpilot-product-type-card--selected {
+    border-color: var(--tw-primary);
+    background: var(--tw-primary-50);
+}
+
+.taxpilot-product-type-card--selected::after {
+    content: '✓';
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--tw-primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.taxpilot-product-type-card h3 {
+    margin: 0 0 var(--tw-space-2) 0;
+    font-size: var(--tw-font-size-base);
+    font-weight: 600;
+    color: var(--tw-gray-800);
+}
+
+.taxpilot-product-type-card p {
+    margin: 0;
+    font-size: var(--tw-font-size-sm);
+    color: var(--tw-gray-500);
+    line-height: 1.5;
+}
+
+/* Rate preview table */
+.taxpilot-rate-preview {
+    margin: var(--tw-space-6) 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--tw-gray-200);
+    border-radius: var(--tw-radius-md);
+}
+
+/* Search input */
+.taxpilot-search {
+    width: 100%;
+    padding: var(--tw-space-3) var(--tw-space-4);
+    border: 1px solid var(--tw-gray-200);
+    border-radius: var(--tw-radius-md);
+    font-size: var(--tw-font-size-sm);
+    font-family: var(--tw-font-family);
+    outline: none;
+    margin-bottom: var(--tw-space-4);
+    transition: border-color var(--tw-transition-fast);
+}
+
+.taxpilot-search:focus {
+    border-color: var(--tw-primary);
+    box-shadow: 0 0 0 3px var(--tw-primary-light);
+}
+
+/* Region preset buttons */
+.taxpilot-region-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--tw-space-2);
+    margin-bottom: var(--tw-space-4);
+}
+
+.taxpilot-region-btn {
+    padding: var(--tw-space-1) var(--tw-space-3);
+    border: 1px solid var(--tw-gray-300);
+    border-radius: 9999px;
+    background: #fff;
+    font-size: var(--tw-font-size-xs);
+    font-weight: 600;
+    color: var(--tw-gray-600);
+    cursor: pointer;
+    transition: all var(--tw-transition-fast);
+}
+
+.taxpilot-region-btn:hover {
+    border-color: var(--tw-primary);
+    color: var(--tw-primary);
+    background: var(--tw-primary-50);
+}
+
+/* Apply summary */
+.taxpilot-apply-summary {
+    background: var(--tw-gray-50);
+    border-radius: var(--tw-radius-md);
+    padding: var(--tw-space-6);
+    margin: var(--tw-space-6) 0;
+}
+
+.taxpilot-apply-summary h3 {
+    margin: 0 0 var(--tw-space-4) 0;
+    font-size: var(--tw-font-size-lg);
+    font-weight: 600;
+}
+
+.taxpilot-apply-stat {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--tw-space-2) 0;
+    border-bottom: 1px solid var(--tw-gray-200);
+}
+
+.taxpilot-apply-stat:last-child {
+    border-bottom: none;
+}
+
+.taxpilot-apply-stat-label {
+    color: var(--tw-gray-500);
+    font-size: var(--tw-font-size-sm);
+}
+
+.taxpilot-apply-stat-value {
+    font-weight: 600;
+    color: var(--tw-gray-800);
+}
+
+/* Success state. */
+.taxpilot-success {
+    text-align: center;
+    padding: var(--tw-space-10);
+}
+
+.taxpilot-success-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--tw-success-light);
+    color: var(--tw-success);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: var(--tw-space-4);
+}
+
+.taxpilot-success h2 {
+    color: var(--tw-gray-900);
+    margin: 0 0 var(--tw-space-2) 0;
+}
+
+.taxpilot-success p {
+    color: var(--tw-gray-500);
+    margin: 0 0 var(--tw-space-6) 0;
+}
+
+/* Form sections */
+.taxpilot-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--tw-space-4);
+}
+
+@media (max-width: 600px) {
+
+    .taxpilot-form-row {
+        grid-template-columns: 1fr;
+    }
+}

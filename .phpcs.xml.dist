@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<ruleset name="TaxPilot for WooCommerce">
+	<description>PHPCS ruleset for the TaxPilot for WooCommerce plugin.</description>
+
+	<!-- What to scan. -->
+	<file>./taxpilot.php</file>
+	<file>./includes/</file>
+	<file>./uninstall.php</file>
+
+	<!-- Exclude paths. -->
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/build/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+
+	<!-- Show only relevant info. -->
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/> <!-- Show sniff codes and progress. -->
+
+	<!-- PHP version check. -->
+	<config name="testVersion" value="8.2-"/>
+
+	<!-- WordPress Coding Standards. -->
+	<rule ref="WordPress">
+		<!-- Allow short array syntax (modern PHP). -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<!-- Allow short ternary. -->
+		<exclude name="Universal.Operators.DisallowShortTernary"/>
+	</rule>
+
+	<!-- WordPress Extra rules (best practices). -->
+	<rule ref="WordPress-Extra"/>
+
+	<!-- WordPress Docs (docblock requirements). -->
+	<rule ref="WordPress-Docs"/>
+
+	<!-- PHPCompatibility for WP (checks PHP 8.2+ compat). -->
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- Minimum WordPress version supported. -->
+	<config name="minimum_wp_version" value="6.7"/>
+
+	<!-- Plugin text-domain for i18n. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="taxpilot"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- WooCommerce capabilities are not core WP but are valid. -->
+	<rule ref="WordPress.WP.Capabilities">
+		<properties>
+			<property name="custom_capabilities" type="array">
+				<element value="manage_woocommerce"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Require proper prefix for hooks, options, etc. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="taxpilot"/>
+				<element value="TaxPilotWC"/>
+				<element value="TAXPILOT"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Allow modern PHP features we intentionally use. -->
+	<!-- Match expressions (PHP 8.0+). -->
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="exact" value="false"/>
+		</properties>
+	</rule>
+
+	<!-- File name rules — we use PSR-4 class names, not WP style. -->
+	<rule ref="WordPress.Files.FileName">
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+	</rule>
+
+	<!-- Allow direct DB queries where we use them intentionally. -->
+	<rule ref="WordPress.DB.DirectDatabaseQuery">
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching"/>
+	</rule>
+</ruleset>

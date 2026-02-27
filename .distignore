@@ -1,0 +1,43 @@
+# This is the list of files and directories to EXCLUDE
+# from plugin distribution ZIPs (wp.org, GitHub releases).
+
+# Source / dev files
+.editorconfig
+.eslintrc.js
+.gitignore
+.phpcs.xml.dist
+.stylelintrc.json
+.distignore
+
+# Dev dependencies & tooling
+node_modules/
+vendor/
+composer.json
+composer.lock
+package.json
+package-lock.json
+webpack.config.js
+
+# Source files (built assets are in build/)
+src/
+
+# Scripts
+scripts/
+
+# Tests
+tests/
+phpunit.xml
+phpunit.xml.dist
+.phpunit.result.cache
+coverage/
+
+# GitHub
+.github/
+CONTRIBUTING.md
+CHANGELOG.md
+DEVELOPER.md
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log
