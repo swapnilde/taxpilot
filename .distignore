@@ -31,8 +31,9 @@ phpunit.xml.dist
 .phpunit.result.cache
 coverage/
 
-# GitHub
+# GitHub & WordPress Meta
 .github/
+.wordpress-org/
 CONTRIBUTING.md
 CHANGELOG.md
 DEVELOPER.md
@@ -41,3 +42,4 @@ DEVELOPER.md
 .DS_Store
 Thumbs.db
 *.log
+*.zip

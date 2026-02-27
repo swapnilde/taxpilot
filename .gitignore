@@ -40,3 +40,6 @@ phpunit.xml
 
 # Logs
 *.log
+
+# Releases
+*.zip

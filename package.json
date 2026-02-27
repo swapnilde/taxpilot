@@ -15,7 +15,8 @@
 		"i18n:pot": "wp i18n make-pot . languages/taxpilot.pot --slug=taxpilot --domain=taxpilot --exclude=node_modules,vendor,build --headers='{\"Report-Msgid-Bugs-To\":\"https://github.com/your-org/taxpilot/issues\",\"Language-Team\":\"LANGUAGE <EMAIL@ADDRESS>\"}'",
 		"i18n:js": "wp i18n make-json languages/ --no-purge",
 		"i18n": "npm run i18n:pot && npm run i18n:js",
-		"check:all": "npm run lint:php && npm run lint:js && npm run lint:css && npm run check:textdomain && npm run check:readme"
+		"check:all": "npm run lint:php && npm run lint:js && npm run lint:css && npm run check:textdomain && npm run check:readme",
+		"build:zip": "bash scripts/build-release.sh"
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^30.0.0"

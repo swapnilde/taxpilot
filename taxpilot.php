@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name:       TaxPilot for WooCommerce
- * Plugin URI:        https://taxpilotwc.com
+ * Plugin URI:        https://swapnild.com/taxpilot-for-woocommerce
  * Description:       Smart tax configuration wizard for WooCommerce — auto-detect rates, one-click setup, compliance monitoring & alerts.
  * Version:           1.0.0
  * Requires at least: 6.7
  * Requires PHP:      8.2
- * Author:            TaxPilot
- * Author URI:        https://taxpilotwc.com
+ * Author:            Swapnil Deshpande
+ * Author URI:        https://swapnild.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       taxpilot
