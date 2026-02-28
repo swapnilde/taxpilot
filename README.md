@@ -24,84 +24,16 @@ Get from zero to fully-configured taxes in under 5 minutes:
 Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no duplicates, no orphaned entries.
 
 ### 🌍 Global Tax Rate Coverage
-TaxPilot ships with a comprehensive built-in tax rate database covering 100+ countries:
-
-* **EU VAT** — All 27 member states with standard, reduced, and super-reduced rates
-* **US Sales Tax** — State-level rates
-* **UK VAT** — Standard and reduced rates
-* **Canadian GST/HST/PST** — Federal and provincial rates
-* **Australian GST** — Standard 10% rate
-* **Japanese Consumption Tax** — Standard and reduced food rates
-* **Swiss VAT** — Standard, accommodation, and reduced rates
-* **And many more** — Norway, New Zealand, India, Brazil, South Korea, and more
-
-Need real-time rates? Connect the optional VATSense API for live rate lookups and automatic updates.
-
-### 🏷️ Smart Tax Class Management
-TaxPilot automatically creates and manages WooCommerce tax classes based on your product mix:
-
-* **Standard Rate** — Physical goods (default WooCommerce class)
-* **Reduced Rate** — Products eligible for reduced taxation
-* **Digital Goods** — Virtual and downloadable products, auto-assigned via product attributes
-* **Services** — Service-based products with distinct tax treatment
-* **Zero Rate** — Tax-exempt items
-
-Digital products are automatically classified — any WooCommerce product marked as virtual or downloadable gets the Digital Goods tax class applied at checkout.
-
-### 🔗 Deep WooCommerce Integration
-TaxPilot doesn't just dump rates into a table. It deeply integrates with WooCommerce's tax lifecycle:
-
-* **Checkout Rate Matching** — Falls back to TaxPilot rates when WooCommerce's standard lookup misses
-* **Shipping Tax Intelligence** — Applies standard tax to shipping for physical goods, skips it for digital-only carts
-* **Order Audit Trail** — Stamps every order with TaxPilot metadata: rate version, source, applied date
-* **Tax Settings Sync** — Automatically enables WooCommerce tax calculation, sets display preferences, and configures price settings
-* **Admin Notices** — Alerts on TaxPilot dashboard pages when attention is needed
-
-### 🇪🇺 EU VAT / B2B Exemption
-Built-in support for EU cross-border selling:
-
-* **VIES Validation** — Real-time EU VAT number verification at checkout
-* **B2B Tax Exemption** — Automatically exempts B2B customers with valid VAT numbers
-* **VAT Number Checkout Field** — Adds a VAT number field to the billing form for EU target countries
-* **OSS/IOSS Ready** — Supports One-Stop Shop reporting requirements
-
-### 📊 Dashboard & Monitoring
-The TaxPilot dashboard gives you a real-time overview of your tax configuration:
-
-* **Rate Statistics** — Total rates, countries covered, last update timestamp
-* **Recent Activity Log** — See when rates were applied, wizard was re-run, or alerts triggered
-* **Alert Center** — Critical, warning, and info alerts with unread count badge
-* **Quick Actions** — Refresh rates, re-run wizard, export data, and view WooCommerce tax settings
-
-### 🚨 Rate Change Alerts
-Stay compliant with automated monitoring:
-
-* **Daily Rate Checks** — Cron-based monitoring compares current rates against your applied rates
-* **Email Notifications** — Get alerted when tax laws change in your target countries
-* **Alert Severity Levels** — Critical (immediate action needed), Warning (review recommended), Info (FYI)
-* **Alert History** — Full log of all alerts with read/unread status
-
-### 📁 Compliance Exports
-Export your tax data for records and reporting:
-
-* **CSV Export** — Full rate table export with country, rate, class, source, and timestamps
-* **PDF Reports** — Formatted compliance reports for your records
-* **Activity Logs** — Complete audit trail of all TaxPilot operations
-
-### ⚙️ Settings & Configuration
-Fine-tune TaxPilot from the settings page:
-
-* **Tax Rate Source** — Choose between the bundled static rate database or live VATSense API
-* **API Key Management** — Securely store your VATSense API key
-* **Refresh Interval** — Daily, weekly, or manual rate refresh schedule
-* **Alert Preferences** — Enable/disable email alerts and set the recipient address
-
-### 🛡️ Built for Reliability
-* **Duplicate Prevention** — Three-layer deduplication ensures no duplicate rates in WooCommerce
-* **Smart Updates** — Existing rates are updated in place, not re-created
-* **Safe Re-runs** — Re-running the wizard cleans up old rates before applying new ones
-* **Confirmation Step** — Two-click confirmation prevents accidental rate overwrites
-* **Activity Logging** — Every operation is logged with timestamps for debugging
+### ✨ Core Features
+* **5-Step Setup Wizard:** Configure your store's tax rates for any country in minutes.
+* **Smart Defaults:** Auto-detects your shop's base country and currency.
+* **Global Rate Database:** Built-in support for standard, reduced, and zero tax rates across 100+ countries.
+* **Deep WooCommerce Integration:** Automatically applies rates at checkout, manages shipping tax, and stamps orders with a custom "Tax Source" badge.
+* **B2B EU EU Exemption:** Automatically validates EU VIES VAT numbers at checkout to exempt legitimate B2B buyers.
+* **Digital Goods Auto-Classification:** Automatically assigns virtual/downloadable products to the correct tax class.
+* **Dashboard & Alerts:** A beautiful interface offering real-time rate statistics, activity logs, and email notifications when global tax laws change.
+* **PDF & CSV Exports:** Downloadable tax compliance reports for your records.
+* **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
 
 ## Installation
 ### Minimum Requirements
