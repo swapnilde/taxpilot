@@ -10,3 +10,17 @@
 .taxpilot-dashboard .taxpilot-card {
     margin-bottom: var(--tw-space-6);
 }
+
+.taxpilot-table-scrollable {
+    max-height: 400px;
+    overflow-y: auto;
+    border-bottom: 1px solid var(--tw-gray-200);
+}
+
+.taxpilot-table-scrollable thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--tw-gray-50);
+    box-shadow: 0 1px 0 var(--tw-gray-200);
+}

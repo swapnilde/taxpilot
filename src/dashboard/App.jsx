@@ -223,75 +223,82 @@ export default function App() {
 					</span>
 				</div>
 				{ rates.length > 0 ? (
-					<table className="taxpilot-table">
-						<thead>
-							<tr>
-								<th>{ __( 'Country', 'taxpilot' ) }</th>
-								<th>{ __( 'State', 'taxpilot' ) }</th>
-								<th>{ __( 'Rate', 'taxpilot' ) }</th>
-								<th>{ __( 'Name', 'taxpilot' ) }</th>
-								<th>{ __( 'Type', 'taxpilot' ) }</th>
-								<th>{ __( 'Source', 'taxpilot' ) }</th>
-							</tr>
-						</thead>
-						<tbody>
-							{ rates.map( ( rate ) => (
-								<tr key={ rate.id }>
-									<td>
-										<strong>{ rate.country_code }</strong>
-										{ COUNTRIES[ rate.country_code ] && (
-											<span
-												style={ {
-													color: 'var(--tw-gray-400)',
-													marginLeft: '4px',
-													fontSize:
-														'var(--tw-font-size-xs)',
-												} }
-											>
-												{
-													COUNTRIES[
-														rate.country_code
-													]
-												}
-											</span>
-										) }
-									</td>
-									<td>{ rate.state || '—' }</td>
-									<td>
-										<strong>
-											{ parseFloat( rate.rate ).toFixed(
-												2
-											) }
-											%
-										</strong>
-									</td>
-									<td>{ rate.rate_name }</td>
-									<td>
-										<span
-											className={ `taxpilot-badge taxpilot-badge--${
-												rate.rate_type === 'standard'
-													? 'success'
-													: 'info'
-											}` }
-										>
-											{ rate.rate_type }
-										</span>
-									</td>
-									<td>
-										<span
-											className={ `taxpilot-badge taxpilot-badge--${
-												rate.source === 'static'
-													? 'warning'
-													: 'success'
-											}` }
-										>
-											{ rate.source }
-										</span>
-									</td>
+					<div className="taxpilot-table-scrollable">
+						<table className="taxpilot-table">
+							<thead>
+								<tr>
+									<th>{ __( 'Country', 'taxpilot' ) }</th>
+									<th>{ __( 'State', 'taxpilot' ) }</th>
+									<th>{ __( 'Rate', 'taxpilot' ) }</th>
+									<th>{ __( 'Name', 'taxpilot' ) }</th>
+									<th>{ __( 'Type', 'taxpilot' ) }</th>
+									<th>{ __( 'Source', 'taxpilot' ) }</th>
 								</tr>
-							) ) }
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{ rates.map( ( rate ) => (
+									<tr key={ rate.id }>
+										<td>
+											<strong>
+												{ rate.country_code }
+											</strong>
+											{ COUNTRIES[
+												rate.country_code
+											] && (
+												<span
+													style={ {
+														color: 'var(--tw-gray-400)',
+														marginLeft: '4px',
+														fontSize:
+															'var(--tw-font-size-xs)',
+													} }
+												>
+													{
+														COUNTRIES[
+															rate.country_code
+														]
+													}
+												</span>
+											) }
+										</td>
+										<td>{ rate.state || '—' }</td>
+										<td>
+											<strong>
+												{ parseFloat(
+													rate.rate
+												).toFixed( 2 ) }
+												%
+											</strong>
+										</td>
+										<td>{ rate.rate_name }</td>
+										<td>
+											<span
+												className={ `taxpilot-badge taxpilot-badge--${
+													rate.rate_type ===
+													'standard'
+														? 'success'
+														: 'info'
+												}` }
+											>
+												{ rate.rate_type }
+											</span>
+										</td>
+										<td>
+											<span
+												className={ `taxpilot-badge taxpilot-badge--${
+													rate.source === 'static'
+														? 'warning'
+														: 'success'
+												}` }
+											>
+												{ rate.source }
+											</span>
+										</td>
+									</tr>
+								) ) }
+							</tbody>
+						</table>
+					</div>
 				) : (
 					<div className="taxpilot-empty">
 						<p className="taxpilot-empty-message">
