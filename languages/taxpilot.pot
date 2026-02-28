@@ -1,4 +1,4 @@
-# Copyright (C) 2026 TaxPilot
+# Copyright (C) 2026 Swapnil Deshpande
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-27T20:41:54+00:00\n"
+"POT-Creation-Date: 2026-02-28T12:33:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: taxpilot\n"
@@ -21,9 +21,8 @@ msgid "TaxPilot for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
 #: taxpilot.php
-msgid "https://taxpilotwc.com"
+msgid "https://swapnild.com/taxpilot-for-woocommerce"
 msgstr ""
 
 #. Description of the plugin
@@ -33,6 +32,14 @@ msgstr ""
 
 #. Author of the plugin
 #: taxpilot.php
+msgid "Swapnil Deshpande"
+msgstr ""
+
+#. Author URI of the plugin
+#: taxpilot.php
+msgid "https://swapnild.com"
+msgstr ""
+
 #: includes/Admin/AdminMenu.php:32
 #: includes/Admin/AdminMenu.php:33
 #: includes/Admin/SettingsPage.php:35
@@ -175,60 +182,98 @@ msgstr ""
 msgid "PDF Export Unavailable"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:302
+#: includes/Integration/WooIntegration.php:315
 msgid "EU VAT Number"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:303
+#: includes/Integration/WooIntegration.php:316
 msgid "e.g. DE123456789"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:307
+#: includes/Integration/WooIntegration.php:320
 msgid "Enter your VAT number for B2B tax exemption."
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:362
+#: includes/Integration/WooIntegration.php:375
 msgid "Tax Source:"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:365
+#: includes/Integration/WooIntegration.php:378
 msgid "VAT Number:"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:369
+#: includes/Integration/WooIntegration.php:382
 msgid "VAT Exempt (B2B)"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:489
+#: includes/Integration/WooIntegration.php:395
+msgid "Tax Source"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:436
+msgid "Processed by TaxPilot"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:453
+msgid "TaxPilot Usage"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:454
+msgid "Overview of orders processed with TaxPilot."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:468
+msgid "TaxPilot Usage Report"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:470
+msgid "This report shows the impact of TaxPilot on your store's tax collection."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:471
+msgid "Summary metrics will populate here as new orders are processed using TaxPilot rates."
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:472
+msgid "View Full TaxPilot Dashboard"
+msgstr ""
+
+#: includes/Integration/WooIntegration.php:590
 msgid "🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates."
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:491
+#: includes/Integration/WooIntegration.php:592
 msgid "Start Wizard →"
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:499
+#: includes/Integration/WooIntegration.php:600
 msgid "⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won't apply at checkout."
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:501
+#: includes/Integration/WooIntegration.php:602
 msgid "Enable Taxes →"
 msgstr ""
 
 #. translators: %d: unread alert count
-#: includes/Integration/WooIntegration.php:511
+#: includes/Integration/WooIntegration.php:612
 #, php-format
 msgid "🚨 You have %d unread TaxPilot alerts that may require attention."
 msgstr ""
 
-#: includes/Integration/WooIntegration.php:513
+#: includes/Integration/WooIntegration.php:614
 msgid "View Alerts →"
 msgstr ""
 
 #. translators: %s: TaxPilot dashboard link
-#: includes/Integration/WooIntegration.php:534
+#: includes/Integration/WooIntegration.php:635
 #, php-format
 msgid "🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href=\"%s\">Open TaxPilot Dashboard</a> to manage your rates."
+msgstr ""
+
+#. translators: 1: postal code, 2: entered city
+#: includes/Services/AddressValidator.php:85
+#, php-format
+msgid "TaxPilot Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations."
 msgstr ""
 
 #. translators: %d: number of rate changes detected
@@ -261,120 +306,152 @@ msgstr ""
 msgid "This plugin requires WooCommerce to be installed and active."
 msgstr ""
 
-#: src/dashboard/App.jsx:82
+#: src/dashboard/App.jsx:105
 msgid "Loading dashboard…"
 msgstr ""
 
-#: src/dashboard/App.jsx:97
+#: src/dashboard/App.jsx:120
 msgid "Welcome to TaxPilot!"
 msgstr ""
 
-#: src/dashboard/App.jsx:100
+#: src/dashboard/App.jsx:123
 msgid "Run the setup wizard to configure your tax rates."
 msgstr ""
 
-#: src/dashboard/App.jsx:113
+#: src/dashboard/App.jsx:136
 msgid "Start Setup Wizard →"
 msgstr ""
 
-#: src/dashboard/App.jsx:125
+#: src/dashboard/App.jsx:148
 msgid "Total Rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:131
+#: src/dashboard/App.jsx:154
 msgid "Active tax rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:136
+#: src/dashboard/App.jsx:159
 msgid "Countries"
 msgstr ""
 
-#: src/dashboard/App.jsx:142
+#: src/dashboard/App.jsx:165
 msgid "Countries configured"
 msgstr ""
 
-#: src/dashboard/App.jsx:147
+#: src/dashboard/App.jsx:170
 msgid "Alerts"
 msgstr ""
 
-#: src/dashboard/App.jsx:151
+#: src/dashboard/App.jsx:174
 msgid "Unread notifications"
 msgstr ""
 
-#: src/dashboard/App.jsx:156
+#: src/dashboard/App.jsx:179
 msgid "Last Updated"
 msgstr ""
 
-#: src/dashboard/App.jsx:167
+#: src/dashboard/App.jsx:190
 msgid "Rate data refresh"
 msgstr ""
 
-#: src/dashboard/App.jsx:180
+#: src/dashboard/App.jsx:203
 msgid "Refreshing…"
 msgstr ""
 
-#: src/dashboard/App.jsx:181
+#: src/dashboard/App.jsx:204
 msgid "↻ Refresh Rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:187
+#: src/dashboard/App.jsx:210
 msgid "📄 Export CSV"
 msgstr ""
 
-#: src/dashboard/App.jsx:196
+#: src/dashboard/App.jsx:216
+msgid "📥 Export PDF"
+msgstr ""
+
+#: src/dashboard/App.jsx:225
 msgid "🧙 Re-run Wizard"
 msgstr ""
 
-#: src/dashboard/App.jsx:204
+#: src/dashboard/App.jsx:236
+msgid "EU OSS/MOSS Report Generator"
+msgstr ""
+
+#: src/dashboard/App.jsx:275
+msgid "Q1 (Jan - Mar)"
+msgstr ""
+
+#: src/dashboard/App.jsx:278
+msgid "Q2 (Apr - Jun)"
+msgstr ""
+
+#: src/dashboard/App.jsx:281
+msgid "Q3 (Jul - Sep)"
+msgstr ""
+
+#: src/dashboard/App.jsx:284
+msgid "Q4 (Oct - Dec)"
+msgstr ""
+
+#: src/dashboard/App.jsx:291
+msgid "📥 Export OSS CSV"
+msgstr ""
+
+#: src/dashboard/App.jsx:301
+msgid "Automatically aggregates non-B2B WooCommerce orders shipped to EU member states by destination country and tax rate."
+msgstr ""
+
+#: src/dashboard/App.jsx:312
 msgid "Current Tax Rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:207
+#: src/dashboard/App.jsx:315
 msgid "rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:214
+#: src/dashboard/App.jsx:323
 #: src/wizard/steps/PreviewRates.jsx:74
 msgid "Country"
 msgstr ""
 
-#: src/dashboard/App.jsx:215
+#: src/dashboard/App.jsx:324
 #: src/wizard/steps/PreviewRates.jsx:75
 msgid "State"
 msgstr ""
 
-#: src/dashboard/App.jsx:216
+#: src/dashboard/App.jsx:325
 #: src/wizard/steps/PreviewRates.jsx:76
 msgid "Rate"
 msgstr ""
 
-#: src/dashboard/App.jsx:217
+#: src/dashboard/App.jsx:326
 #: src/wizard/steps/PreviewRates.jsx:77
 msgid "Name"
 msgstr ""
 
-#: src/dashboard/App.jsx:218
+#: src/dashboard/App.jsx:327
 #: src/wizard/steps/PreviewRates.jsx:78
 msgid "Type"
 msgstr ""
 
-#: src/dashboard/App.jsx:219
+#: src/dashboard/App.jsx:328
 msgid "Source"
 msgstr ""
 
-#: src/dashboard/App.jsx:283
+#: src/dashboard/App.jsx:398
 msgid "No tax rates configured yet."
 msgstr ""
 
-#: src/dashboard/App.jsx:293
+#: src/dashboard/App.jsx:408
 msgid "Recent Alerts"
 msgstr ""
 
-#: src/dashboard/App.jsx:309
+#: src/dashboard/App.jsx:424
 msgid "Mark all read"
 msgstr ""
 
-#: src/dashboard/App.jsx:352
+#: src/dashboard/App.jsx:467
 msgid "No alerts. Everything looks good! ✅"
 msgstr ""
 
@@ -382,7 +459,7 @@ msgstr ""
 msgid "Failed to load wizard state."
 msgstr ""
 
-#: src/wizard/App.jsx:113
+#: src/wizard/App.jsx:117
 msgid "Wizard reset! Starting fresh."
 msgstr ""
 
