@@ -38,6 +38,7 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **Global Rate Database:** Built-in support for standard, reduced, and zero tax rates across 100+ countries.
 * **Deep WooCommerce Integration:** Automatically applies rates at checkout, manages shipping tax, and stamps orders with a custom "Tax Source" badge.
 * **B2B EU EU Exemption:** Automatically validates EU VIES VAT numbers at checkout to exempt legitimate B2B buyers.
+* **Smart Address Validation:** Verifies shipping zip codes and cities at checkout using OpenStreetMap Nominatim to prevent incorrect tax calculations.
 * **Digital Goods Auto-Classification:** Automatically assigns virtual/downloadable products to the correct tax class.
 * **Dashboard & Alerts:** A beautiful interface offering real-time rate statistics, activity logs, and email notifications when global tax laws change.
 * **WooCommerce Analytics Built-in:** Includes a dedicated "TaxPilot Usage" tracking tab seamlessly embedded inside the native WooCommerce Reports screen.
@@ -146,6 +147,7 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 * One-click rate application with duplicate prevention and two-step confirmation
 * Deep WooCommerce integration ensures precise tax calculations and seamless checkout
 * EU VIES VAT number validation with real-time B2B tax exemption
+* Smart Address Validation checks shipping zip codes and cities using OpenStreetMap Nominatim
 * Add a VAT number checkout field easily for EU target countries
 * Auto-assignment of Digital Goods tax class to virtual/downloadable products
 * Smart shipping tax handling correctly processes mixed physical and digital-only carts

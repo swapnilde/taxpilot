@@ -17,6 +17,7 @@ defined( 'ABSPATH' ) || exit;
 use TaxPilot\Database\RatesTable;
 use TaxPilot\Database\AlertsTable;
 use TaxPilot\Services\VIESValidator;
+use TaxPilot\Services\AddressValidator;
 
 /**
  * Registers all WooCommerce integration hooks.
@@ -89,6 +90,9 @@ class WooIntegration {
 		add_action( 'manage_shop_order_posts_custom_column', [ $this, 'render_order_tax_column' ], 10, 2 );
 		add_filter( 'manage_woocommerce_page_wc-orders_columns', [ $this, 'add_order_tax_column' ] );
 		add_action( 'manage_woocommerce_page_wc-orders_custom_column', [ $this, 'render_order_tax_column_hpos' ], 10, 2 );
+
+		// --- Smart Address Validation ---
+		add_action( 'woocommerce_after_checkout_validation', [ $this, 'validate_checkout_address' ], 10, 2 );
 	}
 
 	/*
@@ -636,5 +640,43 @@ class WooIntegration {
 		}
 
 		return $settings;
+	}
+
+	/*
+	 * ──────────────────────────────────
+	 *  SMART ADDRESS VALIDATION
+	 * ──────────────────────────────────
+	 */
+
+	/**
+	 * Intercept checkout and validate the shipping/billing address.
+	 *
+	 * @param array     $data   The $_POST checkout data fields.
+	 * @param \WP_Error $errors The WooCommerce checkout error object.
+	 */
+	public function validate_checkout_address( array $data, \WP_Error $errors ): void {
+		// Only run our validation if there aren't already critical base errors (like missing fields).
+		// We don't want to overwhelm the user with messages for an empty form.
+		if ( $errors->get_error_codes() ) {
+			return;
+		}
+
+		$is_shipping = isset( $data['ship_to_different_address'] ) && $data['ship_to_different_address'];
+		$prefix      = $is_shipping ? 'shipping_' : 'billing_';
+
+		$address_fields = [
+			'country'  => $data[ $prefix . 'country' ] ?? '',
+			'postcode' => $data[ $prefix . 'postcode' ] ?? '',
+			'city'     => $data[ $prefix . 'city' ] ?? '',
+		];
+
+		// Instantiate our new Address Validator.
+		$validator = new AddressValidator();
+		$result    = $validator->validate_address( $address_fields );
+
+		// If validation failed, add our custom message to the WooCommerce error notices, halting the order.
+		if ( false === $result['is_valid'] && ! empty( $result['message'] ) ) {
+			$errors->add( 'taxpilot_address_validation_failed', $result['message'] );
+		}
 	}
 }
