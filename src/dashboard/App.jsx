@@ -74,6 +74,15 @@ export default function App() {
 		window.open( url, '_blank' );
 	};
 
+	const handleExportPDF = () => {
+		const baseUrl = window.taxPilotData?.restUrl || '/wp-json/taxpilot/v1/';
+		const nonce = window.taxPilotData?.nonce || '';
+		const url = `${ baseUrl }reports/pdf${
+			nonce ? '?_wpnonce=' + nonce : ''
+		}`;
+		window.open( url, '_blank' );
+	};
+
 	if ( loading ) {
 		return (
 			<div className="taxpilot-loading">
@@ -185,6 +194,12 @@ export default function App() {
 					onClick={ handleExportCSV }
 				>
 					{ __( '📄 Export CSV', 'taxpilot' ) }
+				</button>
+				<button
+					className="taxpilot-btn taxpilot-btn--outline"
+					onClick={ handleExportPDF }
+				>
+					{ __( '📥 Export PDF', 'taxpilot' ) }
 				</button>
 				<a
 					href={

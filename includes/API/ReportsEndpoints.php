@@ -12,6 +12,7 @@ namespace TaxPilot\API;
 use TaxPilot\Database\RatesTable;
 use TaxPilot\Database\AlertsTable;
 use TaxPilot\Export\CSVExporter;
+use TaxPilot\Export\PDFExporter;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -39,6 +40,17 @@ class ReportsEndpoints extends WP_REST_Controller {
 			[
 				'methods'             => 'GET',
 				'callback'            => [ $this, 'export_csv' ],
+				'permission_callback' => [ $this, 'check_permissions' ],
+			]
+		);
+
+		// Export PDF.
+		register_rest_route(
+			$this->namespace,
+			'/reports/pdf',
+			[
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'export_pdf' ],
 				'permission_callback' => [ $this, 'check_permissions' ],
 			]
 		);
@@ -112,6 +124,15 @@ class ReportsEndpoints extends WP_REST_Controller {
 		$exporter = new CSVExporter();
 		$exporter->export();
 		exit; // CSVExporter sends headers and echoes content directly.
+	}
+
+	/**
+	 * Export rates as PDF.
+	 */
+	public function export_pdf(): void {
+		$exporter = new PDFExporter();
+		$exporter->export();
+		exit; // PDFExporter sends headers and echoes content directly.
 	}
 
 	/**
