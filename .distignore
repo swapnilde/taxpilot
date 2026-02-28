@@ -8,12 +8,12 @@
 .phpcs.xml.dist
 .stylelintrc.json
 .distignore
+.git/
+.gitkeep
 
 # Dev dependencies & tooling
 node_modules/
 vendor/
-composer.json
-composer.lock
 package.json
 package-lock.json
 webpack.config.js

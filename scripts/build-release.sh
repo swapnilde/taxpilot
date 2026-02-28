@@ -45,6 +45,8 @@ echo "🐘 Preparing production PHP dependencies..."
 cd $BUILD_DIR/$PLUGIN_SLUG
 if [ -f "composer.json" ]; then
     composer install --no-dev --optimize-autoloader --no-progress --quiet
+    # Preserve composer.json per WP.org guidelines, only remove .lock
+    rm -f composer.lock
 fi
 cd ../../
 
