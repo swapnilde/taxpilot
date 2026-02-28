@@ -75,5 +75,8 @@ class Activator {
 		if ( ! wp_next_scheduled( 'taxpilot_weekly_report' ) ) {
 			wp_schedule_event( time(), 'weekly', 'taxpilot_weekly_report' );
 		}
+		if ( ! wp_next_scheduled( 'taxpilot_sync_dynamic_rates' ) ) {
+			wp_schedule_event( time(), 'weekly', 'taxpilot_sync_dynamic_rates' );
+		}
 	}
 }

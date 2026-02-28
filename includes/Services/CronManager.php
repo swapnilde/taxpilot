@@ -24,6 +24,7 @@ class CronManager {
 	public function register(): void {
 		add_action( 'taxpilot_daily_rate_check', [ $this, 'handle_daily_rate_check' ] );
 		add_action( 'taxpilot_weekly_report', [ $this, 'handle_weekly_report' ] );
+		add_action( 'taxpilot_sync_dynamic_rates', [ $this, 'handle_dynamic_rates_sync' ] );
 	}
 
 	/**
@@ -86,5 +87,19 @@ class CronManager {
 				]
 			)
 		);
+	}
+
+	/**
+	 * Handle weekly dynamic rates sync.
+	 */
+	public function handle_dynamic_rates_sync(): void {
+		$aggregator = new RatesAggregator();
+		$success    = $aggregator->sync();
+
+		if ( $success ) {
+			LogsTable::insert( 'cron_sync_dynamic_rates', 'Dynamic rates successfully synchronized.', 'info' );
+		} else {
+			LogsTable::insert( 'cron_sync_dynamic_rates', 'Failed to synchronize dynamic rates.', 'error' );
+		}
 	}
 }

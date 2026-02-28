@@ -26,6 +26,7 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 ### 🌍 Global Tax Rate Coverage
 ### ✨ Core Features
 * **5-Step Setup Wizard:** Configure your store's tax rates for any country in minutes.
+* **Auto-Syncing Rates Engine:** The plugin automatically connects to reliable open-source APIs every week in the background, continuously keeping your free dynamic rates cached and up-to-date without needing plugin updates.
 * **Smart Defaults:** Auto-detects your shop's base country and currency.
 * **Global Rate Database:** Built-in support for standard, reduced, and zero tax rates across 100+ countries.
 * **Deep WooCommerce Integration:** Automatically applies rates at checkout, manages shipping tax, and stamps orders with a custom "Tax Source" badge.
@@ -64,7 +65,7 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 Yes. WooCommerce 8.0 or later must be installed and activated. TaxPilot for WooCommerce extends WooCommerce's tax system — it doesn't replace it.
 
 ### Where do the tax rates come from?
-TaxPilot ships with a comprehensive built-in tax rate database covering 100+ countries. Rates are maintained and updated with each plugin release. For real-time rates, you can optionally connect a VATSense API key.
+TaxPilot utilizes an In-Plugin Auto-Syncing element. It automatically runs a background task once a week to securely pull, format, and cache raw open-source rate data directly into your uploads folder. If the sync ever fails, it safely falls back to a bundled database. For strict real-time corporate compliance, you can optionally connect a VATSense API key.
 
 ### How many countries are supported?
 The bundled database covers 100+ countries including all EU member states, US (state-level), UK, Canada, Australia, Japan, Switzerland, India, Brazil, and many more.
@@ -115,6 +116,7 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 
 * 5-step setup wizard with smart defaults and auto-detection
 * Built-in tax rate database covering 100+ countries
+* Auto-Syncing Rates Engine pulls real-time updates from reliable open-source APIs to maintain free compliance continuously
 * Support for all WooCommerce tax classes: Standard, Reduced Rate, Digital Goods, Services, Zero Rate
 * One-click rate application with duplicate prevention and two-step confirmation
 * Deep WooCommerce integration ensures precise tax calculations and seamless checkout

@@ -213,7 +213,8 @@ class StaticRatesProvider implements RateProviderInterface {
 	}
 
 	/**
-	 * Load the static rates JSON file.
+	 * Load the rates JSON file.
+	 * Checks the dynamic uploads folder first, then falls back to the bundled static asset.
 	 *
 	 * @return array
 	 */
@@ -222,14 +223,22 @@ class StaticRatesProvider implements RateProviderInterface {
 			return $this->data;
 		}
 
-		$file = TAXPILOT_PATH . 'data/static-rates.json';
+		$upload_dir   = wp_upload_dir();
+		$dynamic_file = $upload_dir['basedir'] . '/taxpilot/dynamic-rates.json';
+		$static_file  = TAXPILOT_PATH . 'data/static-rates.json';
 
-		if ( ! file_exists( $file ) ) {
+		$file_to_load = '';
+
+		if ( file_exists( $dynamic_file ) ) {
+			$file_to_load = $dynamic_file;
+		} elseif ( file_exists( $static_file ) ) {
+			$file_to_load = $static_file;
+		} else {
 			$this->data = [];
 			return $this->data;
 		}
 
-		$json       = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$json       = file_get_contents( $file_to_load ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$this->data = json_decode( $json, true ) ?: [];
 
 		return $this->data;
