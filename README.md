@@ -32,6 +32,7 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **B2B EU EU Exemption:** Automatically validates EU VIES VAT numbers at checkout to exempt legitimate B2B buyers.
 * **Digital Goods Auto-Classification:** Automatically assigns virtual/downloadable products to the correct tax class.
 * **Dashboard & Alerts:** A beautiful interface offering real-time rate statistics, activity logs, and email notifications when global tax laws change.
+* **WooCommerce Analytics Built-in:** Includes a dedicated "TaxPilot Usage" tracking tab seamlessly embedded inside the native WooCommerce Reports screen.
 * **PDF & CSV Exports:** Downloadable tax compliance reports for your records.
 * **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
 
@@ -119,6 +120,7 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 * Add a VAT number checkout field easily for EU target countries
 * Auto-assignment of Digital Goods tax class to virtual/downloadable products
 * Smart shipping tax handling correctly processes mixed physical and digital-only carts
+* Integrated directly into WooCommerce Analytics via a custom Reports tab
 * Intuitive dashboard with real-time rate statistics, activity logs, and an alert center
 * Daily rate change monitoring keeps you compliant, complete with automated email notifications
 * Downloadable CSV compliance exports and PDF reporting

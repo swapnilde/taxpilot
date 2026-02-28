@@ -81,6 +81,9 @@ class WooIntegration {
 		// --- Ensure tax is enabled ---
 		add_action( 'admin_init', [ $this, 'maybe_enable_taxes' ] );
 
+		// --- Tax Report Data ---
+		add_filter( 'woocommerce_admin_reports', [ $this, 'add_tax_report_tab' ] );
+
 		// --- Order List Admin Columns (Legacy & HPOS) ---
 		add_filter( 'manage_edit-shop_order_columns', [ $this, 'add_order_tax_column' ] );
 		add_action( 'manage_shop_order_posts_custom_column', [ $this, 'render_order_tax_column' ], 10, 2 );
@@ -432,6 +435,38 @@ class WooIntegration {
 		} else {
 			echo '<span class="na">&ndash;</span>';
 		}
+	}
+
+	/**
+	 * Register a custom TaxPilot tab in WooCommerce Reports.
+	 *
+	 * @param array $reports Existing reports.
+	 * @return array Modified reports.
+	 */
+	public function add_tax_report_tab( array $reports ): array {
+		if ( isset( $reports['taxes'] ) ) {
+			$reports['taxes']['reports']['taxpilot'] = [
+				'title'       => __( 'TaxPilot Usage', 'taxpilot' ),
+				'description' => __( 'Overview of orders processed with TaxPilot.', 'taxpilot' ),
+				'hide_title'  => true,
+				'callback'    => [ $this, 'render_tax_report_page' ],
+			];
+		}
+		return $reports;
+	}
+
+	/**
+	 * Render the TaxPilot report page content within WooCommerce Reports.
+	 */
+	public function render_tax_report_page(): void {
+		echo '<div id="poststuff" class="woocommerce-reports-wide">';
+		echo '<div class="postbox">';
+		echo '<h3 class="hndle"><span>' . esc_html__( 'TaxPilot Usage Report', 'taxpilot' ) . '</span></h3>';
+		echo '<div class="inside">';
+		echo '<p>' . esc_html__( 'This report shows the impact of TaxPilot on your store\'s tax collection.', 'taxpilot' ) . '</p>';
+		echo '<p><em>' . esc_html__( 'Summary metrics will populate here as new orders are processed using TaxPilot rates.', 'taxpilot' ) . '</em></p>';
+		echo '<a href="' . esc_url( admin_url( 'admin.php?page=taxpilot' ) ) . '" class="button button-primary">' . esc_html__( 'View Full TaxPilot Dashboard', 'taxpilot' ) . '</a>';
+		echo '</div></div></div>';
 	}
 
 	/*
