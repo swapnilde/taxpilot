@@ -8,12 +8,17 @@ import { COUNTRIES } from '../common/constants';
 import './dashboard.css';
 
 export default function App() {
+	const currentYear = new Date().getFullYear();
+	const currentQuarter = Math.floor( ( new Date().getMonth() + 3 ) / 3 );
+
 	const [ stats, setStats ] = useState( null );
 	const [ rates, setRates ] = useState( [] );
 	const [ alerts, setAlerts ] = useState( [] );
 	const [ unreadCount, setUnreadCount ] = useState( 0 );
 	const [ loading, setLoading ] = useState( true );
 	const [ refreshing, setRefreshing ] = useState( false );
+	const [ ossYear, setOssYear ] = useState( currentYear );
+	const [ ossQuarter, setOssQuarter ] = useState( currentQuarter );
 
 	const getSeverityIcon = ( severity ) => {
 		if ( severity === 'critical' ) {
@@ -79,6 +84,15 @@ export default function App() {
 		const nonce = window.taxPilotData?.nonce || '';
 		const url = `${ baseUrl }reports/pdf${
 			nonce ? '?_wpnonce=' + nonce : ''
+		}`;
+		window.open( url, '_blank' );
+	};
+
+	const handleExportOSS = () => {
+		const baseUrl = window.taxPilotData?.restUrl || '/wp-json/taxpilot/v1/';
+		const nonce = window.taxPilotData?.nonce || '';
+		const url = `${ baseUrl }reports/oss/csv?year=${ ossYear }&quarter=${ ossQuarter }${
+			nonce ? '&_wpnonce=' + nonce : ''
 		}`;
 		window.open( url, '_blank' );
 	};
@@ -210,6 +224,85 @@ export default function App() {
 				>
 					{ __( '🧙 Re-run Wizard', 'taxpilot' ) }
 				</a>
+			</div>
+
+			{ /* OSS Report Generator */ }
+			<div
+				className="taxpilot-card"
+				style={ { marginBottom: 'var(--tw-space-6)' } }
+			>
+				<div className="taxpilot-card-header">
+					<h3 className="taxpilot-card-title">
+						🇪🇺 { __( 'EU OSS/MOSS Report Generator', 'taxpilot' ) }
+					</h3>
+				</div>
+				<div
+					style={ {
+						padding: 'var(--tw-space-4)',
+						display: 'flex',
+						gap: 'var(--tw-space-4)',
+						alignItems: 'center',
+					} }
+				>
+					<select
+						value={ ossYear }
+						onChange={ ( e ) => setOssYear( e.target.value ) }
+						style={ {
+							padding: '8px 32px 8px 12px',
+							borderRadius: '4px',
+							border: '1px solid #ccc',
+						} }
+					>
+						{ [ 0, 1, 2, 3 ].map( ( offset ) => (
+							<option
+								key={ currentYear - offset }
+								value={ currentYear - offset }
+							>
+								{ currentYear - offset }
+							</option>
+						) ) }
+					</select>
+					<select
+						value={ ossQuarter }
+						onChange={ ( e ) => setOssQuarter( e.target.value ) }
+						style={ {
+							padding: '8px 32px 8px 12px',
+							borderRadius: '4px',
+							border: '1px solid #ccc',
+						} }
+					>
+						<option value="1">
+							{ __( 'Q1 (Jan - Mar)', 'taxpilot' ) }
+						</option>
+						<option value="2">
+							{ __( 'Q2 (Apr - Jun)', 'taxpilot' ) }
+						</option>
+						<option value="3">
+							{ __( 'Q3 (Jul - Sep)', 'taxpilot' ) }
+						</option>
+						<option value="4">
+							{ __( 'Q4 (Oct - Dec)', 'taxpilot' ) }
+						</option>
+					</select>
+					<button
+						className="taxpilot-btn taxpilot-btn--primary"
+						onClick={ handleExportOSS }
+					>
+						{ __( '📥 Export OSS CSV', 'taxpilot' ) }
+					</button>
+				</div>
+				<p
+					style={ {
+						margin: '0 var(--tw-space-4) var(--tw-space-4)',
+						fontSize: '13px',
+						color: '#666',
+					} }
+				>
+					{ __(
+						'Automatically aggregates non-B2B WooCommerce orders shipped to EU member states by destination country and tax rate.',
+						'taxpilot'
+					) }
+				</p>
 			</div>
 
 			{ /* Rates table */ }

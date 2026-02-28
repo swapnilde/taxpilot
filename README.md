@@ -33,6 +33,7 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **Smart Address Validation:** Verifies shipping zip codes and cities at checkout using OpenStreetMap Nominatim to prevent incorrect tax calculations.
 * **Digital Goods Auto-Classification:** Automatically assigns virtual/downloadable products to the correct tax class.
 * **Dashboard & Alerts:** A beautiful interface offering real-time rate statistics, activity logs, and email notifications when global tax laws change.
+* **EU OSS/MOSS Report Generator:** One-click quarterly compliance export aggregating EU B2C sales and VAT collected by member state and tax rate.
 * **WooCommerce Analytics Built-in:** Includes a dedicated "TaxPilot Usage" tracking tab seamlessly embedded inside the native WooCommerce Reports screen.
 * **PDF & CSV Exports:** Downloadable tax compliance reports for your records.
 * **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
@@ -119,6 +120,7 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 * Deep WooCommerce integration ensures precise tax calculations and seamless checkout
 * EU VIES VAT number validation with real-time B2B tax exemption
 * Smart Address Validation checks shipping zip codes and cities using OpenStreetMap Nominatim
+* EU OSS/MOSS Report Generator to instantly aggregate and export EU B2C sales data for quarterly filings
 * Add a VAT number checkout field easily for EU target countries
 * Auto-assignment of Digital Goods tax class to virtual/downloadable products
 * Smart shipping tax handling correctly processes mixed physical and digital-only carts

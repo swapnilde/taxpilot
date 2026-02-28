@@ -13,6 +13,7 @@ use TaxPilot\Database\RatesTable;
 use TaxPilot\Database\AlertsTable;
 use TaxPilot\Export\CSVExporter;
 use TaxPilot\Export\PDFExporter;
+use TaxPilot\Export\OSSReportGenerator;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -52,6 +53,27 @@ class ReportsEndpoints extends WP_REST_Controller {
 				'methods'             => 'GET',
 				'callback'            => [ $this, 'export_pdf' ],
 				'permission_callback' => [ $this, 'check_permissions' ],
+			]
+		);
+
+		// Export OSS CSV.
+		register_rest_route(
+			$this->namespace,
+			'/reports/oss/csv',
+			[
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'export_oss_csv' ],
+				'permission_callback' => [ $this, 'check_permissions' ],
+				'args'                => [
+					'year'    => [
+						'type'     => 'integer',
+						'required' => true,
+					],
+					'quarter' => [
+						'type'     => 'integer',
+						'required' => true,
+					],
+				],
 			]
 		);
 
@@ -133,6 +155,54 @@ class ReportsEndpoints extends WP_REST_Controller {
 		$exporter = new PDFExporter();
 		$exporter->export();
 		exit; // PDFExporter sends headers and echoes content directly.
+	}
+
+	/**
+	 * Export OSS Report as CSV.
+	 *
+	 * @param WP_REST_Request $request The REST request.
+	 */
+	public function export_oss_csv( WP_REST_Request $request ): void {
+		$year    = (int) $request->get_param( 'year' );
+		$quarter = (int) $request->get_param( 'quarter' );
+
+		$generator = new OSSReportGenerator();
+		$data      = $generator->generate_oss_data( $year, $quarter );
+
+		$filename = sprintf( 'taxpilot-oss-report-Q%d-%d.csv', $quarter, $year );
+
+		header( 'Content-Type: text/csv; charset=utf-8' );
+		header( 'Content-Disposition: attachment; filename=' . $filename );
+		header( 'Pragma: no-cache' );
+		header( 'Expires: 0' );
+
+		$output = fopen( 'php://output', 'w' );
+		if ( false === $output ) {
+			exit;
+		}
+
+		// UTF-8 BOM for Excel.
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+		fwrite( $output, "\xEF\xBB\xBF" );
+
+		// Headers.
+		fputcsv( $output, [ 'Destination Country', 'Tax Rate (%)', 'Taxable Sales (EUR)', 'VAT Collected (EUR)' ] );
+
+		foreach ( $data as $row ) {
+			fputcsv(
+				$output,
+				[
+					$row['country'],
+					$row['tax_rate'],
+					number_format( $row['taxable_sales'], 2, '.', '' ),
+					number_format( $row['vat_collected'], 2, '.', '' ),
+				]
+			);
+		}
+
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+		fclose( $output );
+		exit;
 	}
 
 	/**
