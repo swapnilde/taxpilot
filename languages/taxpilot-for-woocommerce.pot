@@ -9,10 +9,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-28T12:33:38+00:00\n"
+"POT-Creation-Date: 2026-05-19T12:17:19+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: taxpilot\n"
+"X-Domain: taxpilot-for-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: taxpilot.php
@@ -314,10 +314,6 @@ msgstr ""
 msgid "Welcome to TaxPilot!"
 msgstr ""
 
-#: src/dashboard/App.jsx:123
-msgid "Run the setup wizard to configure your tax rates."
-msgstr ""
-
 #: src/dashboard/App.jsx:136
 msgid "Start Setup Wizard →"
 msgstr ""
@@ -398,10 +394,6 @@ msgstr ""
 msgid "📥 Export OSS CSV"
 msgstr ""
 
-#: src/dashboard/App.jsx:301
-msgid "Automatically aggregates non-B2B WooCommerce orders shipped to EU member states by destination country and tax rate."
-msgstr ""
-
 #: src/dashboard/App.jsx:312
 msgid "Current Tax Rates"
 msgstr ""
@@ -451,10 +443,6 @@ msgstr ""
 msgid "Mark all read"
 msgstr ""
 
-#: src/dashboard/App.jsx:467
-msgid "No alerts. Everything looks good! ✅"
-msgstr ""
-
 #: src/wizard/App.jsx:70
 msgid "Failed to load wizard state."
 msgstr ""
@@ -487,20 +475,12 @@ msgstr ""
 msgid "Rates"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:59
-msgid "tax rates applied to WooCommerce!"
-msgstr ""
-
 #: src/wizard/steps/ApplyRates.jsx:66
 msgid "Failed to apply rates. Please try again."
 msgstr ""
 
 #: src/wizard/steps/ApplyRates.jsx:80
 msgid "Tax Setup Complete!"
-msgstr ""
-
-#: src/wizard/steps/ApplyRates.jsx:83
-msgid "tax rates have been applied to your WooCommerce store."
 msgstr ""
 
 #: src/wizard/steps/ApplyRates.jsx:92
@@ -535,10 +515,6 @@ msgstr ""
 msgid "Apply Tax Rates"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:177
-msgid "Review the summary below and click \"Apply\" to configure your WooCommerce tax tables."
-msgstr ""
-
 #: src/wizard/steps/ApplyRates.jsx:184
 msgid "Setup Summary"
 msgstr ""
@@ -560,10 +536,6 @@ msgstr ""
 
 #: src/wizard/steps/ApplyRates.jsx:217
 msgid "Tax Rates to Apply"
-msgstr ""
-
-#: src/wizard/steps/ApplyRates.jsx:239
-msgid "This will update your WooCommerce tax tables. Any manually added rates may be affected. Click \"Apply\" again to confirm."
 msgstr ""
 
 #: src/wizard/steps/ApplyRates.jsx:251
@@ -593,20 +565,12 @@ msgstr ""
 msgid "Preview Tax Rates"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:60
-msgid "Review the tax rates we found. These will be applied to your WooCommerce tax tables."
-msgstr ""
-
 #: src/wizard/steps/PreviewRates.jsx:65
 msgid "Source:"
 msgstr ""
 
 #: src/wizard/steps/PreviewRates.jsx:79
 msgid "Shipping"
-msgstr ""
-
-#: src/wizard/steps/PreviewRates.jsx:132
-msgid "No rates found. Try selecting different countries."
 msgstr ""
 
 #: src/wizard/steps/PreviewRates.jsx:150
@@ -628,16 +592,8 @@ msgstr ""
 msgid "Please select at least one product type."
 msgstr ""
 
-#: src/wizard/steps/ProductTypes.jsx:41
-msgid "Product types saved! Tax classes created:"
-msgstr ""
-
 #: src/wizard/steps/ProductTypes.jsx:49
 msgid "Failed to save product types."
-msgstr ""
-
-#: src/wizard/steps/ProductTypes.jsx:61
-msgid "Select all product types you sell. We'll create the appropriate WooCommerce tax classes."
 msgstr ""
 
 #: src/wizard/steps/ProductTypes.jsx:105
@@ -678,18 +634,6 @@ msgstr ""
 msgid "Store Setup"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:102
-msgid "Your current settings are pre-filled below. Update anything you need and continue through the wizard."
-msgstr ""
-
-#: src/wizard/steps/StoreSetup.jsx:106
-msgid "Tell us about your store location and currency. We auto-detected your WooCommerce settings."
-msgstr ""
-
-#: src/wizard/steps/StoreSetup.jsx:126
-msgid "You are re-running the wizard. Your existing settings are pre-filled. Walk through each step to make changes, then re-apply your rates."
-msgstr ""
-
 #: src/wizard/steps/StoreSetup.jsx:144
 msgid "Store Currency"
 msgstr ""
@@ -698,16 +642,8 @@ msgstr ""
 msgid "Please select at least one country."
 msgstr ""
 
-#: src/wizard/steps/TargetCountries.jsx:82
-msgid "countries selected!"
-msgstr ""
-
 #: src/wizard/steps/TargetCountries.jsx:90
 msgid "Failed to save countries."
-msgstr ""
-
-#: src/wizard/steps/TargetCountries.jsx:102
-msgid "Select the countries where you sell. We'll fetch the correct tax rates for each one."
 msgstr ""
 
 #: src/wizard/steps/TargetCountries.jsx:120

@@ -10,7 +10,7 @@
  * Author URI:        https://swapnild.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       taxpilot
+ * Text Domain:       taxpilot-for-woocommerce
  * Domain Path:       /languages
  * WC requires at least: 8.0
  * WC tested up to:   9.5
@@ -54,8 +54,8 @@ function taxpilot_wc_missing_notice(): void {
 	?>
 	<div class="notice notice-error">
 		<p>
-			<strong><?php esc_html_e( 'TaxPilot for WooCommerce', 'taxpilot' ); ?></strong>:
-			<?php esc_html_e( 'This plugin requires WooCommerce to be installed and active.', 'taxpilot' ); ?>
+			<strong><?php esc_html_e( 'TaxPilot for WooCommerce', 'taxpilot-for-woocommerce' ); ?></strong>:
+			<?php esc_html_e( 'This plugin requires WooCommerce to be installed and active.', 'taxpilot-for-woocommerce' ); ?>
 		</p>
 	</div>
 	<?php

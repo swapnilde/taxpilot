@@ -82,7 +82,7 @@ class AddressValidator {
 				'is_valid' => false,
 				'message'  => sprintf(
 					/* translators: 1: postal code, 2: entered city */
-					__( 'TaxPilot Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations.', 'taxpilot' ),
+					__( 'TaxPilot Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations.', 'taxpilot-for-woocommerce' ),
 					esc_html( $postcode ),
 					esc_html( $city )
 				),

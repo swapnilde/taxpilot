@@ -6,104 +6,103 @@ import { __ } from '@wordpress/i18n';
 import { apiPost } from '../../common/api';
 import { PRODUCT_TYPES } from '../../common/constants';
 
-export default function ProductTypes( {
+export default function ProductTypes({
 	data,
 	updateData,
 	onNext,
 	onBack,
 	showNotice,
-} ) {
-	const [ saving, setSaving ] = useState( false );
+}) {
+	const [saving, setSaving] = useState(false);
 
-	const toggleType = ( type ) => {
+	const toggleType = (type) => {
 		const current = data.productTypes || [];
-		const updated = current.includes( type )
-			? current.filter( ( t ) => t !== type )
-			: [ ...current, type ];
-		updateData( 'productTypes', updated );
+		const updated = current.includes(type)
+			? current.filter((t) => t !== type)
+			: [...current, type];
+		updateData('productTypes', updated);
 	};
 
 	const handleNext = async () => {
-		if ( ! data.productTypes?.length ) {
+		if (!data.productTypes?.length) {
 			showNotice(
-				__( 'Please select at least one product type.', 'taxpilot' ),
+				__('Please select at least one product type.', 'taxpilot-for-woocommerce'),
 				'error'
 			);
 			return;
 		}
 
-		setSaving( true );
+		setSaving(true);
 		try {
-			const result = await apiPost( 'wizard/product-types', {
+			const result = await apiPost('wizard/product-types', {
 				product_types: data.productTypes,
-			} );
+			});
 			showNotice(
-				`${ __(
+				`${__(
 					'Product types saved! Tax classes created:',
-					'taxpilot'
-				) } ${ result.tax_classes?.join( ', ' ) || 'Standard' }`
+					'taxpilot-for-woocommerce'
+				)} ${result.tax_classes?.join(', ') || 'Standard'}`
 			);
 			onNext();
 		} catch {
 			showNotice(
-				__( 'Failed to save product types.', 'taxpilot' ),
+				__('Failed to save product types.', 'taxpilot-for-woocommerce'),
 				'error'
 			);
 		} finally {
-			setSaving( false );
+			setSaving(false);
 		}
 	};
 
 	return (
 		<div>
-			<h2>{ __( 'Product Types', 'taxpilot' ) }</h2>
+			<h2>{__('Product Types', 'taxpilot-for-woocommerce')}</h2>
 			<p className="description">
-				{ __(
+				{__(
 					"Select all product types you sell. We'll create the appropriate WooCommerce tax classes.",
-					'taxpilot'
-				) }
+					'taxpilot-for-woocommerce'
+				)}
 			</p>
 
 			<div className="taxpilot-product-type-cards">
-				{ PRODUCT_TYPES.map( ( type ) => (
+				{PRODUCT_TYPES.map((type) => (
 					<div
-						key={ type.value }
-						className={ `taxpilot-product-type-card${
-							data.productTypes?.includes( type.value )
+						key={type.value}
+						className={`taxpilot-product-type-card${data.productTypes?.includes(type.value)
 								? ' taxpilot-product-type-card--selected'
 								: ''
-						}` }
-						onClick={ () => toggleType( type.value ) }
-						onKeyDown={ ( e ) =>
-							e.key === 'Enter' && toggleType( type.value )
+							}`}
+						onClick={() => toggleType(type.value)}
+						onKeyDown={(e) =>
+							e.key === 'Enter' && toggleType(type.value)
 						}
 						role="checkbox"
-						aria-checked={ data.productTypes?.includes(
+						aria-checked={data.productTypes?.includes(
 							type.value
-						) }
-						tabIndex={ 0 }
+						)}
+						tabIndex={0}
 					>
-						<h3>{ type.label }</h3>
-						<p>{ type.description }</p>
+						<h3>{type.label}</h3>
+						<p>{type.description}</p>
 					</div>
-				) ) }
+				))}
 			</div>
 
 			<div className="taxpilot-step-actions">
 				<button
 					className="taxpilot-btn taxpilot-btn--secondary"
-					onClick={ onBack }
+					onClick={onBack}
 				>
-					{ __( '← Back', 'taxpilot' ) }
+					{__('← Back', 'taxpilot-for-woocommerce')}
 				</button>
 				<button
 					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
-					onClick={ handleNext }
-					disabled={ saving }
+					onClick={handleNext}
+					disabled={saving}
 				>
-					{ saving
-						? __( 'Saving…', 'taxpilot' )
-						: __( 'Continue →', 'taxpilot' ) }
+					{saving
+						? __('Saving…', 'taxpilot-for-woocommerce')
+						: __('Continue →', 'taxpilot-for-woocommerce')}
 				</button>
 			</div>
 		</div>

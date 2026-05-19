@@ -29,8 +29,8 @@ class AdminMenu {
 	public function add_menu_pages(): void {
 		// Top-level menu.
 		add_menu_page(
-			__( 'TaxPilot', 'taxpilot' ),
-			__( 'TaxPilot', 'taxpilot' ),
+			__( 'TaxPilot', 'taxpilot-for-woocommerce' ),
+			__( 'TaxPilot', 'taxpilot-for-woocommerce' ),
 			'manage_woocommerce',
 			'taxpilot',
 			[ $this, 'render_dashboard' ],
@@ -41,8 +41,8 @@ class AdminMenu {
 		// Dashboard submenu (same as parent).
 		add_submenu_page(
 			'taxpilot',
-			__( 'Dashboard', 'taxpilot' ),
-			__( 'Dashboard', 'taxpilot' ),
+			__( 'Dashboard', 'taxpilot-for-woocommerce' ),
+			__( 'Dashboard', 'taxpilot-for-woocommerce' ),
 			'manage_woocommerce',
 			'taxpilot',
 			[ $this, 'render_dashboard' ]
@@ -51,8 +51,8 @@ class AdminMenu {
 		// Wizard submenu.
 		add_submenu_page(
 			'taxpilot',
-			__( 'Setup Wizard', 'taxpilot' ),
-			__( 'Setup Wizard', 'taxpilot' ),
+			__( 'Setup Wizard', 'taxpilot-for-woocommerce' ),
+			__( 'Setup Wizard', 'taxpilot-for-woocommerce' ),
 			'manage_woocommerce',
 			'taxpilot-wizard',
 			[ $this, 'render_wizard' ]
@@ -61,8 +61,8 @@ class AdminMenu {
 		// Settings submenu.
 		add_submenu_page(
 			'taxpilot',
-			__( 'Settings', 'taxpilot' ),
-			__( 'Settings', 'taxpilot' ),
+			__( 'Settings', 'taxpilot-for-woocommerce' ),
+			__( 'Settings', 'taxpilot-for-woocommerce' ),
 			'manage_woocommerce',
 			'taxpilot-settings',
 			[ $this, 'render_settings' ]
@@ -75,7 +75,7 @@ class AdminMenu {
 	public function render_dashboard(): void {
 		echo '<div class="taxpilot-wrap">';
 		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'TaxPilot Dashboard', 'taxpilot' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'TaxPilot Dashboard', 'taxpilot-for-woocommerce' ) . '</h1>';
 		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
 		echo '</div>';
 		echo '<div id="taxpilot-dashboard-root"></div>';
@@ -88,7 +88,7 @@ class AdminMenu {
 	public function render_wizard(): void {
 		echo '<div class="taxpilot-wrap">';
 		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'Tax Setup Wizard', 'taxpilot' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'Tax Setup Wizard', 'taxpilot-for-woocommerce' ) . '</h1>';
 		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
 		echo '</div>';
 		echo '<div id="taxpilot-wizard-root"></div>';
@@ -108,7 +108,7 @@ class AdminMenu {
 
 		echo '<div class="taxpilot-wrap">';
 		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'TaxPilot Settings', 'taxpilot' ) . '</h1>';
+		echo '<h1>' . esc_html__( 'TaxPilot Settings', 'taxpilot-for-woocommerce' ) . '</h1>';
 		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
 		echo '</div>';
 
@@ -118,47 +118,47 @@ class AdminMenu {
 
 		// API Provider.
 		echo '<div class="taxpilot-field">';
-		echo '<label for="api_provider">' . esc_html__( 'Tax Rate Source', 'taxpilot' ) . '</label>';
+		echo '<label for="api_provider">' . esc_html__( 'Tax Rate Source', 'taxpilot-for-woocommerce' ) . '</label>';
 		echo '<select id="api_provider" name="api_provider" class="regular-text">';
-		echo '<option value="static"' . selected( $settings['api_provider'] ?? 'static', 'static', false ) . '>' . esc_html__( 'Static Bundle', 'taxpilot' ) . '</option>';
-		echo '<option value="vatsense"' . selected( $settings['api_provider'] ?? '', 'vatsense', false ) . '>' . esc_html__( 'VATSense API', 'taxpilot' ) . '</option>';
+		echo '<option value="static"' . selected( $settings['api_provider'] ?? 'static', 'static', false ) . '>' . esc_html__( 'Static Bundle', 'taxpilot-for-woocommerce' ) . '</option>';
+		echo '<option value="vatsense"' . selected( $settings['api_provider'] ?? '', 'vatsense', false ) . '>' . esc_html__( 'VATSense API', 'taxpilot-for-woocommerce' ) . '</option>';
 		echo '</select>';
-		echo '<p class="description">' . esc_html__( 'Choose the source for tax rate data.', 'taxpilot' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Choose the source for tax rate data.', 'taxpilot-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// API Key.
 		echo '<div class="taxpilot-field">';
-		echo '<label for="api_key">' . esc_html__( 'API Key', 'taxpilot' ) . '</label>';
+		echo '<label for="api_key">' . esc_html__( 'API Key', 'taxpilot-for-woocommerce' ) . '</label>';
 		echo '<input type="password" id="api_key" name="api_key" value="' . esc_attr( $settings['api_key'] ?? '' ) . '" class="regular-text" />';
-		echo '<p class="description">' . esc_html__( 'Required for VATSense API. Your key is stored encrypted.', 'taxpilot' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Required for VATSense API. Your key is stored encrypted.', 'taxpilot-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// Alert Email.
 		echo '<div class="taxpilot-field">';
-		echo '<label for="alert_email">' . esc_html__( 'Alert Email', 'taxpilot' ) . '</label>';
+		echo '<label for="alert_email">' . esc_html__( 'Alert Email', 'taxpilot-for-woocommerce' ) . '</label>';
 		echo '<input type="email" id="alert_email" name="alert_email" value="' . esc_attr( $settings['alert_email'] ?? '' ) . '" class="regular-text" />';
-		echo '<p class="description">' . esc_html__( 'Email address for tax rate change alerts.', 'taxpilot' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Email address for tax rate change alerts.', 'taxpilot-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// Alerts Enabled.
 		echo '<div class="taxpilot-field">';
 		echo '<label>';
 		echo '<input type="checkbox" name="alerts_enabled" value="1"' . checked( $settings['alerts_enabled'] ?? true, true, false ) . ' /> ';
-		echo esc_html__( 'Enable email alerts for tax rate changes', 'taxpilot' );
+		echo esc_html__( 'Enable email alerts for tax rate changes', 'taxpilot-for-woocommerce' );
 		echo '</label>';
 		echo '</div>';
 
 		// Refresh Interval.
 		echo '<div class="taxpilot-field">';
-		echo '<label for="refresh_interval">' . esc_html__( 'Rate Refresh Interval', 'taxpilot' ) . '</label>';
+		echo '<label for="refresh_interval">' . esc_html__( 'Rate Refresh Interval', 'taxpilot-for-woocommerce' ) . '</label>';
 		echo '<select id="refresh_interval" name="refresh_interval" class="regular-text">';
-		echo '<option value="daily"' . selected( $settings['refresh_interval'] ?? 'daily', 'daily', false ) . '>' . esc_html__( 'Daily', 'taxpilot' ) . '</option>';
-		echo '<option value="weekly"' . selected( $settings['refresh_interval'] ?? '', 'weekly', false ) . '>' . esc_html__( 'Weekly', 'taxpilot' ) . '</option>';
-		echo '<option value="manual"' . selected( $settings['refresh_interval'] ?? '', 'manual', false ) . '>' . esc_html__( 'Manual Only', 'taxpilot' ) . '</option>';
+		echo '<option value="daily"' . selected( $settings['refresh_interval'] ?? 'daily', 'daily', false ) . '>' . esc_html__( 'Daily', 'taxpilot-for-woocommerce' ) . '</option>';
+		echo '<option value="weekly"' . selected( $settings['refresh_interval'] ?? '', 'weekly', false ) . '>' . esc_html__( 'Weekly', 'taxpilot-for-woocommerce' ) . '</option>';
+		echo '<option value="manual"' . selected( $settings['refresh_interval'] ?? '', 'manual', false ) . '>' . esc_html__( 'Manual Only', 'taxpilot-for-woocommerce' ) . '</option>';
 		echo '</select>';
 		echo '</div>';
 
-		submit_button( __( 'Save Settings', 'taxpilot' ) );
+		submit_button( __( 'Save Settings', 'taxpilot-for-woocommerce' ) );
 
 		echo '</form>';
 		echo '</div>';
@@ -190,7 +190,7 @@ class AdminMenu {
 		add_action(
 			'admin_notices',
 			function () {
-				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'taxpilot' ) . '</p></div>';
+				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'taxpilot-for-woocommerce' ) . '</p></div>';
 			}
 		);
 	}

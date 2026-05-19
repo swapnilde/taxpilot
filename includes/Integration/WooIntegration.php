@@ -312,12 +312,12 @@ class WooIntegration {
 
 		$fields['billing_vat_number'] = [
 			'type'        => 'text',
-			'label'       => __( 'EU VAT Number', 'taxpilot' ),
-			'placeholder' => __( 'e.g. DE123456789', 'taxpilot' ),
+			'label'       => __( 'EU VAT Number', 'taxpilot-for-woocommerce' ),
+			'placeholder' => __( 'e.g. DE123456789', 'taxpilot-for-woocommerce' ),
 			'required'    => false,
 			'class'       => [ 'form-row-wide' ],
 			'priority'    => 35,
-			'description' => __( 'Enter your VAT number for B2B tax exemption.', 'taxpilot' ),
+			'description' => __( 'Enter your VAT number for B2B tax exemption.', 'taxpilot-for-woocommerce' ),
 		];
 
 		return $fields;
@@ -372,14 +372,14 @@ class WooIntegration {
 
 		echo '<div class="taxpilot-order-meta" style="margin-top:12px;padding:10px;background:#f0f0f1;border-radius:6px;">';
 		echo '<h4 style="margin:0 0 8px 0;color:#4f46e5;">🧙 TaxPilot</h4>';
-		echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'Tax Source:', 'taxpilot' ) . '</strong> ' . esc_html( ucfirst( $source ?: 'N/A' ) ) . '</p>';
+		echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'Tax Source:', 'taxpilot-for-woocommerce' ) . '</strong> ' . esc_html( ucfirst( $source ?: 'N/A' ) ) . '</p>';
 
 		if ( $vat_number ) {
-			echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'VAT Number:', 'taxpilot' ) . '</strong> ' . esc_html( $vat_number ) . '</p>';
+			echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'VAT Number:', 'taxpilot-for-woocommerce' ) . '</strong> ' . esc_html( $vat_number ) . '</p>';
 		}
 
 		if ( 'yes' === $vat_exempt ) {
-			echo '<p style="margin:2px 0;font-size:13px;color:#059669;"><strong>✓ ' . esc_html__( 'VAT Exempt (B2B)', 'taxpilot' ) . '</strong></p>';
+			echo '<p style="margin:2px 0;font-size:13px;color:#059669;"><strong>✓ ' . esc_html__( 'VAT Exempt (B2B)', 'taxpilot-for-woocommerce' ) . '</strong></p>';
 		}
 
 		echo '</div>';
@@ -392,7 +392,7 @@ class WooIntegration {
 	 * @return array Modified columns.
 	 */
 	public function add_order_tax_column( array $columns ): array {
-		$columns['taxpilot_source'] = __( 'Tax Source', 'taxpilot' );
+		$columns['taxpilot_source'] = __( 'Tax Source', 'taxpilot-for-woocommerce' );
 		return $columns;
 	}
 
@@ -433,7 +433,7 @@ class WooIntegration {
 		$source  = $order->get_meta( '_taxpilot_rates_source' );
 
 		if ( $version && $source ) {
-			echo '<mark class="order-status status-completed tips" data-tip="' . esc_attr__( 'Processed by TaxPilot', 'taxpilot' ) . '">';
+			echo '<mark class="order-status status-completed tips" data-tip="' . esc_attr__( 'Processed by TaxPilot', 'taxpilot-for-woocommerce' ) . '">';
 			echo '<span>🧙 ' . esc_html( ucfirst( $source ) ) . '</span>';
 			echo '</mark>';
 		} else {
@@ -450,8 +450,8 @@ class WooIntegration {
 	public function add_tax_report_tab( array $reports ): array {
 		if ( isset( $reports['taxes'] ) ) {
 			$reports['taxes']['reports']['taxpilot'] = [
-				'title'       => __( 'TaxPilot Usage', 'taxpilot' ),
-				'description' => __( 'Overview of orders processed with TaxPilot.', 'taxpilot' ),
+				'title'       => __( 'TaxPilot Usage', 'taxpilot-for-woocommerce' ),
+				'description' => __( 'Overview of orders processed with TaxPilot.', 'taxpilot-for-woocommerce' ),
 				'hide_title'  => true,
 				'callback'    => [ $this, 'render_tax_report_page' ],
 			];
@@ -465,11 +465,11 @@ class WooIntegration {
 	public function render_tax_report_page(): void {
 		echo '<div id="poststuff" class="woocommerce-reports-wide">';
 		echo '<div class="postbox">';
-		echo '<h3 class="hndle"><span>' . esc_html__( 'TaxPilot Usage Report', 'taxpilot' ) . '</span></h3>';
+		echo '<h3 class="hndle"><span>' . esc_html__( 'TaxPilot Usage Report', 'taxpilot-for-woocommerce' ) . '</span></h3>';
 		echo '<div class="inside">';
-		echo '<p>' . esc_html__( 'This report shows the impact of TaxPilot on your store\'s tax collection.', 'taxpilot' ) . '</p>';
-		echo '<p><em>' . esc_html__( 'Summary metrics will populate here as new orders are processed using TaxPilot rates.', 'taxpilot' ) . '</em></p>';
-		echo '<a href="' . esc_url( admin_url( 'admin.php?page=taxpilot' ) ) . '" class="button button-primary">' . esc_html__( 'View Full TaxPilot Dashboard', 'taxpilot' ) . '</a>';
+		echo '<p>' . esc_html__( 'This report shows the impact of TaxPilot on your store\'s tax collection.', 'taxpilot-for-woocommerce' ) . '</p>';
+		echo '<p><em>' . esc_html__( 'Summary metrics will populate here as new orders are processed using TaxPilot rates.', 'taxpilot-for-woocommerce' ) . '</em></p>';
+		echo '<a href="' . esc_url( admin_url( 'admin.php?page=taxpilot' ) ) . '" class="button button-primary">' . esc_html__( 'View Full TaxPilot Dashboard', 'taxpilot-for-woocommerce' ) . '</a>';
 		echo '</div></div></div>';
 	}
 
@@ -587,9 +587,9 @@ class WooIntegration {
 		if ( empty( $settings['wizard_completed'] ) && 'plugins' === $screen->id ) {
 			printf(
 				'<div class="notice notice-info is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
-				esc_html__( '🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates.', 'taxpilot' ),
+				esc_html__( '🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates.', 'taxpilot-for-woocommerce' ),
 				esc_url( admin_url( 'admin.php?page=taxpilot-wizard' ) ),
-				esc_html__( 'Start Wizard →', 'taxpilot' )
+				esc_html__( 'Start Wizard →', 'taxpilot-for-woocommerce' )
 			);
 		}
 
@@ -597,9 +597,9 @@ class WooIntegration {
 		if ( 'yes' !== get_option( 'woocommerce_calc_taxes' ) && str_contains( $screen->id, 'taxpilot' ) ) {
 			printf(
 				'<div class="notice notice-warning is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
-				esc_html__( '⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won\'t apply at checkout.', 'taxpilot' ),
+				esc_html__( '⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won\'t apply at checkout.', 'taxpilot-for-woocommerce' ),
 				esc_url( admin_url( 'admin.php?page=wc-settings&tab=tax' ) ),
-				esc_html__( 'Enable Taxes →', 'taxpilot' )
+				esc_html__( 'Enable Taxes →', 'taxpilot-for-woocommerce' )
 			);
 		}
 
@@ -609,9 +609,9 @@ class WooIntegration {
 			printf(
 				'<div class="notice notice-error is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
 				/* translators: %d: unread alert count */
-				sprintf( esc_html__( '🚨 You have %d unread TaxPilot alerts that may require attention.', 'taxpilot' ), (int) $unread ),
+				sprintf( esc_html__( '🚨 You have %d unread TaxPilot alerts that may require attention.', 'taxpilot-for-woocommerce' ), (int) $unread ),
 				esc_url( admin_url( 'admin.php?page=taxpilot' ) ),
-				esc_html__( 'View Alerts →', 'taxpilot' )
+				esc_html__( 'View Alerts →', 'taxpilot-for-woocommerce' )
 			);
 		}
 	}
@@ -632,7 +632,7 @@ class WooIntegration {
 					'type' => 'info',
 					'text' => sprintf(
 						/* translators: %s: TaxPilot dashboard link */
-						__( '🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href="%s">Open TaxPilot Dashboard</a> to manage your rates.', 'taxpilot' ),
+						__( '🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href="%s">Open TaxPilot Dashboard</a> to manage your rates.', 'taxpilot-for-woocommerce' ),
 						admin_url( 'admin.php?page=taxpilot' )
 					),
 				]

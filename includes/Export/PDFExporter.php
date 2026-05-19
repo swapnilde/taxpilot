@@ -32,8 +32,8 @@ class PDFExporter {
 	public function export(): void {
 		if ( ! self::is_available() ) {
 			wp_die(
-				esc_html__( 'PDF export requires the Dompdf library. Run: composer require dompdf/dompdf', 'taxpilot' ),
-				esc_html__( 'PDF Export Unavailable', 'taxpilot' ),
+				esc_html__( 'PDF export requires the Dompdf library. Run: composer require dompdf/dompdf', 'taxpilot-for-woocommerce' ),
+				esc_html__( 'PDF Export Unavailable', 'taxpilot-for-woocommerce' ),
 				[ 'response' => 503 ]
 			);
 		}

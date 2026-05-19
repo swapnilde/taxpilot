@@ -6,182 +6,181 @@ import { __ } from '@wordpress/i18n';
 import { apiPost } from '../../common/api';
 import { COUNTRIES, REGION_PRESETS } from '../../common/constants';
 
-export default function TargetCountries( {
+export default function TargetCountries({
 	data,
 	updateData,
 	onNext,
 	onBack,
 	showNotice,
-} ) {
-	const [ saving, setSaving ] = useState( false );
-	const [ search, setSearch ] = useState( '' );
+}) {
+	const [saving, setSaving] = useState(false);
+	const [search, setSearch] = useState('');
 
 	const selected = data.targetCountries || [];
 
-	const toggleCountry = ( code ) => {
-		const updated = selected.includes( code )
-			? selected.filter( ( c ) => c !== code )
-			: [ ...selected, code ];
-		updateData( 'targetCountries', updated );
+	const toggleCountry = (code) => {
+		const updated = selected.includes(code)
+			? selected.filter((c) => c !== code)
+			: [...selected, code];
+		updateData('targetCountries', updated);
 	};
 
-	const toggleRegion = ( regionKey ) => {
-		const preset = REGION_PRESETS[ regionKey ];
-		if ( ! preset ) {
+	const toggleRegion = (regionKey) => {
+		const preset = REGION_PRESETS[regionKey];
+		if (!preset) {
 			return;
 		}
 
-		const allSelected = preset.countries.every( ( c ) =>
-			selected.includes( c )
+		const allSelected = preset.countries.every((c) =>
+			selected.includes(c)
 		);
-		if ( allSelected ) {
+		if (allSelected) {
 			// Deselect all in this region.
 			const updated = selected.filter(
-				( c ) => ! preset.countries.includes( c )
+				(c) => !preset.countries.includes(c)
 			);
-			updateData( 'targetCountries', updated );
+			updateData('targetCountries', updated);
 		} else {
 			// Select all in this region.
 			const updated = [
-				...new Set( [ ...selected, ...preset.countries ] ),
+				...new Set([...selected, ...preset.countries]),
 			];
-			updateData( 'targetCountries', updated );
+			updateData('targetCountries', updated);
 		}
 	};
 
 	const selectAll = () => {
-		updateData( 'targetCountries', Object.keys( COUNTRIES ) );
+		updateData('targetCountries', Object.keys(COUNTRIES));
 	};
 
 	const clearAll = () => {
-		updateData( 'targetCountries', [] );
+		updateData('targetCountries', []);
 	};
 
-	const filteredCountries = useMemo( () => {
+	const filteredCountries = useMemo(() => {
 		const term = search.toLowerCase();
-		return Object.entries( COUNTRIES ).filter(
-			( [ code, name ] ) =>
-				name.toLowerCase().includes( term ) ||
-				code.toLowerCase().includes( term )
+		return Object.entries(COUNTRIES).filter(
+			([code, name]) =>
+				name.toLowerCase().includes(term) ||
+				code.toLowerCase().includes(term)
 		);
-	}, [ search ] );
+	}, [search]);
 
 	const handleNext = async () => {
-		if ( ! selected.length ) {
+		if (!selected.length) {
 			showNotice(
-				__( 'Please select at least one country.', 'taxpilot' ),
+				__('Please select at least one country.', 'taxpilot-for-woocommerce'),
 				'error'
 			);
 			return;
 		}
 
-		setSaving( true );
+		setSaving(true);
 		try {
-			await apiPost( 'wizard/target-countries', { countries: selected } );
+			await apiPost('wizard/target-countries', { countries: selected });
 			showNotice(
-				`${ selected.length } ${ __(
+				`${selected.length} ${__(
 					'countries selected!',
-					'taxpilot'
-				) }`
+					'taxpilot-for-woocommerce'
+				)}`
 			);
 			onNext();
 		} catch {
 			showNotice(
-				__( 'Failed to save countries.', 'taxpilot' ),
+				__('Failed to save countries.', 'taxpilot-for-woocommerce'),
 				'error'
 			);
 		} finally {
-			setSaving( false );
+			setSaving(false);
 		}
 	};
 
 	return (
 		<div>
-			<h2>{ __( 'Target Countries', 'taxpilot' ) }</h2>
+			<h2>{__('Target Countries', 'taxpilot-for-woocommerce')}</h2>
 			<p className="description">
-				{ __(
+				{__(
 					"Select the countries where you sell. We'll fetch the correct tax rates for each one.",
-					'taxpilot'
-				) }
+					'taxpilot-for-woocommerce'
+				)}
 			</p>
 
-			{ /* Region presets */ }
+			{ /* Region presets */}
 			<div className="taxpilot-region-presets">
-				{ Object.entries( REGION_PRESETS ).map( ( [ key, preset ] ) => (
+				{Object.entries(REGION_PRESETS).map(([key, preset]) => (
 					<button
-						key={ key }
+						key={key}
 						className="taxpilot-region-btn"
-						onClick={ () => toggleRegion( key ) }
+						onClick={() => toggleRegion(key)}
 					>
-						{ preset.label }
+						{preset.label}
 					</button>
-				) ) }
-				<button className="taxpilot-region-btn" onClick={ selectAll }>
-					{ __( 'Select All', 'taxpilot' ) }
+				))}
+				<button className="taxpilot-region-btn" onClick={selectAll}>
+					{__('Select All', 'taxpilot-for-woocommerce')}
 				</button>
-				<button className="taxpilot-region-btn" onClick={ clearAll }>
-					{ __( 'Clear All', 'taxpilot' ) }
+				<button className="taxpilot-region-btn" onClick={clearAll}>
+					{__('Clear All', 'taxpilot-for-woocommerce')}
 				</button>
 			</div>
 
-			{ /* Search */ }
+			{ /* Search */}
 			<input
 				type="text"
 				className="taxpilot-search"
-				placeholder={ __( 'Search countries…', 'taxpilot' ) }
-				value={ search }
-				onChange={ ( e ) => setSearch( e.target.value ) }
+				placeholder={__('Search countries…', 'taxpilot-for-woocommerce')}
+				value={search}
+				onChange={(e) => setSearch(e.target.value)}
 			/>
 
-			{ /* Country grid */ }
+			{ /* Country grid */}
 			<div className="taxpilot-country-grid">
-				{ filteredCountries.map( ( [ code, name ] ) => (
+				{filteredCountries.map(([code, name]) => (
 					<div
-						key={ code }
-						className={ `taxpilot-country-item${
-							selected.includes( code )
+						key={code}
+						className={`taxpilot-country-item${selected.includes(code)
 								? ' taxpilot-country-item--selected'
 								: ''
-						}` }
-						onClick={ () => toggleCountry( code ) }
-						onKeyDown={ ( e ) =>
-							e.key === 'Enter' && toggleCountry( code )
+							}`}
+						onClick={() => toggleCountry(code)}
+						onKeyDown={(e) =>
+							e.key === 'Enter' && toggleCountry(code)
 						}
 						role="checkbox"
-						aria-checked={ selected.includes( code ) }
-						tabIndex={ 0 }
+						aria-checked={selected.includes(code)}
+						tabIndex={0}
 					>
-						<span>{ selected.includes( code ) ? '☑' : '☐' }</span>
-						<span>{ name }</span>
+						<span>{selected.includes(code) ? '☑' : '☐'}</span>
+						<span>{name}</span>
 					</div>
-				) ) }
+				))}
 			</div>
 
 			<p
-				style={ {
+				style={{
 					marginTop: 'var(--tw-space-3)',
 					fontSize: 'var(--tw-font-size-sm)',
 					color: 'var(--tw-gray-500)',
-				} }
+				}}
 			>
-				{ selected.length } { __( 'countries selected', 'taxpilot' ) }
+				{selected.length} {__('countries selected', 'taxpilot-for-woocommerce')}
 			</p>
 
 			<div className="taxpilot-step-actions">
 				<button
 					className="taxpilot-btn taxpilot-btn--secondary"
-					onClick={ onBack }
+					onClick={onBack}
 				>
-					{ __( '← Back', 'taxpilot' ) }
+					{__('← Back', 'taxpilot-for-woocommerce')}
 				</button>
 				<button
 					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
-					onClick={ handleNext }
-					disabled={ saving }
+					onClick={handleNext}
+					disabled={saving}
 				>
-					{ saving
-						? __( 'Saving…', 'taxpilot' )
-						: __( 'Continue →', 'taxpilot' ) }
+					{saving
+						? __('Saving…', 'taxpilot-for-woocommerce')
+						: __('Continue →', 'taxpilot-for-woocommerce')}
 				</button>
 			</div>
 		</div>

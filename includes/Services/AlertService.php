@@ -27,7 +27,7 @@ class AlertService {
 
 		$title = sprintf(
 			/* translators: %d: number of rate changes detected */
-			__( '%d tax rate change(s) detected', 'taxpilot' ),
+			__( '%d tax rate change(s) detected', 'taxpilot-for-woocommerce' ),
 			$change_count
 		);
 		$message = $this->format_changes_message( $changes );
@@ -102,7 +102,7 @@ class AlertService {
 		$subject = '[TaxPilot for WooCommerce] ' . $title;
 		$body    = sprintf(
 			/* translators: 1: alert message, 2: admin URL */
-			__( "TaxPilot for WooCommerce has detected tax rate changes:\n\n%1\$s\n\nReview these changes in your dashboard:\n%2\$s", 'taxpilot' ),
+			__( "TaxPilot for WooCommerce has detected tax rate changes:\n\n%1\$s\n\nReview these changes in your dashboard:\n%2\$s", 'taxpilot-for-woocommerce' ),
 			$message,
 			admin_url( 'admin.php?page=taxpilot' )
 		);

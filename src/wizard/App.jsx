@@ -67,7 +67,7 @@ export default function App() {
 			} )
 			.catch( () => {
 				setNotice( {
-					message: __( 'Failed to load wizard state.', 'taxpilot' ),
+					message: __( 'Failed to load wizard state.', 'taxpilot-for-woocommerce' ),
 					type: 'error',
 				} );
 			} )
@@ -114,7 +114,7 @@ export default function App() {
 			rates: [],
 		} );
 		setIsRerun( false );
-		showNotice( __( 'Wizard reset! Starting fresh.', 'taxpilot' ) );
+		showNotice( __( 'Wizard reset! Starting fresh.', 'taxpilot-for-woocommerce' ) );
 	}, [ showNotice ] );
 
 	const renderStep = () => {
@@ -178,7 +178,7 @@ export default function App() {
 			<div className="taxpilot-loading">
 				<div className="taxpilot-spinner taxpilot-spinner--lg"></div>
 				<span className="taxpilot-loading-text">
-					{ __( 'Loading wizard…', 'taxpilot' ) }
+					{ __( 'Loading wizard…', 'taxpilot-for-woocommerce' ) }
 				</span>
 			</div>
 		);

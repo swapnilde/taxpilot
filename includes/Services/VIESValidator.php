@@ -35,7 +35,7 @@ class VIESValidator {
 				'valid'   => false,
 				'name'    => '',
 				'address' => '',
-				'error'   => __( 'VAT number is too short.', 'taxpilot' ),
+				'error'   => __( 'VAT number is too short.', 'taxpilot-for-woocommerce' ),
 			];
 		}
 
@@ -83,7 +83,7 @@ class VIESValidator {
 				'valid'   => false,
 				'name'    => '',
 				'address' => '',
-				'error'   => __( 'Unexpected response from VIES.', 'taxpilot' ),
+				'error'   => __( 'Unexpected response from VIES.', 'taxpilot-for-woocommerce' ),
 			];
 		}
 
