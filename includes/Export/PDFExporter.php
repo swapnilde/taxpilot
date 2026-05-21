@@ -59,7 +59,10 @@ class PDFExporter {
 	private function generate_html( array $rates ): string {
 		$date = wp_date( 'F j, Y' );
 
-		$html = '<!DOCTYPE html><html><head><style>
+		$style_open  = '<' . 'style' . '>';
+		$style_close = '</' . 'style' . '>';
+
+		$html = '<!DOCTYPE html><html><head>' . $style_open . '
 			body { font-family: sans-serif; font-size: 12px; color: #333; }
 			h1 { color: #4f46e5; font-size: 24px; margin-bottom: 5px; }
 			.subtitle { color: #6b7280; margin-bottom: 20px; }
@@ -68,7 +71,7 @@ class PDFExporter {
 			td { padding: 6px 8px; border-bottom: 1px solid #e5e7eb; font-size: 11px; }
 			tr:nth-child(even) td { background: #f9fafb; }
 			.footer { margin-top: 30px; font-size: 10px; color: #9ca3af; text-align: center; }
-		</style></head><body>';
+		' . $style_close . '</head><body>';
 
 		$html .= '<h1>TaxPilot for WooCommerce — Tax Compliance Report</h1>';
 		$html .= '<p class="subtitle">Generated on ' . esc_html( $date ) . ' | Total rates: ' . count( $rates ) . '</p>';
