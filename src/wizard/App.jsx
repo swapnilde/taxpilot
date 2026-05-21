@@ -67,7 +67,10 @@ export default function App() {
 			} )
 			.catch( () => {
 				setNotice( {
-					message: __( 'Failed to load wizard state.', 'taxpilot-for-woocommerce' ),
+					message: __(
+						'Failed to load wizard state.',
+						'taxpilot-for-woocommerce'
+					),
 					type: 'error',
 				} );
 			} )
@@ -114,7 +117,9 @@ export default function App() {
 			rates: [],
 		} );
 		setIsRerun( false );
-		showNotice( __( 'Wizard reset! Starting fresh.', 'taxpilot-for-woocommerce' ) );
+		showNotice(
+			__( 'Wizard reset! Starting fresh.', 'taxpilot-for-woocommerce' )
+		);
 	}, [ showNotice ] );
 
 	const renderStep = () => {

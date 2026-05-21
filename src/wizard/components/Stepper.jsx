@@ -48,9 +48,10 @@ export default function Stepper( {
 							tabIndex={ isClickable ? 0 : undefined }
 							title={
 								isClickable
-									? `${ __( 'Go back to', 'taxpilot-for-woocommerce' ) } ${
-											step.label
-									  }`
+									? `${ __(
+											'Go back to',
+											'taxpilot-for-woocommerce'
+									  ) } ${ step.label }`
 									: undefined
 							}
 						>
