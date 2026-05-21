@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-21T16:29:42+00:00\n"
+"POT-Creation-Date: 2026-05-21T16:36:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: taxpilot-for-woocommerce\n"
@@ -511,69 +511,69 @@ msgstr ""
 msgid "and"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:125
+#: src/wizard/steps/ApplyRates.jsx:128
 msgid "more"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:146
+#: src/wizard/steps/ApplyRates.jsx:149
 msgid "Go to Dashboard →"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:158
+#: src/wizard/steps/ApplyRates.jsx:161
 msgid "View WooCommerce Tax Settings"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:168
+#: src/wizard/steps/ApplyRates.jsx:171
 msgid "🔄 Start Over"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:188
+#: src/wizard/steps/ApplyRates.jsx:191
 msgid "Loading rate preview…"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:199
+#: src/wizard/steps/ApplyRates.jsx:202
 msgid "Apply Tax Rates"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:201
+#: src/wizard/steps/ApplyRates.jsx:204
 msgid "Review the summary below and click \"Apply\" to configure your WooCommerce tax tables."
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:208
+#: src/wizard/steps/ApplyRates.jsx:211
 msgid "Setup Summary"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:211
+#: src/wizard/steps/ApplyRates.jsx:214
 #: src/wizard/steps/StoreSetup.jsx:150
 msgid "Store Country"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:220
+#: src/wizard/steps/ApplyRates.jsx:223
 #: src/wizard/steps/ProductTypes.jsx:65
 msgid "Product Types"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:233
+#: src/wizard/steps/ApplyRates.jsx:236
 #: src/wizard/steps/TargetCountries.jsx:103
 msgid "Target Countries"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:241
+#: src/wizard/steps/ApplyRates.jsx:244
 msgid "Tax Rates to Apply"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:266
+#: src/wizard/steps/ApplyRates.jsx:269
 msgid "This will update your WooCommerce tax tables. Any manually added rates may be affected. Click \"Apply\" again to confirm."
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:278
+#: src/wizard/steps/ApplyRates.jsx:281
 #: src/wizard/steps/PreviewRates.jsx:177
 #: src/wizard/steps/ProductTypes.jsx:103
 #: src/wizard/steps/TargetCountries.jsx:182
 msgid "← Back"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:286
+#: src/wizard/steps/ApplyRates.jsx:289
 msgid "Cancel"
 msgstr ""
 
