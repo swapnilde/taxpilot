@@ -3,7 +3,7 @@ Contributors: swapnilde
 Donate link: https://paypal.me/SwapnilDeshpandeIN
 Tags: woocommerce, tax, vat, sales-tax, gst
 Requires at least: 6.7
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.2
 Stable tag: 1.0.0
 License: GPLv2 or later
