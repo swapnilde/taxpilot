@@ -39,6 +39,27 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **PDF & CSV Exports:** Downloadable tax compliance reports for your records.
 * **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
 
+## Source Code & Build Instructions
+This plugin uses modern build tools to compile and minify its JavaScript and CSS files. The uncompiled source code is included within the plugin directory under `src/` and is also publicly available in our GitHub repository.
+
+* **GitHub Repository:** https://github.com/swapnilde/taxpilot
+* **Source Files:** All raw, uncompiled JavaScript and CSS files are located in the `/src` directory.
+* **Compiled Assets:** The generated, production-ready minified files are located in the `/build` directory.
+
+### How to Build and Compile the Assets
+To build the project locally, follow these steps:
+
+1. Clone the repository or navigate to the plugin folder:
+   `cd wp-content/plugins/taxpilot`
+2. Install the npm dependencies:
+   `npm install`
+3. Run the build script to compile the assets (using @wordpress/scripts):
+   `npm run build`
+4. For active development, you can run the watcher:
+   `npm start`
+5. To install PHP Composer dependencies:
+   `composer install`
+
 ## Installation
 ### Minimum Requirements
 * WordPress 6.7 or greater
