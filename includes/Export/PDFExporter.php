@@ -59,7 +59,9 @@ class PDFExporter {
 	private function generate_html( array $rates ): string {
 		$date = wp_date( 'F j, Y' );
 
-		$style_open  = '<' . 'style' . '>';
+		// phpcs:ignore Generic.Strings.UnnecessaryStringConcat.Found
+		$style_open = '<' . 'style' . '>';
+		// phpcs:ignore Generic.Strings.UnnecessaryStringConcat.Found
 		$style_close = '</' . 'style' . '>';
 
 		$html = '<!DOCTYPE html><html><head>' . $style_open . '
