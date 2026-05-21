@@ -47,6 +47,30 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **PDF & CSV Exports:** Downloadable tax compliance reports for your records.
 * **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
 
+= Third-Party Services & APIs =
+
+To provide accurate tax calculations, real-time validations, and rate compliance monitoring, this plugin connects to the following external third-party services. No personal user data is sent to these services unless explicitly required to validate checkouts:
+
+1. **GitHub Raw CDN** (https://raw.githubusercontent.com)
+   * **Purpose:** Used by the Weekly Auto-Syncing Rates Engine to fetch the latest community-maintained open-source global sales tax rates database.
+   * **Account needed:** None.
+   * **Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+
+2. **VATSense API** (https://api.vatsense.com)
+   * **Purpose:** An optional commercial API provider used to fetch real-time, verified corporate sales tax rates.
+   * **Account needed:** Yes (requires a VATSense API key).
+   * **Terms & Privacy:** https://vatsense.com/privacy
+
+3. **OpenStreetMap Nominatim API** (https://nominatim.openstreetmap.org)
+   * **Purpose:** Used for smart city and zip code validation at checkout to prevent incorrect tax calculations.
+   * **Account needed:** None.
+   * **Terms & Privacy:** https://operations.osmfoundation.org/policies/nominatim/
+
+4. **EU VIES VAT Validation Service** (http://ec.europa.eu/taxation_customs/vies)
+   * **Purpose:** Used at checkout to validate EU B2B VAT identification numbers in real-time.
+   * **Account needed:** None.
+   * **Terms & Privacy:** https://ec.europa.eu/info/privacy-policy_en
+
 == Source Code & Build Instructions ==
 
 This plugin uses modern build tools to compile and minify its JavaScript and CSS files. The uncompiled source code is included within the plugin directory under `src/` and is also publicly available in our GitHub repository.
