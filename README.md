@@ -40,27 +40,40 @@ Re-run the wizard anytime. TaxPilot cleans up old rates automatically — no dup
 * **Built for Reliability:** Three-layer duplicate prevention ensures existing rates are updated safely without cluttering your database.
 
 ### Third-Party Services & APIs
-To provide accurate tax calculations, real-time validations, and rate compliance monitoring, this plugin connects to the following external third-party services. No personal user data is sent to these services unless explicitly required to validate checkouts:
+To provide accurate tax calculations, real-time address validation, and VAT number compliance monitoring, this plugin connects to external third-party services. Below is a detailed disclosure of each service utilized by this plugin:
 
 1. **GitHub Raw CDN** (https://raw.githubusercontent.com)
-   * **Purpose:** Used by the Weekly Auto-Syncing Rates Engine to fetch the latest community-maintained open-source global sales tax rates database.
-   * **Account needed:** None.
-   * **Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+   * **What the service is:** A CDN used to retrieve raw data hosted on GitHub.
+   * **What it is used for:** Fetching the latest community-maintained open-source global sales tax rates database.
+   * **What data is sent:** No user or store data is sent. Only a standard HTTP GET request is made.
+   * **When data is sent:** Automatically once a week via a scheduled background cron job, or when manually triggered from the settings dashboard.
+   * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 2. **VATSense API** (https://api.vatsense.com)
-   * **Purpose:** An optional commercial API provider used to fetch real-time, verified corporate sales tax rates.
+   * **What the service is:** A commercial SaaS API for global sales tax rates.
+   * **What it is used for:** Looking up real-time, verified corporate sales tax rates for the store base and customer location.
+   * **What data is sent:** The customer's country code, state, and city. No personal user identifiers (like names or emails) are transmitted.
+   * **When data is sent:** During tax calculation at checkout and when saving settings (if VATSense is selected as the active rate provider).
    * **Account needed:** Yes (requires a VATSense API key).
-   * **Terms & Privacy:** https://vatsense.com/privacy
+   * **Terms of Service:** https://vatsense.com/terms
+   * **Privacy Policy:** https://vatsense.com/privacy
 
 3. **OpenStreetMap Nominatim API** (https://nominatim.openstreetmap.org)
-   * **Purpose:** Used for smart city and zip code validation at checkout to prevent incorrect tax calculations.
+   * **What the service is:** A public geocoding service based on OpenStreetMap data.
+   * **What it is used for:** Validating customer shipping addresses (city, state, and zip code) at checkout to prevent incorrect tax calculations.
+   * **What data is sent:** The billing or shipping address details (specifically street address, city, state, zip code, and country).
+   * **When data is sent:** When a customer changes their shipping address on the WooCommerce checkout page (if address validation is enabled in settings).
    * **Account needed:** None.
-   * **Terms & Privacy:** https://operations.osmfoundation.org/policies/nominatim/
+   * **Usage Policy & Terms:** https://operations.osmfoundation.org/policies/nominatim/
+   * **Privacy Policy:** https://wiki.osmfoundation.org/wiki/Privacy_Policy
 
-4. **EU VIES VAT Validation Service** (http://ec.europa.eu/taxation_customs/vies)
-   * **Purpose:** Used at checkout to validate EU B2B VAT identification numbers in real-time.
+4. **EU VIES VAT Validation Service** (https://ec.europa.eu/taxation_customs/vies)
+   * **What the service is:** The European Commission's official VAT Information Exchange System (VIES) REST API.
+   * **What it is used for:** Validating EU B2B VAT identification numbers in real-time to apply B2B tax exemptions.
+   * **What data is sent:** The customer's EU VAT identification number and country code.
+   * **When data is sent:** During checkout when a customer enters an EU VAT number and clicks to validate or place an order.
    * **Account needed:** None.
-   * **Terms & Privacy:** https://ec.europa.eu/info/privacy-policy_en
+   * **Terms & Privacy Policy:** https://ec.europa.eu/info/privacy-policy_en
 
 ## Source Code & Build Instructions
 This plugin uses modern build tools to compile and minify its JavaScript and CSS files. The uncompiled source code is included within the plugin directory under `src/` and is also publicly available in our GitHub repository.
