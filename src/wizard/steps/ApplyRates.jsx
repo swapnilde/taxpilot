@@ -120,7 +120,10 @@ export default function ApplyRates( {
 							{ result.errors.length > 5 && (
 								<li style={ { color: 'var(--tw-gray-500)' } }>
 									...
-									{ __( 'and', 'taxpilot-for-woocommerce' ) }{ ' ' }
+									{ __(
+										'and',
+										'taxpilot-for-woocommerce'
+									) }{ ' ' }
 									{ result.errors.length - 5 }{ ' ' }
 									{ __( 'more', 'taxpilot-for-woocommerce' ) }
 								</li>
