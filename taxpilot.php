@@ -6,6 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 6.7
  * Requires PHP:      8.2
+ * Requires Plugins:  woocommerce
  * Author:            Swapnil Deshpande
  * Author URI:        https://swapnild.com
  * License:           GPL v2 or later
