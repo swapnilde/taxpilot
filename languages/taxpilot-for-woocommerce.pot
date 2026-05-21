@@ -9,14 +9,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-19T12:17:19+00:00\n"
+"POT-Creation-Date: 2026-05-21T16:29:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: taxpilot-for-woocommerce\n"
 
 #. Plugin Name of the plugin
 #: taxpilot.php
-#: taxpilot.php:57
+#: taxpilot.php:58
 msgid "TaxPilot for WooCommerce"
 msgstr ""
 
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Unexpected response from VIES."
 msgstr ""
 
-#: taxpilot.php:58
+#: taxpilot.php:59
 msgid "This plugin requires WooCommerce to be installed and active."
 msgstr ""
 
@@ -312,6 +312,10 @@ msgstr ""
 
 #: src/dashboard/App.jsx:120
 msgid "Welcome to TaxPilot!"
+msgstr ""
+
+#: src/dashboard/App.jsx:123
+msgid "Run the setup wizard to configure your tax rates."
 msgstr ""
 
 #: src/dashboard/App.jsx:136
@@ -334,124 +338,132 @@ msgstr ""
 msgid "Countries configured"
 msgstr ""
 
-#: src/dashboard/App.jsx:170
+#: src/dashboard/App.jsx:173
 msgid "Alerts"
 msgstr ""
 
-#: src/dashboard/App.jsx:174
+#: src/dashboard/App.jsx:177
 msgid "Unread notifications"
 msgstr ""
 
-#: src/dashboard/App.jsx:179
+#: src/dashboard/App.jsx:185
 msgid "Last Updated"
 msgstr ""
 
-#: src/dashboard/App.jsx:190
+#: src/dashboard/App.jsx:196
 msgid "Rate data refresh"
 msgstr ""
 
-#: src/dashboard/App.jsx:203
+#: src/dashboard/App.jsx:212
 msgid "Refreshing…"
 msgstr ""
 
-#: src/dashboard/App.jsx:204
+#: src/dashboard/App.jsx:213
 msgid "↻ Refresh Rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:210
+#: src/dashboard/App.jsx:219
 msgid "📄 Export CSV"
 msgstr ""
 
-#: src/dashboard/App.jsx:216
+#: src/dashboard/App.jsx:225
 msgid "📥 Export PDF"
 msgstr ""
 
-#: src/dashboard/App.jsx:225
+#: src/dashboard/App.jsx:234
 msgid "🧙 Re-run Wizard"
 msgstr ""
 
-#: src/dashboard/App.jsx:236
+#: src/dashboard/App.jsx:246
 msgid "EU OSS/MOSS Report Generator"
 msgstr ""
 
-#: src/dashboard/App.jsx:275
+#: src/dashboard/App.jsx:288
 msgid "Q1 (Jan - Mar)"
 msgstr ""
 
-#: src/dashboard/App.jsx:278
+#: src/dashboard/App.jsx:294
 msgid "Q2 (Apr - Jun)"
 msgstr ""
 
-#: src/dashboard/App.jsx:281
+#: src/dashboard/App.jsx:300
 msgid "Q3 (Jul - Sep)"
 msgstr ""
 
-#: src/dashboard/App.jsx:284
+#: src/dashboard/App.jsx:306
 msgid "Q4 (Oct - Dec)"
 msgstr ""
 
-#: src/dashboard/App.jsx:291
+#: src/dashboard/App.jsx:316
 msgid "📥 Export OSS CSV"
 msgstr ""
 
-#: src/dashboard/App.jsx:312
+#: src/dashboard/App.jsx:329
+msgid "Automatically aggregates non-B2B WooCommerce orders shipped to EU member states by destination country and tax rate."
+msgstr ""
+
+#: src/dashboard/App.jsx:340
 msgid "Current Tax Rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:315
+#: src/dashboard/App.jsx:347
 msgid "rates"
 msgstr ""
 
-#: src/dashboard/App.jsx:323
-#: src/wizard/steps/PreviewRates.jsx:74
+#: src/dashboard/App.jsx:356
+#: src/wizard/steps/PreviewRates.jsx:81
 msgid "Country"
 msgstr ""
 
-#: src/dashboard/App.jsx:324
-#: src/wizard/steps/PreviewRates.jsx:75
+#: src/dashboard/App.jsx:362
+#: src/wizard/steps/PreviewRates.jsx:84
 msgid "State"
 msgstr ""
 
-#: src/dashboard/App.jsx:325
-#: src/wizard/steps/PreviewRates.jsx:76
+#: src/dashboard/App.jsx:368
+#: src/wizard/steps/PreviewRates.jsx:87
 msgid "Rate"
 msgstr ""
 
-#: src/dashboard/App.jsx:326
-#: src/wizard/steps/PreviewRates.jsx:77
+#: src/dashboard/App.jsx:374
+#: src/wizard/steps/PreviewRates.jsx:90
 msgid "Name"
 msgstr ""
 
-#: src/dashboard/App.jsx:327
-#: src/wizard/steps/PreviewRates.jsx:78
+#: src/dashboard/App.jsx:380
+#: src/wizard/steps/PreviewRates.jsx:93
 msgid "Type"
 msgstr ""
 
-#: src/dashboard/App.jsx:328
+#: src/dashboard/App.jsx:386
 msgid "Source"
 msgstr ""
 
-#: src/dashboard/App.jsx:398
+#: src/dashboard/App.jsx:460
 msgid "No tax rates configured yet."
 msgstr ""
 
-#: src/dashboard/App.jsx:408
+#: src/dashboard/App.jsx:473
 msgid "Recent Alerts"
 msgstr ""
 
-#: src/dashboard/App.jsx:424
+#: src/dashboard/App.jsx:489
 msgid "Mark all read"
+msgstr ""
+
+#: src/dashboard/App.jsx:535
+msgid "No alerts. Everything looks good! ✅"
 msgstr ""
 
 #: src/wizard/App.jsx:70
 msgid "Failed to load wizard state."
 msgstr ""
 
-#: src/wizard/App.jsx:117
+#: src/wizard/App.jsx:121
 msgid "Wizard reset! Starting fresh."
 msgstr ""
 
-#: src/wizard/App.jsx:181
+#: src/wizard/App.jsx:186
 msgid "Loading wizard…"
 msgstr ""
 
@@ -475,77 +487,93 @@ msgstr ""
 msgid "Rates"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:66
+#: src/wizard/steps/ApplyRates.jsx:62
+msgid "tax rates applied to WooCommerce!"
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:69
 msgid "Failed to apply rates. Please try again."
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:80
+#: src/wizard/steps/ApplyRates.jsx:87
 msgid "Tax Setup Complete!"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:92
+#: src/wizard/steps/ApplyRates.jsx:91
+msgid "tax rates have been applied to your WooCommerce store."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:100
 msgid "errors occurred"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:111
+#: src/wizard/steps/ApplyRates.jsx:123
 msgid "and"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:113
+#: src/wizard/steps/ApplyRates.jsx:125
 msgid "more"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:134
+#: src/wizard/steps/ApplyRates.jsx:146
 msgid "Go to Dashboard →"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:143
+#: src/wizard/steps/ApplyRates.jsx:158
 msgid "View WooCommerce Tax Settings"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:150
+#: src/wizard/steps/ApplyRates.jsx:168
 msgid "🔄 Start Over"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:167
+#: src/wizard/steps/ApplyRates.jsx:188
 msgid "Loading rate preview…"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:175
+#: src/wizard/steps/ApplyRates.jsx:199
 msgid "Apply Tax Rates"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:184
+#: src/wizard/steps/ApplyRates.jsx:201
+msgid "Review the summary below and click \"Apply\" to configure your WooCommerce tax tables."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:208
 msgid "Setup Summary"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:187
-#: src/wizard/steps/StoreSetup.jsx:136
+#: src/wizard/steps/ApplyRates.jsx:211
+#: src/wizard/steps/StoreSetup.jsx:150
 msgid "Store Country"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:196
-#: src/wizard/steps/ProductTypes.jsx:59
+#: src/wizard/steps/ApplyRates.jsx:220
+#: src/wizard/steps/ProductTypes.jsx:65
 msgid "Product Types"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:209
-#: src/wizard/steps/TargetCountries.jsx:100
+#: src/wizard/steps/ApplyRates.jsx:233
+#: src/wizard/steps/TargetCountries.jsx:103
 msgid "Target Countries"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:217
+#: src/wizard/steps/ApplyRates.jsx:241
 msgid "Tax Rates to Apply"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:251
-#: src/wizard/steps/PreviewRates.jsx:158
-#: src/wizard/steps/ProductTypes.jsx:97
-#: src/wizard/steps/TargetCountries.jsx:175
+#: src/wizard/steps/ApplyRates.jsx:266
+msgid "This will update your WooCommerce tax tables. Any manually added rates may be affected. Click \"Apply\" again to confirm."
+msgstr ""
+
+#: src/wizard/steps/ApplyRates.jsx:278
+#: src/wizard/steps/PreviewRates.jsx:177
+#: src/wizard/steps/ProductTypes.jsx:103
+#: src/wizard/steps/TargetCountries.jsx:182
 msgid "← Back"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:259
+#: src/wizard/steps/ApplyRates.jsx:286
 msgid "Cancel"
 msgstr ""
 
@@ -553,38 +581,46 @@ msgstr ""
 msgid "Failed to fetch rates. Check your settings."
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:48
+#: src/wizard/steps/PreviewRates.jsx:51
 msgid "Fetching tax rates for"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:50
+#: src/wizard/steps/PreviewRates.jsx:56
 msgid "countries…"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:58
+#: src/wizard/steps/PreviewRates.jsx:64
 msgid "Preview Tax Rates"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:65
+#: src/wizard/steps/PreviewRates.jsx:66
+msgid "Review the tax rates we found. These will be applied to your WooCommerce tax tables."
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:71
 msgid "Source:"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:79
+#: src/wizard/steps/PreviewRates.jsx:96
 msgid "Shipping"
 msgstr ""
 
 #: src/wizard/steps/PreviewRates.jsx:150
+msgid "No rates found. Try selecting different countries."
+msgstr ""
+
+#: src/wizard/steps/PreviewRates.jsx:169
 msgid "rates found"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:165
+#: src/wizard/steps/PreviewRates.jsx:184
 msgid "↻ Refresh"
 msgstr ""
 
-#: src/wizard/steps/PreviewRates.jsx:172
-#: src/wizard/steps/ProductTypes.jsx:106
-#: src/wizard/steps/StoreSetup.jsx:163
-#: src/wizard/steps/TargetCountries.jsx:184
+#: src/wizard/steps/PreviewRates.jsx:191
+#: src/wizard/steps/ProductTypes.jsx:112
+#: src/wizard/steps/StoreSetup.jsx:183
+#: src/wizard/steps/TargetCountries.jsx:191
 msgid "Continue →"
 msgstr ""
 
@@ -592,49 +628,69 @@ msgstr ""
 msgid "Please select at least one product type."
 msgstr ""
 
-#: src/wizard/steps/ProductTypes.jsx:49
+#: src/wizard/steps/ProductTypes.jsx:44
+msgid "Product types saved! Tax classes created:"
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:52
 msgid "Failed to save product types."
 msgstr ""
 
-#: src/wizard/steps/ProductTypes.jsx:105
-#: src/wizard/steps/StoreSetup.jsx:162
-#: src/wizard/steps/TargetCountries.jsx:183
+#: src/wizard/steps/ProductTypes.jsx:67
+msgid "Select all product types you sell. We'll create the appropriate WooCommerce tax classes."
+msgstr ""
+
+#: src/wizard/steps/ProductTypes.jsx:111
+#: src/wizard/steps/StoreSetup.jsx:182
+#: src/wizard/steps/TargetCountries.jsx:190
 msgid "Saving…"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:40
+#: src/wizard/steps/StoreSetup.jsx:42
 msgid "— Select Country —"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:48
+#: src/wizard/steps/StoreSetup.jsx:53
 msgid "— Select Currency —"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:58
+#: src/wizard/steps/StoreSetup.jsx:64
 msgid "Please select both country and currency."
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:70
+#: src/wizard/steps/StoreSetup.jsx:80
 msgid "Store setup saved!"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:74
+#: src/wizard/steps/StoreSetup.jsx:85
 msgid "Failed to save store setup."
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:87
+#: src/wizard/steps/StoreSetup.jsx:98
 msgid "Detecting store settings…"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:97
+#: src/wizard/steps/StoreSetup.jsx:111
 msgid "Update Store Setup"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:98
+#: src/wizard/steps/StoreSetup.jsx:112
 msgid "Store Setup"
 msgstr ""
 
-#: src/wizard/steps/StoreSetup.jsx:144
+#: src/wizard/steps/StoreSetup.jsx:116
+msgid "Your current settings are pre-filled below. Update anything you need and continue through the wizard."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:120
+msgid "Tell us about your store location and currency. We auto-detected your WooCommerce settings."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:140
+msgid "You are re-running the wizard. Your existing settings are pre-filled. Walk through each step to make changes, then re-apply your rates."
+msgstr ""
+
+#: src/wizard/steps/StoreSetup.jsx:161
 msgid "Store Currency"
 msgstr ""
 
@@ -642,22 +698,30 @@ msgstr ""
 msgid "Please select at least one country."
 msgstr ""
 
-#: src/wizard/steps/TargetCountries.jsx:90
+#: src/wizard/steps/TargetCountries.jsx:85
+msgid "countries selected!"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:93
 msgid "Failed to save countries."
 msgstr ""
 
-#: src/wizard/steps/TargetCountries.jsx:120
-msgid "Select All"
+#: src/wizard/steps/TargetCountries.jsx:105
+msgid "Select the countries where you sell. We'll fetch the correct tax rates for each one."
 msgstr ""
 
 #: src/wizard/steps/TargetCountries.jsx:123
+msgid "Select All"
+msgstr ""
+
+#: src/wizard/steps/TargetCountries.jsx:126
 msgid "Clear All"
 msgstr ""
 
-#: src/wizard/steps/TargetCountries.jsx:131
+#: src/wizard/steps/TargetCountries.jsx:134
 msgid "Search countries…"
 msgstr ""
 
-#: src/wizard/steps/TargetCountries.jsx:167
+#: src/wizard/steps/TargetCountries.jsx:174
 msgid "countries selected"
 msgstr ""
