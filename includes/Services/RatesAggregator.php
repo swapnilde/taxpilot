@@ -77,9 +77,6 @@ class RatesAggregator {
 	private function transform( array $raw ): array {
 		$schema = [];
 
-		// Include WordPress locale API for country names.
-		require_once ABSPATH . 'wp-admin/includes/translation-install.php';
-		$wp_countries = wp_get_available_translations();
 		// In a real environment, you'd use WC()->countries->get_countries().
 		// We'll rely on WC class if available.
 		$wc_countries = class_exists( 'WC_Countries' ) ? ( new \WC_Countries() )->get_countries() : [];
