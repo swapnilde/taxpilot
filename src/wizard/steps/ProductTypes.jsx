@@ -49,10 +49,7 @@ export default function ProductTypes( {
 			onNext();
 		} catch {
 			showNotice(
-				__(
-					'Failed to save product types.',
-					'taxzen-for-woocommerce'
-				),
+				__( 'Failed to save product types.', 'taxzen-for-woocommerce' ),
 				'error'
 			);
 		} finally {

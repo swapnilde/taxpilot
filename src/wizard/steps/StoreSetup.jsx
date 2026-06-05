@@ -76,9 +76,7 @@ export default function StoreSetup( {
 				country: data.country,
 				currency: data.currency,
 			} );
-			showNotice(
-				__( 'Store setup saved!', 'taxzen-for-woocommerce' )
-			);
+			showNotice( __( 'Store setup saved!', 'taxzen-for-woocommerce' ) );
 			onNext();
 		} catch {
 			showNotice(

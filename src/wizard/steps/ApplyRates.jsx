@@ -146,10 +146,7 @@ export default function ApplyRates( {
 						}
 						className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					>
-						{ __(
-							'Go to Dashboard →',
-							'taxzen-for-woocommerce'
-						) }
+						{ __( 'Go to Dashboard →', 'taxzen-for-woocommerce' ) }
 					</a>
 					<a
 						href={
@@ -168,10 +165,7 @@ export default function ApplyRates( {
 							className="taxzen-btn taxzen-btn--outline"
 							onClick={ onStartOver }
 						>
-							{ __(
-								'🔄 Start Over',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( '🔄 Start Over', 'taxzen-for-woocommerce' ) }
 						</button>
 					) }
 				</div>
@@ -188,10 +182,7 @@ export default function ApplyRates( {
 			<div className="taxzen-loading">
 				<div className="taxzen-spinner"></div>
 				<span className="taxzen-loading-text">
-					{ __(
-						'Loading rate preview…',
-						'taxzen-for-woocommerce'
-					) }
+					{ __( 'Loading rate preview…', 'taxzen-for-woocommerce' ) }
 				</span>
 			</div>
 		);
@@ -241,10 +232,7 @@ export default function ApplyRates( {
 				</div>
 				<div className="taxzen-apply-stat">
 					<span className="taxzen-apply-stat-label">
-						{ __(
-							'Tax Rates to Apply',
-							'taxzen-for-woocommerce'
-						) }
+						{ __( 'Tax Rates to Apply', 'taxzen-for-woocommerce' ) }
 					</span>
 					<span className="taxzen-apply-stat-value">
 						{ displayRateCount }

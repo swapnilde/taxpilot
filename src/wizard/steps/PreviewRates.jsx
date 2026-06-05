@@ -48,10 +48,7 @@ export default function PreviewRates( {
 			<div className="taxzen-loading">
 				<div className="taxzen-spinner taxzen-spinner--lg"></div>
 				<span className="taxzen-loading-text">
-					{ __(
-						'Fetching tax rates for',
-						'taxzen-for-woocommerce'
-					) }{ ' ' }
+					{ __( 'Fetching tax rates for', 'taxzen-for-woocommerce' ) }{ ' ' }
 					{ data.targetCountries?.length || 0 }{ ' ' }
 					{ __( 'countries…', 'taxzen-for-woocommerce' ) }
 				</span>
@@ -80,18 +77,10 @@ export default function PreviewRates( {
 							<th>
 								{ __( 'Country', 'taxzen-for-woocommerce' ) }
 							</th>
-							<th>
-								{ __( 'State', 'taxzen-for-woocommerce' ) }
-							</th>
-							<th>
-								{ __( 'Rate', 'taxzen-for-woocommerce' ) }
-							</th>
-							<th>
-								{ __( 'Name', 'taxzen-for-woocommerce' ) }
-							</th>
-							<th>
-								{ __( 'Type', 'taxzen-for-woocommerce' ) }
-							</th>
+							<th>{ __( 'State', 'taxzen-for-woocommerce' ) }</th>
+							<th>{ __( 'Rate', 'taxzen-for-woocommerce' ) }</th>
+							<th>{ __( 'Name', 'taxzen-for-woocommerce' ) }</th>
+							<th>{ __( 'Type', 'taxzen-for-woocommerce' ) }</th>
 							<th>
 								{ __( 'Shipping', 'taxzen-for-woocommerce' ) }
 							</th>

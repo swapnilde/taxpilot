@@ -193,10 +193,7 @@ export default function App() {
 							: '—' }
 					</div>
 					<div className="taxzen-stat-meta">
-						{ __(
-							'Rate data refresh',
-							'taxzen-for-woocommerce'
-						) }
+						{ __( 'Rate data refresh', 'taxzen-for-woocommerce' ) }
 					</div>
 				</div>
 			</div>
@@ -285,38 +282,23 @@ export default function App() {
 						} }
 					>
 						<option value="1">
-							{ __(
-								'Q1 (Jan - Mar)',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( 'Q1 (Jan - Mar)', 'taxzen-for-woocommerce' ) }
 						</option>
 						<option value="2">
-							{ __(
-								'Q2 (Apr - Jun)',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( 'Q2 (Apr - Jun)', 'taxzen-for-woocommerce' ) }
 						</option>
 						<option value="3">
-							{ __(
-								'Q3 (Jul - Sep)',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( 'Q3 (Jul - Sep)', 'taxzen-for-woocommerce' ) }
 						</option>
 						<option value="4">
-							{ __(
-								'Q4 (Oct - Dec)',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( 'Q4 (Oct - Dec)', 'taxzen-for-woocommerce' ) }
 						</option>
 					</select>
 					<button
 						className="taxzen-btn taxzen-btn--primary"
 						onClick={ handleExportOSS }
 					>
-						{ __(
-							'📥 Export OSS CSV',
-							'taxzen-for-woocommerce'
-						) }
+						{ __( '📥 Export OSS CSV', 'taxzen-for-woocommerce' ) }
 					</button>
 				</div>
 				<p
@@ -337,10 +319,7 @@ export default function App() {
 			<div className="taxzen-card">
 				<div className="taxzen-card-header">
 					<h3 className="taxzen-card-title">
-						{ __(
-							'Current Tax Rates',
-							'taxzen-for-woocommerce'
-						) }
+						{ __( 'Current Tax Rates', 'taxzen-for-woocommerce' ) }
 					</h3>
 					<span className="taxzen-badge taxzen-badge--info">
 						{ rates.length }{ ' ' }
@@ -486,10 +465,7 @@ export default function App() {
 							onClick={ handleMarkAllRead }
 							style={ { fontSize: 'var(--tw-font-size-xs)' } }
 						>
-							{ __(
-								'Mark all read',
-								'taxzen-for-woocommerce'
-							) }
+							{ __( 'Mark all read', 'taxzen-for-woocommerce' ) }
 						</button>
 					) }
 				</div>
