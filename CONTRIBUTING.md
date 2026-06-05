@@ -1,4 +1,4 @@
-# Contributing to TaxPilot for WooCommerce
+# Contributing to TaxZen for WooCommerce
 
 Thank you for your interest in contributing! Here's how to get started.
 
@@ -16,8 +16,8 @@ Thank you for your interest in contributing! Here's how to get started.
 
 ```bash
 # Clone the repository
-git clone https://github.com/taxpilot/taxpilot.git
-cd taxpilot
+git clone https://github.com/taxzen/taxzen.git
+cd taxzen
 
 # Install PHP dependencies
 composer install
@@ -78,7 +78,7 @@ Run `npm run check:all` before submitting a pull request to ensure all checks pa
 
 ## Reporting Issues
 
-- Use [GitHub Issues](https://github.com/taxpilot/taxpilot/issues) to report bugs
+- Use [GitHub Issues](https://github.com/taxzen/taxzen/issues) to report bugs
 - Include WordPress version, WooCommerce version, PHP version, and steps to reproduce
 - Check existing issues before creating a new one
 

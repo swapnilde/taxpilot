@@ -28,7 +28,7 @@ export default function ProductTypes( {
 			showNotice(
 				__(
 					'Please select at least one product type.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -43,7 +43,7 @@ export default function ProductTypes( {
 			showNotice(
 				`${ __(
 					'Product types saved! Tax classes created:',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) } ${ result.tax_classes?.join( ', ' ) || 'Standard' }`
 			);
 			onNext();
@@ -51,7 +51,7 @@ export default function ProductTypes( {
 			showNotice(
 				__(
 					'Failed to save product types.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -62,21 +62,21 @@ export default function ProductTypes( {
 
 	return (
 		<div>
-			<h2>{ __( 'Product Types', 'taxpilot-for-woocommerce' ) }</h2>
+			<h2>{ __( 'Product Types', 'taxzen-for-woocommerce' ) }</h2>
 			<p className="description">
 				{ __(
 					"Select all product types you sell. We'll create the appropriate WooCommerce tax classes.",
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }
 			</p>
 
-			<div className="taxpilot-product-type-cards">
+			<div className="taxzen-product-type-cards">
 				{ PRODUCT_TYPES.map( ( type ) => (
 					<div
 						key={ type.value }
-						className={ `taxpilot-product-type-card${
+						className={ `taxzen-product-type-card${
 							data.productTypes?.includes( type.value )
-								? ' taxpilot-product-type-card--selected'
+								? ' taxzen-product-type-card--selected'
 								: ''
 						}` }
 						onClick={ () => toggleType( type.value ) }
@@ -95,21 +95,21 @@ export default function ProductTypes( {
 				) ) }
 			</div>
 
-			<div className="taxpilot-step-actions">
+			<div className="taxzen-step-actions">
 				<button
-					className="taxpilot-btn taxpilot-btn--secondary"
+					className="taxzen-btn taxzen-btn--secondary"
 					onClick={ onBack }
 				>
-					{ __( '← Back', 'taxpilot-for-woocommerce' ) }
+					{ __( '← Back', 'taxzen-for-woocommerce' ) }
 				</button>
 				<button
-					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+					className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					onClick={ handleNext }
 					disabled={ saving }
 				>
 					{ saving
-						? __( 'Saving…', 'taxpilot-for-woocommerce' )
-						: __( 'Continue →', 'taxpilot-for-woocommerce' ) }
+						? __( 'Saving…', 'taxzen-for-woocommerce' )
+						: __( 'Continue →', 'taxzen-for-woocommerce' ) }
 				</button>
 			</div>
 		</div>

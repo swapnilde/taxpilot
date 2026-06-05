@@ -2,18 +2,18 @@
 /**
  * Reports REST API endpoints.
  *
- * @package TaxPilot\API
+ * @package TaxZen\API
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\API;
+namespace TaxZen\API;
 
-use TaxPilot\Database\RatesTable;
-use TaxPilot\Database\AlertsTable;
-use TaxPilot\Export\CSVExporter;
-use TaxPilot\Export\PDFExporter;
-use TaxPilot\Export\OSSReportGenerator;
+use TaxZen\Database\RatesTable;
+use TaxZen\Database\AlertsTable;
+use TaxZen\Export\CSVExporter;
+use TaxZen\Export\PDFExporter;
+use TaxZen\Export\OSSReportGenerator;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -28,7 +28,7 @@ class ReportsEndpoints extends WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'taxpilot/v1';
+	protected $namespace = 'taxzen/v1';
 
 	/**
 	 * Register routes.
@@ -169,7 +169,7 @@ class ReportsEndpoints extends WP_REST_Controller {
 		$generator = new OSSReportGenerator();
 		$data      = $generator->generate_oss_data( $year, $quarter );
 
-		$filename = sprintf( 'taxpilot-oss-report-Q%d-%d.csv', $quarter, $year );
+		$filename = sprintf( 'taxzen-oss-report-Q%d-%d.csv', $quarter, $year );
 
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=' . $filename );

@@ -2,14 +2,14 @@
 /**
  * Alert service.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
-use TaxPilot\Database\AlertsTable;
+use TaxZen\Database\AlertsTable;
 
 /**
  * Manages alert creation and email notifications.
@@ -27,7 +27,7 @@ class AlertService {
 
 		$title = sprintf(
 			/* translators: %d: number of rate changes detected */
-			__( '%d tax rate change(s) detected', 'taxpilot-for-woocommerce' ),
+			__( '%d tax rate change(s) detected', 'taxzen-for-woocommerce' ),
 			$change_count
 		);
 		$message = $this->format_changes_message( $changes );
@@ -87,7 +87,7 @@ class AlertService {
 	 * @param string $message Email body.
 	 */
 	private function maybe_send_email( string $title, string $message ): void {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		if ( empty( $settings['alerts_enabled'] ) ) {
 			return;
@@ -99,12 +99,12 @@ class AlertService {
 			return;
 		}
 
-		$subject = '[TaxPilot for WooCommerce] ' . $title;
+		$subject = '[TaxZen for WooCommerce] ' . $title;
 		$body    = sprintf(
 			/* translators: 1: alert message, 2: admin URL */
-			__( "TaxPilot for WooCommerce has detected tax rate changes:\n\n%1\$s\n\nReview these changes in your dashboard:\n%2\$s", 'taxpilot-for-woocommerce' ),
+			__( "TaxZen for WooCommerce has detected tax rate changes:\n\n%1\$s\n\nReview these changes in your dashboard:\n%2\$s", 'taxzen-for-woocommerce' ),
 			$message,
-			admin_url( 'admin.php?page=taxpilot' )
+			admin_url( 'admin.php?page=taxzen' )
 		);
 
 		wp_mail( $email, $subject, $body );

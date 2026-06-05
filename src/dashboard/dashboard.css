@@ -1,23 +1,23 @@
 /* Dashboard-specific styles */
 
-.taxpilot-dashboard-actions {
+.taxzen-dashboard-actions {
     display: flex;
     gap: var(--tw-space-3);
     margin-bottom: var(--tw-space-6);
     flex-wrap: wrap;
 }
 
-.taxpilot-dashboard .taxpilot-card {
+.taxzen-dashboard .taxzen-card {
     margin-bottom: var(--tw-space-6);
 }
 
-.taxpilot-table-scrollable {
+.taxzen-table-scrollable {
     max-height: 400px;
     overflow-y: auto;
     border-bottom: 1px solid var(--tw-gray-200);
 }
 
-.taxpilot-table-scrollable thead th {
+.taxzen-table-scrollable thead th {
     position: sticky;
     top: 0;
     z-index: 10;

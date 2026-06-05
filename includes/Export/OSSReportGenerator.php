@@ -2,12 +2,12 @@
 /**
  * EU OSS Report Generator.
  *
- * @package TaxPilot\Export
+ * @package TaxZen\Export
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Export;
+namespace TaxZen\Export;
 
 defined( 'ABSPATH' ) || exit;
 

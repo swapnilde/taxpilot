@@ -2,8 +2,8 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: TaxPilot for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://github.com/your-org/taxpilot/issues\n"
+"Project-Id-Version: TaxZen for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/your-org/taxzen/issues\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "MIME-Version: 1.0\n"
@@ -12,38 +12,38 @@ msgstr ""
 "POT-Creation-Date: 2026-05-21T16:36:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
-"X-Domain: taxpilot-for-woocommerce\n"
+"X-Domain: taxzen-for-woocommerce\n"
 
 #. Plugin Name of the plugin
-#: taxpilot.php
-#: taxpilot.php:58
-msgid "TaxPilot for WooCommerce"
+#: taxzen.php
+#: taxzen.php:58
+msgid "TaxZen for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: taxpilot.php
-msgid "https://swapnild.com/taxpilot-for-woocommerce"
+#: taxzen.php
+msgid "https://swapnild.com/taxzen-for-woocommerce"
 msgstr ""
 
 #. Description of the plugin
-#: taxpilot.php
+#: taxzen.php
 msgid "Smart tax configuration wizard for WooCommerce — auto-detect rates, one-click setup, compliance monitoring & alerts."
 msgstr ""
 
 #. Author of the plugin
-#: taxpilot.php
+#: taxzen.php
 msgid "Swapnil Deshpande"
 msgstr ""
 
 #. Author URI of the plugin
-#: taxpilot.php
+#: taxzen.php
 msgid "https://swapnild.com"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:32
 #: includes/Admin/AdminMenu.php:33
 #: includes/Admin/SettingsPage.php:35
-msgid "TaxPilot"
+msgid "TaxZen"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:44
@@ -62,7 +62,7 @@ msgid "Settings"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:78
-msgid "TaxPilot Dashboard"
+msgid "TaxZen Dashboard"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:91
@@ -71,7 +71,7 @@ msgstr ""
 
 #: includes/Admin/AdminMenu.php:111
 #: includes/Admin/SettingsPage.php:61
-msgid "TaxPilot Settings"
+msgid "TaxZen Settings"
 msgstr ""
 
 #: includes/Admin/AdminMenu.php:121
@@ -135,7 +135,7 @@ msgid "Settings saved."
 msgstr ""
 
 #: includes/Admin/SettingsPage.php:63
-msgid "Configure TaxPilot integration with WooCommerce."
+msgid "Configure TaxZen integration with WooCommerce."
 msgstr ""
 
 #: includes/Admin/SettingsPage.php:67
@@ -143,7 +143,7 @@ msgid "Enable Tax Wizard"
 msgstr ""
 
 #: includes/Admin/SettingsPage.php:68
-msgid "Allow TaxPilot to manage tax rates in WooCommerce."
+msgid "Allow TaxZen to manage tax rates in WooCommerce."
 msgstr ""
 
 #: includes/Admin/SettingsPage.php:74
@@ -211,35 +211,35 @@ msgid "Tax Source"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:436
-msgid "Processed by TaxPilot"
+msgid "Processed by TaxZen"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:453
-msgid "TaxPilot Usage"
+msgid "TaxZen Usage"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:454
-msgid "Overview of orders processed with TaxPilot."
+msgid "Overview of orders processed with TaxZen."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:468
-msgid "TaxPilot Usage Report"
+msgid "TaxZen Usage Report"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:470
-msgid "This report shows the impact of TaxPilot on your store's tax collection."
+msgid "This report shows the impact of TaxZen on your store's tax collection."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:471
-msgid "Summary metrics will populate here as new orders are processed using TaxPilot rates."
+msgid "Summary metrics will populate here as new orders are processed using TaxZen rates."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:472
-msgid "View Full TaxPilot Dashboard"
+msgid "View Full TaxZen Dashboard"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:590
-msgid "🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates."
+msgid "🧙 TaxZen for WooCommerce is active! Run the setup wizard to configure your tax rates."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:592
@@ -247,7 +247,7 @@ msgid "Start Wizard →"
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:600
-msgid "⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won't apply at checkout."
+msgid "⚠️ WooCommerce tax calculation is disabled. TaxZen rates won't apply at checkout."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:602
@@ -257,23 +257,23 @@ msgstr ""
 #. translators: %d: unread alert count
 #: includes/Integration/WooIntegration.php:612
 #, php-format
-msgid "🚨 You have %d unread TaxPilot alerts that may require attention."
+msgid "🚨 You have %d unread TaxZen alerts that may require attention."
 msgstr ""
 
 #: includes/Integration/WooIntegration.php:614
 msgid "View Alerts →"
 msgstr ""
 
-#. translators: %s: TaxPilot dashboard link
+#. translators: %s: TaxZen dashboard link
 #: includes/Integration/WooIntegration.php:635
 #, php-format
-msgid "🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href=\"%s\">Open TaxPilot Dashboard</a> to manage your rates."
+msgid "🧙 Tax rates are managed by TaxZen for WooCommerce. <a href=\"%s\">Open TaxZen Dashboard</a> to manage your rates."
 msgstr ""
 
 #. translators: 1: postal code, 2: entered city
 #: includes/Services/AddressValidator.php:85
 #, php-format
-msgid "TaxPilot Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations."
+msgid "TaxZen Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations."
 msgstr ""
 
 #. translators: %d: number of rate changes detected
@@ -286,7 +286,7 @@ msgstr ""
 #: includes/Services/AlertService.php:105
 #, php-format
 msgid ""
-"TaxPilot for WooCommerce has detected tax rate changes:\n"
+"TaxZen for WooCommerce has detected tax rate changes:\n"
 "\n"
 "%1$s\n"
 "\n"
@@ -302,7 +302,7 @@ msgstr ""
 msgid "Unexpected response from VIES."
 msgstr ""
 
-#: taxpilot.php:59
+#: taxzen.php:59
 msgid "This plugin requires WooCommerce to be installed and active."
 msgstr ""
 
@@ -311,7 +311,7 @@ msgid "Loading dashboard…"
 msgstr ""
 
 #: src/dashboard/App.jsx:120
-msgid "Welcome to TaxPilot!"
+msgid "Welcome to TaxZen!"
 msgstr ""
 
 #: src/dashboard/App.jsx:123

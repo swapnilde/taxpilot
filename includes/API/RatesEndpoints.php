@@ -2,15 +2,15 @@
 /**
  * Rates REST API endpoints.
  *
- * @package TaxPilot\API
+ * @package TaxZen\API
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\API;
+namespace TaxZen\API;
 
-use TaxPilot\Database\RatesTable;
-use TaxPilot\Services\TaxRateService;
+use TaxZen\Database\RatesTable;
+use TaxZen\Services\TaxRateService;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -25,7 +25,7 @@ class RatesEndpoints extends WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'taxpilot/v1';
+	protected $namespace = 'taxzen/v1';
 
 	/**
 	 * Register routes.
@@ -143,7 +143,7 @@ class RatesEndpoints extends WP_REST_Controller {
 	 * Force refresh rates from the configured provider.
 	 */
 	public function refresh_rates(): WP_REST_Response {
-		$settings  = get_option( 'taxpilot_settings', [] );
+		$settings  = get_option( 'taxzen_settings', [] );
 		$countries = $settings['target_countries'] ?? [];
 
 		if ( empty( $countries ) ) {

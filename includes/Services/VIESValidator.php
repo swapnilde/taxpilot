@@ -2,14 +2,14 @@
 /**
  * VIES VAT number validator.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\LogsTable;
 
 /**
  * Validates EU VAT numbers via the VIES API (EU Commission, free).
@@ -35,7 +35,7 @@ class VIESValidator {
 				'valid'   => false,
 				'name'    => '',
 				'address' => '',
-				'error'   => __( 'VAT number is too short.', 'taxpilot-for-woocommerce' ),
+				'error'   => __( 'VAT number is too short.', 'taxzen-for-woocommerce' ),
 			];
 		}
 
@@ -83,7 +83,7 @@ class VIESValidator {
 				'valid'   => false,
 				'name'    => '',
 				'address' => '',
-				'error'   => __( 'Unexpected response from VIES.', 'taxpilot-for-woocommerce' ),
+				'error'   => __( 'Unexpected response from VIES.', 'taxzen-for-woocommerce' ),
 			];
 		}
 

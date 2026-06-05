@@ -2,16 +2,16 @@
 /**
  * Cron job manager.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
 defined( 'ABSPATH' ) || exit;
 
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\LogsTable;
 
 /**
  * Manages scheduled cron jobs for rate monitoring.
@@ -22,16 +22,16 @@ class CronManager {
 	 * Register cron hooks.
 	 */
 	public function register(): void {
-		add_action( 'taxpilot_daily_rate_check', [ $this, 'handle_daily_rate_check' ] );
-		add_action( 'taxpilot_weekly_report', [ $this, 'handle_weekly_report' ] );
-		add_action( 'taxpilot_sync_dynamic_rates', [ $this, 'handle_dynamic_rates_sync' ] );
+		add_action( 'taxzen_daily_rate_check', [ $this, 'handle_daily_rate_check' ] );
+		add_action( 'taxzen_weekly_report', [ $this, 'handle_weekly_report' ] );
+		add_action( 'taxzen_sync_dynamic_rates', [ $this, 'handle_dynamic_rates_sync' ] );
 	}
 
 	/**
 	 * Handle daily rate check — detect changes and create alerts.
 	 */
 	public function handle_daily_rate_check(): void {
-		$settings  = get_option( 'taxpilot_settings', [] );
+		$settings  = get_option( 'taxzen_settings', [] );
 		$countries = $settings['target_countries'] ?? [];
 
 		if ( empty( $countries ) ) {
@@ -76,7 +76,7 @@ class CronManager {
 		$deleted_logs = LogsTable::cleanup( 90 );
 
 		// Cleanup old alerts (180 days).
-		$deleted_alerts = \TaxPilot\Database\AlertsTable::cleanup( 180 );
+		$deleted_alerts = \TaxZen\Database\AlertsTable::cleanup( 180 );
 
 		LogsTable::insert(
 			'cron_weekly_cleanup',

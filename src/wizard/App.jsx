@@ -1,5 +1,5 @@
 /**
- * TaxPilot for WooCommerce — Wizard App.
+ * TaxZen for WooCommerce — Wizard App.
  */
 import { useState, useEffect, useCallback } from '@wordpress/element';
 import { Snackbar } from '@wordpress/components';
@@ -69,7 +69,7 @@ export default function App() {
 				setNotice( {
 					message: __(
 						'Failed to load wizard state.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					),
 					type: 'error',
 				} );
@@ -118,7 +118,7 @@ export default function App() {
 		} );
 		setIsRerun( false );
 		showNotice(
-			__( 'Wizard reset! Starting fresh.', 'taxpilot-for-woocommerce' )
+			__( 'Wizard reset! Starting fresh.', 'taxzen-for-woocommerce' )
 		);
 	}, [ showNotice ] );
 
@@ -180,23 +180,23 @@ export default function App() {
 
 	if ( loading ) {
 		return (
-			<div className="taxpilot-loading">
-				<div className="taxpilot-spinner taxpilot-spinner--lg"></div>
-				<span className="taxpilot-loading-text">
-					{ __( 'Loading wizard…', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-loading">
+				<div className="taxzen-spinner taxzen-spinner--lg"></div>
+				<span className="taxzen-loading-text">
+					{ __( 'Loading wizard…', 'taxzen-for-woocommerce' ) }
 				</span>
 			</div>
 		);
 	}
 
 	return (
-		<div className="taxpilot-wizard">
+		<div className="taxzen-wizard">
 			<Stepper
 				steps={ WIZARD_STEPS }
 				currentStep={ currentStep }
 				onStepClick={ goToStep }
 			/>
-			<div className="taxpilot-step-content">{ renderStep() }</div>
+			<div className="taxzen-step-content">{ renderStep() }</div>
 			{ notice && (
 				<Snackbar onRemove={ () => setNotice( null ) }>
 					{ notice.message }

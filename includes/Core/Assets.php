@@ -2,12 +2,12 @@
 /**
  * Admin asset enqueuing.
  *
- * @package TaxPilot\Core
+ * @package TaxZen\Core
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Core;
+namespace TaxZen\Core;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -29,17 +29,17 @@ class Assets {
 	 * @param string $hook_suffix The current admin page hook suffix.
 	 */
 	public function enqueue_admin_assets( string $hook_suffix ): void {
-		// Only load on TaxPilot admin pages.
-		if ( ! $this->is_taxpilot_page( $hook_suffix ) ) {
+		// Only load on TaxZen admin pages.
+		if ( ! $this->is_taxzen_page( $hook_suffix ) ) {
 			return;
 		}
 
 		// Admin CSS.
 		wp_enqueue_style(
-			'taxpilot-admin',
-			TAXPILOT_URL . 'assets/css/admin.css',
+			'taxzen-admin',
+			TAXZEN_URL . 'assets/css/admin.css',
 			[],
-			TAXPILOT_VERSION
+			TAXZEN_VERSION
 		);
 
 		// Determine which React app to load.
@@ -56,7 +56,7 @@ class Assets {
 	 * @param string $entry The entry point name (wizard|dashboard).
 	 */
 	private function enqueue_react_app( string $entry ): void {
-		$asset_file = TAXPILOT_PATH . "build/{$entry}.asset.php";
+		$asset_file = TAXZEN_PATH . "build/{$entry}.asset.php";
 
 		if ( ! file_exists( $asset_file ) ) {
 			return;
@@ -65,40 +65,40 @@ class Assets {
 		$asset = require $asset_file;
 
 		wp_enqueue_script(
-			"taxpilot-{$entry}",
-			TAXPILOT_URL . "build/{$entry}.js",
+			"taxzen-{$entry}",
+			TAXZEN_URL . "build/{$entry}.js",
 			$asset['dependencies'],
 			$asset['version'],
 			true
 		);
 
 		wp_enqueue_style(
-			"taxpilot-{$entry}",
-			TAXPILOT_URL . "build/{$entry}.css",
+			"taxzen-{$entry}",
+			TAXZEN_URL . "build/{$entry}.css",
 			[ 'wp-components' ],
 			$asset['version']
 		);
 
-		// Localize with REST info and initial settings.
+				// Localize with REST info and initial settings.
 		wp_localize_script(
-			"taxpilot-{$entry}",
-			'taxPilotData',
+			"taxzen-{$entry}",
+			'taxZenData',
 			[
-				'restUrl'  => rest_url( 'taxpilot/v1/' ),
+				'restUrl'  => rest_url( 'taxzen/v1/' ),
 				'nonce'    => wp_create_nonce( 'wp_rest' ),
 				'adminUrl' => admin_url(),
-				'settings' => get_option( 'taxpilot_settings', [] ),
+				'settings' => get_option( 'taxzen_settings', [] ),
 			]
 		);
 	}
 
 	/**
-	 * Check if current page is a TaxPilot admin page.
+	 * Check if current page is a TaxZen admin page.
 	 *
 	 * @param string $hook_suffix Current admin page.
 	 */
-	private function is_taxpilot_page( string $hook_suffix ): bool {
-		return str_contains( $hook_suffix, 'taxpilot' );
+	private function is_taxzen_page( string $hook_suffix ): bool {
+		return str_contains( $hook_suffix, 'taxzen' );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Assets {
 	 * @param string $hook_suffix Current admin page.
 	 */
 	private function is_wizard_page( string $hook_suffix ): bool {
-		return str_contains( $hook_suffix, 'taxpilot-wizard' );
+		return str_contains( $hook_suffix, 'taxzen-wizard' );
 	}
 
 	/**
@@ -116,6 +116,6 @@ class Assets {
 	 * @param string $hook_suffix Current admin page.
 	 */
 	private function is_dashboard_page( string $hook_suffix ): bool {
-		return str_contains( $hook_suffix, 'taxpilot' ) && ! str_contains( $hook_suffix, 'taxpilot-wizard' ) && ! str_contains( $hook_suffix, 'taxpilot-settings' );
+		return str_contains( $hook_suffix, 'taxzen' ) && ! str_contains( $hook_suffix, 'taxzen-wizard' ) && ! str_contains( $hook_suffix, 'taxzen-settings' );
 	}
 }

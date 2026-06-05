@@ -8,7 +8,7 @@ set -e
 
 PLUGIN_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 README="$PLUGIN_DIR/readme.txt"
-MAIN_FILE="$PLUGIN_DIR/taxpilot.php"
+MAIN_FILE="$PLUGIN_DIR/taxzen-for-woocommerce.php"
 PACKAGE_JSON="$PLUGIN_DIR/package.json"
 
 ERRORS=0
@@ -79,12 +79,12 @@ fi
 README_VER=$(grep -i "^Stable tag:" "$README" | head -1 | sed 's/[^:]*: *//')
 PLUGIN_VER=$(grep -i "Version:" "$MAIN_FILE" | head -1 | sed 's/.*Version: *//;s/ *$//')
 PKG_VER=$(grep '"version"' "$PACKAGE_JSON" | head -1 | sed 's/.*: *"//;s/".*//')
-CONST_VER=$(grep "TAXPILOT_VERSION" "$MAIN_FILE" | head -1 | grep -oE "[0-9]+\.[0-9]+\.[0-9]+")
+CONST_VER=$(grep "TAXZEN_VERSION" "$MAIN_FILE" | head -1 | grep -oE "[0-9]+\.[0-9]+\.[0-9]+")
 echo ""
 echo "📦 Version sync check:"
 echo "  readme.txt (Stable tag):  $README_VER"
-echo "  taxpilot.php header: $PLUGIN_VER"
-echo "  taxpilot.php const:  $CONST_VER"
+echo "  taxzen-for-woocommerce.php header: $PLUGIN_VER"
+echo "  taxzen-for-woocommerce.php const:  $CONST_VER"
 echo "  package.json:             $PKG_VER"
 
 if [[ "$README_VER" != "$PLUGIN_VER" ]]; then
@@ -96,7 +96,7 @@ if [[ "$README_VER" != "$PKG_VER" ]]; then
 	ERRORS=$((ERRORS + 1))
 fi
 if [[ "$README_VER" != "$CONST_VER" ]]; then
-	echo "  ❌ Stable tag ($README_VER) ≠ TAXPILOT_VERSION ($CONST_VER)"
+	echo "  ❌ Stable tag ($README_VER) ≠ TAXZEN_VERSION ($CONST_VER)"
 	ERRORS=$((ERRORS + 1))
 fi
 

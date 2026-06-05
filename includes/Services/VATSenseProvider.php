@@ -2,14 +2,14 @@
 /**
  * VATSense API provider.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\LogsTable;
 
 /**
  * Provides tax rates from the VATSense API.
@@ -32,7 +32,7 @@ class VATSenseProvider implements RateProviderInterface {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$settings      = get_option( 'taxpilot_settings', [] );
+		$settings      = get_option( 'taxzen_settings', [] );
 		$this->api_key = $settings['api_key'] ?? '';
 	}
 

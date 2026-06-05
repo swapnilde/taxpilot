@@ -35,15 +35,15 @@ export default function ApplyRates( {
 
 	const getApplyButtonLabel = () => {
 		if ( applying ) {
-			return __( 'Applying…', 'taxpilot-for-woocommerce' );
+			return __( 'Applying…', 'taxzen-for-woocommerce' );
 		}
 		const count = rateCount || data.rates?.length || 0;
 		const action = confirmOverride
-			? __( 'Confirm & Apply', 'taxpilot-for-woocommerce' )
-			: __( 'Apply', 'taxpilot-for-woocommerce' );
+			? __( 'Confirm & Apply', 'taxzen-for-woocommerce' )
+			: __( 'Apply', 'taxzen-for-woocommerce' );
 		return `✓ ${ action } ${ count } ${ __(
 			'Rates',
-			'taxpilot-for-woocommerce'
+			'taxzen-for-woocommerce'
 		) }`;
 	};
 
@@ -61,14 +61,14 @@ export default function ApplyRates( {
 			showNotice(
 				`${ res.applied } ${ __(
 					'tax rates applied to WooCommerce!',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }`
 			);
 		} catch {
 			showNotice(
 				__(
 					'Failed to apply rates. Please try again.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -81,25 +81,25 @@ export default function ApplyRates( {
 	// Success state.
 	if ( result?.success ) {
 		return (
-			<div className="taxpilot-success">
-				<div className="taxpilot-success-icon">🎉</div>
+			<div className="taxzen-success">
+				<div className="taxzen-success-icon">🎉</div>
 				<h2>
-					{ __( 'Tax Setup Complete!', 'taxpilot-for-woocommerce' ) }
+					{ __( 'Tax Setup Complete!', 'taxzen-for-woocommerce' ) }
 				</h2>
 				<p>
 					{ result.applied }{ ' ' }
 					{ __(
 						'tax rates have been applied to your WooCommerce store.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</p>
 				{ result.errors?.length > 0 && (
 					<div style={ { marginBottom: 'var(--tw-space-4)' } }>
-						<span className="taxpilot-badge taxpilot-badge--warning">
+						<span className="taxzen-badge taxzen-badge--warning">
 							{ result.errors.length }{ ' ' }
 							{ __(
 								'errors occurred',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</span>
 						<ul
@@ -122,10 +122,10 @@ export default function ApplyRates( {
 									...
 									{ __(
 										'and',
-										'taxpilot-for-woocommerce'
+										'taxzen-for-woocommerce'
 									) }{ ' ' }
 									{ result.errors.length - 5 }{ ' ' }
-									{ __( 'more', 'taxpilot-for-woocommerce' ) }
+									{ __( 'more', 'taxzen-for-woocommerce' ) }
 								</li>
 							) }
 						</ul>
@@ -141,36 +141,36 @@ export default function ApplyRates( {
 				>
 					<a
 						href={
-							window.taxPilotData?.adminUrl +
-							'admin.php?page=taxpilot'
+							window.taxZenData?.adminUrl +
+							'admin.php?page=taxzen'
 						}
-						className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+						className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					>
 						{ __(
 							'Go to Dashboard →',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</a>
 					<a
 						href={
-							window.taxPilotData?.adminUrl +
+							window.taxZenData?.adminUrl +
 							'admin.php?page=wc-settings&tab=tax'
 						}
-						className="taxpilot-btn taxpilot-btn--secondary taxpilot-btn--lg"
+						className="taxzen-btn taxzen-btn--secondary taxzen-btn--lg"
 					>
 						{ __(
 							'View WooCommerce Tax Settings',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</a>
 					{ onStartOver && (
 						<button
-							className="taxpilot-btn taxpilot-btn--outline"
+							className="taxzen-btn taxzen-btn--outline"
 							onClick={ onStartOver }
 						>
 							{ __(
 								'🔄 Start Over',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</button>
 					) }
@@ -185,12 +185,12 @@ export default function ApplyRates( {
 
 	if ( loadingPreview ) {
 		return (
-			<div className="taxpilot-loading">
-				<div className="taxpilot-spinner"></div>
-				<span className="taxpilot-loading-text">
+			<div className="taxzen-loading">
+				<div className="taxzen-spinner"></div>
+				<span className="taxzen-loading-text">
 					{ __(
 						'Loading rate preview…',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</span>
 			</div>
@@ -199,30 +199,30 @@ export default function ApplyRates( {
 
 	return (
 		<div>
-			<h2>{ __( 'Apply Tax Rates', 'taxpilot-for-woocommerce' ) }</h2>
+			<h2>{ __( 'Apply Tax Rates', 'taxzen-for-woocommerce' ) }</h2>
 			<p className="description">
 				{ __(
 					'Review the summary below and click "Apply" to configure your WooCommerce tax tables.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }
 			</p>
 
-			<div className="taxpilot-apply-summary">
-				<h3>{ __( 'Setup Summary', 'taxpilot-for-woocommerce' ) }</h3>
-				<div className="taxpilot-apply-stat">
-					<span className="taxpilot-apply-stat-label">
-						{ __( 'Store Country', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-apply-summary">
+				<h3>{ __( 'Setup Summary', 'taxzen-for-woocommerce' ) }</h3>
+				<div className="taxzen-apply-stat">
+					<span className="taxzen-apply-stat-label">
+						{ __( 'Store Country', 'taxzen-for-woocommerce' ) }
 					</span>
-					<span className="taxpilot-apply-stat-value">
+					<span className="taxzen-apply-stat-value">
 						{ COUNTRIES[ data.country ] || data.country } (
 						{ data.currency })
 					</span>
 				</div>
-				<div className="taxpilot-apply-stat">
-					<span className="taxpilot-apply-stat-label">
-						{ __( 'Product Types', 'taxpilot-for-woocommerce' ) }
+				<div className="taxzen-apply-stat">
+					<span className="taxzen-apply-stat-label">
+						{ __( 'Product Types', 'taxzen-for-woocommerce' ) }
 					</span>
-					<span className="taxpilot-apply-stat-value">
+					<span className="taxzen-apply-stat-value">
 						{ data.productTypes
 							?.map(
 								( t ) =>
@@ -231,22 +231,22 @@ export default function ApplyRates( {
 							.join( ', ' ) || 'None' }
 					</span>
 				</div>
-				<div className="taxpilot-apply-stat">
-					<span className="taxpilot-apply-stat-label">
-						{ __( 'Target Countries', 'taxpilot-for-woocommerce' ) }
+				<div className="taxzen-apply-stat">
+					<span className="taxzen-apply-stat-label">
+						{ __( 'Target Countries', 'taxzen-for-woocommerce' ) }
 					</span>
-					<span className="taxpilot-apply-stat-value">
+					<span className="taxzen-apply-stat-value">
 						{ countryCount }
 					</span>
 				</div>
-				<div className="taxpilot-apply-stat">
-					<span className="taxpilot-apply-stat-label">
+				<div className="taxzen-apply-stat">
+					<span className="taxzen-apply-stat-label">
 						{ __(
 							'Tax Rates to Apply',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</span>
-					<span className="taxpilot-apply-stat-value">
+					<span className="taxzen-apply-stat-value">
 						{ displayRateCount }
 					</span>
 				</div>
@@ -268,29 +268,29 @@ export default function ApplyRates( {
 					⚠️{ ' ' }
 					{ __(
 						'This will update your WooCommerce tax tables. Any manually added rates may be affected. Click "Apply" again to confirm.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</div>
 			) }
 
-			<div className="taxpilot-step-actions">
+			<div className="taxzen-step-actions">
 				<button
-					className="taxpilot-btn taxpilot-btn--secondary"
+					className="taxzen-btn taxzen-btn--secondary"
 					onClick={ onBack }
 				>
-					{ __( '← Back', 'taxpilot-for-woocommerce' ) }
+					{ __( '← Back', 'taxzen-for-woocommerce' ) }
 				</button>
 				<div style={ { display: 'flex', gap: 'var(--tw-space-3)' } }>
 					{ confirmOverride && (
 						<button
-							className="taxpilot-btn taxpilot-btn--outline"
+							className="taxzen-btn taxzen-btn--outline"
 							onClick={ () => setConfirmOverride( false ) }
 						>
-							{ __( 'Cancel', 'taxpilot-for-woocommerce' ) }
+							{ __( 'Cancel', 'taxzen-for-woocommerce' ) }
 						</button>
 					) }
 					<button
-						className="taxpilot-btn taxpilot-btn--success taxpilot-btn--lg"
+						className="taxzen-btn taxzen-btn--success taxzen-btn--lg"
 						onClick={ handleApply }
 						disabled={ applying || displayRateCount === 0 }
 					>

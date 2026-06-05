@@ -5,19 +5,19 @@
  * Hooks into WooCommerce's tax lifecycle — tax classes, rate matching,
  * shipping tax, VAT exemption, order meta, admin notices, and reporting.
  *
- * @package TaxPilot\Integration
+ * @package TaxZen\Integration
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Integration;
+namespace TaxZen\Integration;
 
 defined( 'ABSPATH' ) || exit;
 
-use TaxPilot\Database\RatesTable;
-use TaxPilot\Database\AlertsTable;
-use TaxPilot\Services\VIESValidator;
-use TaxPilot\Services\AddressValidator;
+use TaxZen\Database\RatesTable;
+use TaxZen\Database\AlertsTable;
+use TaxZen\Services\VIESValidator;
+use TaxZen\Services\AddressValidator;
 
 /**
  * Registers all WooCommerce integration hooks.
@@ -25,7 +25,7 @@ use TaxPilot\Services\AddressValidator;
 class WooIntegration {
 
 	/**
-	 * Tax classes managed by TaxPilot.
+	 * Tax classes managed by TaxZen.
 	 *
 	 * @var array
 	 */
@@ -71,7 +71,7 @@ class WooIntegration {
 		add_action( 'admin_notices', [ $this, 'render_admin_notices' ] );
 
 		// --- WooCommerce Tax Settings Auto-Configuration ---
-		add_action( 'woocommerce_tax_settings', [ $this, 'add_taxpilot_settings_note' ] );
+		add_action( 'woocommerce_tax_settings', [ $this, 'add_taxzen_settings_note' ] );
 
 		// --- Tax Display on Order Admin ---
 		add_action( 'woocommerce_admin_order_data_after_billing_address', [ $this, 'show_tax_meta_on_order' ] );
@@ -102,13 +102,13 @@ class WooIntegration {
 	 */
 
 	/**
-	 * Ensure TaxPilot-managed tax classes always appear.
+	 * Ensure TaxZen-managed tax classes always appear.
 	 *
 	 * @param array $classes Existing tax classes.
 	 * @return array Modified classes.
 	 */
 	public function register_tax_classes( array $classes ): array {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 		$types    = $settings['product_types'] ?? [];
 
 		// Always-on classes: Reduced rate, Zero rate.
@@ -138,7 +138,7 @@ class WooIntegration {
 	 */
 
 	/**
-	 * Filter matched tax rates at checkout to ensure TaxPilot rates are applied.
+	 * Filter matched tax rates at checkout to ensure TaxZen rates are applied.
 	 *
 	 * If WooCommerce already found rates via its standard lookup, we verify them.
 	 * If no rates exist for a country, we fall back to our stored rates.
@@ -244,7 +244,7 @@ class WooIntegration {
 		}
 
 		// Check if there's a validated VAT number in the session.
-		$vat_valid = WC()->session ? WC()->session->get( 'taxpilot_vat_exempt' ) : false;
+		$vat_valid = WC()->session ? WC()->session->get( 'taxzen_vat_exempt' ) : false;
 
 		return (bool) $vat_valid;
 	}
@@ -261,7 +261,7 @@ class WooIntegration {
 
 		if ( empty( $vat_number ) ) {
 			if ( WC()->session ) {
-				WC()->session->set( 'taxpilot_vat_exempt', false );
+				WC()->session->set( 'taxzen_vat_exempt', false );
 			}
 			if ( WC()->customer ) {
 				WC()->customer->set_is_vat_exempt( false );
@@ -274,7 +274,7 @@ class WooIntegration {
 		$eu_countries    = WC()->countries->get_european_union_countries();
 
 		if ( ! in_array( $billing_country, $eu_countries, true ) ) {
-			WC()->session->set( 'taxpilot_vat_exempt', false );
+			WC()->session->set( 'taxzen_vat_exempt', false );
 			return;
 		}
 
@@ -282,7 +282,7 @@ class WooIntegration {
 		$result = VIESValidator::validate( $vat_number );
 
 		$is_valid = $result['valid'] ?? false;
-		WC()->session->set( 'taxpilot_vat_exempt', $is_valid );
+		WC()->session->set( 'taxzen_vat_exempt', $is_valid );
 
 		if ( WC()->customer ) {
 			WC()->customer->set_is_vat_exempt( $is_valid );
@@ -296,7 +296,7 @@ class WooIntegration {
 	 * @return array Modified fields.
 	 */
 	public function add_vat_number_field( array $fields ): array {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 		$targets  = $settings['target_countries'] ?? [];
 
 		// Only show if selling to EU countries.
@@ -312,12 +312,12 @@ class WooIntegration {
 
 		$fields['billing_vat_number'] = [
 			'type'        => 'text',
-			'label'       => __( 'EU VAT Number', 'taxpilot-for-woocommerce' ),
-			'placeholder' => __( 'e.g. DE123456789', 'taxpilot-for-woocommerce' ),
+			'label'       => __( 'EU VAT Number', 'taxzen-for-woocommerce' ),
+			'placeholder' => __( 'e.g. DE123456789', 'taxzen-for-woocommerce' ),
 			'required'    => false,
 			'class'       => [ 'form-row-wide' ],
 			'priority'    => 35,
-			'description' => __( 'Enter your VAT number for B2B tax exemption.', 'taxpilot-for-woocommerce' ),
+			'description' => __( 'Enter your VAT number for B2B tax exemption.', 'taxzen-for-woocommerce' ),
 		];
 
 		return $fields;
@@ -330,14 +330,14 @@ class WooIntegration {
 	 */
 
 	/**
-	 * Stamp TaxPilot metadata on new orders.
+	 * Stamp TaxZen metadata on new orders.
 	 *
 	 * @param \WC_Order $order The order object.
 	 */
 	public function stamp_order_meta( $order ): void {
-		$order->update_meta_data( '_taxpilot_version', TAXPILOT_VERSION );
-		$order->update_meta_data( '_taxpilot_rates_source', get_option( 'taxpilot_settings', [] )['api_provider'] ?? 'static' );
-		$order->update_meta_data( '_taxpilot_rates_updated', get_option( 'taxpilot_rates_last_updated', '' ) );
+		$order->update_meta_data( '_taxzen_version', TAXZEN_VERSION );
+		$order->update_meta_data( '_taxzen_rates_source', get_option( 'taxzen_settings', [] )['api_provider'] ?? 'static' );
+		$order->update_meta_data( '_taxzen_rates_updated', get_option( 'taxzen_rates_last_updated', '' ) );
 
 		// Save VAT number if provided.
 		$vat_number = isset( $_POST['billing_vat_number'] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
@@ -346,40 +346,40 @@ class WooIntegration {
 
 		if ( $vat_number ) {
 			$order->update_meta_data( '_billing_vat_number', $vat_number );
-			$order->update_meta_data( '_taxpilot_vat_exempt', 'yes' );
-		} elseif ( WC()->session && WC()->session->get( 'taxpilot_vat_exempt' ) ) {
+			$order->update_meta_data( '_taxzen_vat_exempt', 'yes' );
+		} elseif ( WC()->session && WC()->session->get( 'taxzen_vat_exempt' ) ) {
 			// Fallback for Block Checkout where $_POST may not contain the field.
-			$order->update_meta_data( '_taxpilot_vat_exempt', 'yes' );
+			$order->update_meta_data( '_taxzen_vat_exempt', 'yes' );
 		}
 
 		$order->save();
 	}
 
 	/**
-	 * Display TaxPilot tax info on order admin page.
+	 * Display TaxZen tax info on order admin page.
 	 *
 	 * @param \WC_Order $order The order.
 	 */
 	public function show_tax_meta_on_order( $order ): void {
-		$version    = $order->get_meta( '_taxpilot_version' );
-		$source     = $order->get_meta( '_taxpilot_rates_source' );
+		$version    = $order->get_meta( '_taxzen_version' );
+		$source     = $order->get_meta( '_taxzen_rates_source' );
 		$vat_number = $order->get_meta( '_billing_vat_number' );
-		$vat_exempt = $order->get_meta( '_taxpilot_vat_exempt' );
+		$vat_exempt = $order->get_meta( '_taxzen_vat_exempt' );
 
 		if ( ! $version ) {
 			return;
 		}
 
-		echo '<div class="taxpilot-order-meta" style="margin-top:12px;padding:10px;background:#f0f0f1;border-radius:6px;">';
-		echo '<h4 style="margin:0 0 8px 0;color:#4f46e5;">🧙 TaxPilot</h4>';
-		echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'Tax Source:', 'taxpilot-for-woocommerce' ) . '</strong> ' . esc_html( ucfirst( $source ?: 'N/A' ) ) . '</p>';
+		echo '<div class="taxzen-order-meta" style="margin-top:12px;padding:10px;background:#f0f0f1;border-radius:6px;">';
+		echo '<h4 style="margin:0 0 8px 0;color:#4f46e5;">🧙 TaxZen</h4>';
+		echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'Tax Source:', 'taxzen-for-woocommerce' ) . '</strong> ' . esc_html( ucfirst( $source ?: 'N/A' ) ) . '</p>';
 
 		if ( $vat_number ) {
-			echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'VAT Number:', 'taxpilot-for-woocommerce' ) . '</strong> ' . esc_html( $vat_number ) . '</p>';
+			echo '<p style="margin:2px 0;font-size:13px;"><strong>' . esc_html__( 'VAT Number:', 'taxzen-for-woocommerce' ) . '</strong> ' . esc_html( $vat_number ) . '</p>';
 		}
 
 		if ( 'yes' === $vat_exempt ) {
-			echo '<p style="margin:2px 0;font-size:13px;color:#059669;"><strong>✓ ' . esc_html__( 'VAT Exempt (B2B)', 'taxpilot-for-woocommerce' ) . '</strong></p>';
+			echo '<p style="margin:2px 0;font-size:13px;color:#059669;"><strong>✓ ' . esc_html__( 'VAT Exempt (B2B)', 'taxzen-for-woocommerce' ) . '</strong></p>';
 		}
 
 		echo '</div>';
@@ -392,7 +392,7 @@ class WooIntegration {
 	 * @return array Modified columns.
 	 */
 	public function add_order_tax_column( array $columns ): array {
-		$columns['taxpilot_source'] = __( 'Tax Source', 'taxpilot-for-woocommerce' );
+		$columns['taxzen_source'] = __( 'Tax Source', 'taxzen-for-woocommerce' );
 		return $columns;
 	}
 
@@ -403,7 +403,7 @@ class WooIntegration {
 	 * @param int    $post_id     Post ID.
 	 */
 	public function render_order_tax_column( string $column_name, int $post_id ): void {
-		if ( 'taxpilot_source' === $column_name ) {
+		if ( 'taxzen_source' === $column_name ) {
 			$order = wc_get_order( $post_id );
 			if ( $order ) {
 				$this->output_tax_column_content( $order );
@@ -418,7 +418,7 @@ class WooIntegration {
 	 * @param \WC_Order $order       The order object.
 	 */
 	public function render_order_tax_column_hpos( string $column_name, $order ): void {
-		if ( 'taxpilot_source' === $column_name ) {
+		if ( 'taxzen_source' === $column_name ) {
 			$this->output_tax_column_content( $order );
 		}
 	}
@@ -429,11 +429,11 @@ class WooIntegration {
 	 * @param \WC_Order $order The order object.
 	 */
 	private function output_tax_column_content( $order ): void {
-		$version = $order->get_meta( '_taxpilot_version' );
-		$source  = $order->get_meta( '_taxpilot_rates_source' );
+		$version = $order->get_meta( '_taxzen_version' );
+		$source  = $order->get_meta( '_taxzen_rates_source' );
 
 		if ( $version && $source ) {
-			echo '<mark class="order-status status-completed tips" data-tip="' . esc_attr__( 'Processed by TaxPilot', 'taxpilot-for-woocommerce' ) . '">';
+			echo '<mark class="order-status status-completed tips" data-tip="' . esc_attr__( 'Processed by TaxZen', 'taxzen-for-woocommerce' ) . '">';
 			echo '<span>🧙 ' . esc_html( ucfirst( $source ) ) . '</span>';
 			echo '</mark>';
 		} else {
@@ -442,16 +442,16 @@ class WooIntegration {
 	}
 
 	/**
-	 * Register a custom TaxPilot tab in WooCommerce Reports.
+	 * Register a custom TaxZen tab in WooCommerce Reports.
 	 *
 	 * @param array $reports Existing reports.
 	 * @return array Modified reports.
 	 */
 	public function add_tax_report_tab( array $reports ): array {
 		if ( isset( $reports['taxes'] ) ) {
-			$reports['taxes']['reports']['taxpilot'] = [
-				'title'       => __( 'TaxPilot Usage', 'taxpilot-for-woocommerce' ),
-				'description' => __( 'Overview of orders processed with TaxPilot.', 'taxpilot-for-woocommerce' ),
+			$reports['taxes']['reports']['taxzen'] = [
+				'title'       => __( 'TaxZen Usage', 'taxzen-for-woocommerce' ),
+				'description' => __( 'Overview of orders processed with TaxZen.', 'taxzen-for-woocommerce' ),
 				'hide_title'  => true,
 				'callback'    => [ $this, 'render_tax_report_page' ],
 			];
@@ -460,16 +460,16 @@ class WooIntegration {
 	}
 
 	/**
-	 * Render the TaxPilot report page content within WooCommerce Reports.
+	 * Render the TaxZen report page content within WooCommerce Reports.
 	 */
 	public function render_tax_report_page(): void {
 		echo '<div id="poststuff" class="woocommerce-reports-wide">';
 		echo '<div class="postbox">';
-		echo '<h3 class="hndle"><span>' . esc_html__( 'TaxPilot Usage Report', 'taxpilot-for-woocommerce' ) . '</span></h3>';
+		echo '<h3 class="hndle"><span>' . esc_html__( 'TaxZen Usage Report', 'taxzen-for-woocommerce' ) . '</span></h3>';
 		echo '<div class="inside">';
-		echo '<p>' . esc_html__( 'This report shows the impact of TaxPilot on your store\'s tax collection.', 'taxpilot-for-woocommerce' ) . '</p>';
-		echo '<p><em>' . esc_html__( 'Summary metrics will populate here as new orders are processed using TaxPilot rates.', 'taxpilot-for-woocommerce' ) . '</em></p>';
-		echo '<a href="' . esc_url( admin_url( 'admin.php?page=taxpilot' ) ) . '" class="button button-primary">' . esc_html__( 'View Full TaxPilot Dashboard', 'taxpilot-for-woocommerce' ) . '</a>';
+		echo '<p>' . esc_html__( 'This report shows the impact of TaxZen on your store\'s tax collection.', 'taxzen-for-woocommerce' ) . '</p>';
+		echo '<p><em>' . esc_html__( 'Summary metrics will populate here as new orders are processed using TaxZen rates.', 'taxzen-for-woocommerce' ) . '</em></p>';
+		echo '<a href="' . esc_url( admin_url( 'admin.php?page=taxzen' ) ) . '" class="button button-primary">' . esc_html__( 'View Full TaxZen Dashboard', 'taxzen-for-woocommerce' ) . '</a>';
 		echo '</div></div></div>';
 	}
 
@@ -493,7 +493,7 @@ class WooIntegration {
 		}
 
 		// Check if digital goods class was set up via the wizard.
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 		$types    = $settings['product_types'] ?? [];
 
 		if ( ! in_array( 'digital', $types, true ) ) {
@@ -515,26 +515,26 @@ class WooIntegration {
 	 */
 
 	/**
-	 * Ensure WooCommerce tax calculation is enabled when TaxPilot has completed setup.
+	 * Ensure WooCommerce tax calculation is enabled when TaxZen has completed setup.
 	 */
 	public function maybe_enable_taxes(): void {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		if ( empty( $settings['wizard_completed'] ) ) {
 			return;
 		}
 
 		// Only run once.
-		if ( get_option( 'taxpilot_woo_configured' ) ) {
+		if ( get_option( 'taxzen_woo_configured' ) ) {
 			return;
 		}
 
 		self::configure_woo_settings();
-		update_option( 'taxpilot_woo_configured', true );
+		update_option( 'taxzen_woo_configured', true );
 	}
 
 	/**
-	 * Configure WooCommerce tax settings for optimal TaxPilot integration.
+	 * Configure WooCommerce tax settings for optimal TaxZen integration.
 	 */
 	public static function configure_woo_settings(): void {
 		// Enable tax calculation.
@@ -569,7 +569,7 @@ class WooIntegration {
 	 */
 
 	/**
-	 * Show admin notices for TaxPilot-related alerts.
+	 * Show admin notices for TaxZen-related alerts.
 	 */
 	public function render_admin_notices(): void {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
@@ -581,49 +581,49 @@ class WooIntegration {
 			return;
 		}
 
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		// Notice: wizard not completed.
 		if ( empty( $settings['wizard_completed'] ) && 'plugins' === $screen->id ) {
 			printf(
 				'<div class="notice notice-info is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
-				esc_html__( '🧙 TaxPilot for WooCommerce is active! Run the setup wizard to configure your tax rates.', 'taxpilot-for-woocommerce' ),
-				esc_url( admin_url( 'admin.php?page=taxpilot-wizard' ) ),
-				esc_html__( 'Start Wizard →', 'taxpilot-for-woocommerce' )
+				esc_html__( '🧙 TaxZen for WooCommerce is active! Run the setup wizard to configure your tax rates.', 'taxzen-for-woocommerce' ),
+				esc_url( admin_url( 'admin.php?page=taxzen-wizard' ) ),
+				esc_html__( 'Start Wizard →', 'taxzen-for-woocommerce' )
 			);
 		}
 
 		// Notice: tax calculation not enabled in WooCommerce.
-		if ( 'yes' !== get_option( 'woocommerce_calc_taxes' ) && str_contains( $screen->id, 'taxpilot' ) ) {
+		if ( 'yes' !== get_option( 'woocommerce_calc_taxes' ) && str_contains( $screen->id, 'taxzen' ) ) {
 			printf(
 				'<div class="notice notice-warning is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
-				esc_html__( '⚠️ WooCommerce tax calculation is disabled. TaxPilot rates won\'t apply at checkout.', 'taxpilot-for-woocommerce' ),
+				esc_html__( '⚠️ WooCommerce tax calculation is disabled. TaxZen rates won\'t apply at checkout.', 'taxzen-for-woocommerce' ),
 				esc_url( admin_url( 'admin.php?page=wc-settings&tab=tax' ) ),
-				esc_html__( 'Enable Taxes →', 'taxpilot-for-woocommerce' )
+				esc_html__( 'Enable Taxes →', 'taxzen-for-woocommerce' )
 			);
 		}
 
 		// Notice: unread critical alerts.
 		$unread = AlertsTable::unread_count();
-		if ( $unread > 0 && str_contains( $screen->id, 'taxpilot' ) ) {
+		if ( $unread > 0 && str_contains( $screen->id, 'taxzen' ) ) {
 			printf(
 				'<div class="notice notice-error is-dismissible"><p>%s <a href="%s">%s</a></p></div>',
 				/* translators: %d: unread alert count */
-				sprintf( esc_html__( '🚨 You have %d unread TaxPilot alerts that may require attention.', 'taxpilot-for-woocommerce' ), (int) $unread ),
-				esc_url( admin_url( 'admin.php?page=taxpilot' ) ),
-				esc_html__( 'View Alerts →', 'taxpilot-for-woocommerce' )
+				sprintf( esc_html__( '🚨 You have %d unread TaxZen alerts that may require attention.', 'taxzen-for-woocommerce' ), (int) $unread ),
+				esc_url( admin_url( 'admin.php?page=taxzen' ) ),
+				esc_html__( 'View Alerts →', 'taxzen-for-woocommerce' )
 			);
 		}
 	}
 
 	/**
-	 * Add a note to WooCommerce Tax settings indicating TaxPilot is managing rates.
+	 * Add a note to WooCommerce Tax settings indicating TaxZen is managing rates.
 	 *
 	 * @param array $settings WooCommerce tax settings.
 	 * @return array Modified settings.
 	 */
-	public function add_taxpilot_settings_note( $settings ): array {
-		$wizard_settings = get_option( 'taxpilot_settings', [] );
+	public function add_taxzen_settings_note( $settings ): array {
+		$wizard_settings = get_option( 'taxzen_settings', [] );
 
 		if ( ! empty( $wizard_settings['wizard_completed'] ) ) {
 			array_unshift(
@@ -631,9 +631,9 @@ class WooIntegration {
 				[
 					'type' => 'info',
 					'text' => sprintf(
-						/* translators: %s: TaxPilot dashboard link */
-						__( '🧙 Tax rates are managed by TaxPilot for WooCommerce. <a href="%s">Open TaxPilot Dashboard</a> to manage your rates.', 'taxpilot-for-woocommerce' ),
-						admin_url( 'admin.php?page=taxpilot' )
+						/* translators: %s: TaxZen dashboard link */
+						__( '🧙 Tax rates are managed by TaxZen for WooCommerce. <a href="%s">Open TaxZen Dashboard</a> to manage your rates.', 'taxzen-for-woocommerce' ),
+						admin_url( 'admin.php?page=taxzen' )
 					),
 				]
 			);
@@ -676,7 +676,7 @@ class WooIntegration {
 
 		// If validation failed, add our custom message to the WooCommerce error notices, halting the order.
 		if ( false === $result['is_valid'] && ! empty( $result['message'] ) ) {
-			$errors->add( 'taxpilot_address_validation_failed', $result['message'] );
+			$errors->add( 'taxzen_address_validation_failed', $result['message'] );
 		}
 	}
 }

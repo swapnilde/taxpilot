@@ -39,7 +39,7 @@ export default function StoreSetup( {
 	const countryOptions = [
 		{
 			value: '',
-			label: __( '— Select Country —', 'taxpilot-for-woocommerce' ),
+			label: __( '— Select Country —', 'taxzen-for-woocommerce' ),
 		},
 		...Object.entries( COUNTRIES ).map( ( [ code, name ] ) => ( {
 			value: code,
@@ -50,7 +50,7 @@ export default function StoreSetup( {
 	const currencyOptions = [
 		{
 			value: '',
-			label: __( '— Select Currency —', 'taxpilot-for-woocommerce' ),
+			label: __( '— Select Currency —', 'taxzen-for-woocommerce' ),
 		},
 		...Object.entries( CURRENCIES ).map( ( [ code, name ] ) => ( {
 			value: code,
@@ -63,7 +63,7 @@ export default function StoreSetup( {
 			showNotice(
 				__(
 					'Please select both country and currency.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -77,12 +77,12 @@ export default function StoreSetup( {
 				currency: data.currency,
 			} );
 			showNotice(
-				__( 'Store setup saved!', 'taxpilot-for-woocommerce' )
+				__( 'Store setup saved!', 'taxzen-for-woocommerce' )
 			);
 			onNext();
 		} catch {
 			showNotice(
-				__( 'Failed to save store setup.', 'taxpilot-for-woocommerce' ),
+				__( 'Failed to save store setup.', 'taxzen-for-woocommerce' ),
 				'error'
 			);
 		} finally {
@@ -92,12 +92,12 @@ export default function StoreSetup( {
 
 	if ( loading ) {
 		return (
-			<div className="taxpilot-loading">
-				<div className="taxpilot-spinner"></div>
-				<span className="taxpilot-loading-text">
+			<div className="taxzen-loading">
+				<div className="taxzen-spinner"></div>
+				<span className="taxzen-loading-text">
 					{ __(
 						'Detecting store settings…',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</span>
 			</div>
@@ -108,24 +108,24 @@ export default function StoreSetup( {
 		<div>
 			<h2>
 				{ isRerun
-					? __( 'Update Store Setup', 'taxpilot-for-woocommerce' )
-					: __( 'Store Setup', 'taxpilot-for-woocommerce' ) }
+					? __( 'Update Store Setup', 'taxzen-for-woocommerce' )
+					: __( 'Store Setup', 'taxzen-for-woocommerce' ) }
 			</h2>
 			<p className="description">
 				{ isRerun
 					? __(
 							'Your current settings are pre-filled below. Update anything you need and continue through the wizard.',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 					  )
 					: __(
 							'Tell us about your store location and currency. We auto-detected your WooCommerce settings.',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 					  ) }
 			</p>
 
 			{ isRerun && (
 				<div
-					className="taxpilot-info-banner"
+					className="taxzen-info-banner"
 					style={ {
 						background: 'var(--tw-primary-50, #eef2ff)',
 						border: '1px solid var(--tw-primary-200, #c7d2fe)',
@@ -139,28 +139,28 @@ export default function StoreSetup( {
 					ℹ️{ ' ' }
 					{ __(
 						'You are re-running the wizard. Your existing settings are pre-filled. Walk through each step to make changes, then re-apply your rates.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</div>
 			) }
 
-			<div className="taxpilot-form-row">
-				<div className="taxpilot-field">
+			<div className="taxzen-form-row">
+				<div className="taxzen-field">
 					<SelectControl
 						label={ __(
 							'Store Country',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 						value={ data.country }
 						options={ countryOptions }
 						onChange={ ( value ) => updateData( 'country', value ) }
 					/>
 				</div>
-				<div className="taxpilot-field">
+				<div className="taxzen-field">
 					<SelectControl
 						label={ __(
 							'Store Currency',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 						value={ data.currency }
 						options={ currencyOptions }
@@ -171,16 +171,16 @@ export default function StoreSetup( {
 				</div>
 			</div>
 
-			<div className="taxpilot-step-actions">
+			<div className="taxzen-step-actions">
 				<div></div>
 				<button
-					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+					className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					onClick={ handleNext }
 					disabled={ saving }
 				>
 					{ saving
-						? __( 'Saving…', 'taxpilot-for-woocommerce' )
-						: __( 'Continue →', 'taxpilot-for-woocommerce' ) }
+						? __( 'Saving…', 'taxzen-for-woocommerce' )
+						: __( 'Continue →', 'taxzen-for-woocommerce' ) }
 				</button>
 			</div>
 		</div>

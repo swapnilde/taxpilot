@@ -2,17 +2,17 @@
 /**
  * Admin menu registration.
  *
- * @package TaxPilot\Admin
+ * @package TaxZen\Admin
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Admin;
+namespace TaxZen\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Registers the TaxPilot admin menu and submenus.
+ * Registers the TaxZen admin menu and submenus.
  */
 class AdminMenu {
 
@@ -29,10 +29,10 @@ class AdminMenu {
 	public function add_menu_pages(): void {
 		// Top-level menu.
 		add_menu_page(
-			__( 'TaxPilot', 'taxpilot-for-woocommerce' ),
-			__( 'TaxPilot', 'taxpilot-for-woocommerce' ),
+			__( 'TaxZen', 'taxzen-for-woocommerce' ),
+			__( 'TaxZen', 'taxzen-for-woocommerce' ),
 			'manage_woocommerce',
-			'taxpilot',
+			'taxzen',
 			[ $this, 'render_dashboard' ],
 			'dashicons-calculator',
 			56 // After WooCommerce.
@@ -40,31 +40,31 @@ class AdminMenu {
 
 		// Dashboard submenu (same as parent).
 		add_submenu_page(
-			'taxpilot',
-			__( 'Dashboard', 'taxpilot-for-woocommerce' ),
-			__( 'Dashboard', 'taxpilot-for-woocommerce' ),
+			'taxzen',
+			__( 'Dashboard', 'taxzen-for-woocommerce' ),
+			__( 'Dashboard', 'taxzen-for-woocommerce' ),
 			'manage_woocommerce',
-			'taxpilot',
+			'taxzen',
 			[ $this, 'render_dashboard' ]
 		);
 
 		// Wizard submenu.
 		add_submenu_page(
-			'taxpilot',
-			__( 'Setup Wizard', 'taxpilot-for-woocommerce' ),
-			__( 'Setup Wizard', 'taxpilot-for-woocommerce' ),
+			'taxzen',
+			__( 'Setup Wizard', 'taxzen-for-woocommerce' ),
+			__( 'Setup Wizard', 'taxzen-for-woocommerce' ),
 			'manage_woocommerce',
-			'taxpilot-wizard',
+			'taxzen-wizard',
 			[ $this, 'render_wizard' ]
 		);
 
 		// Settings submenu.
 		add_submenu_page(
-			'taxpilot',
-			__( 'Settings', 'taxpilot-for-woocommerce' ),
-			__( 'Settings', 'taxpilot-for-woocommerce' ),
+			'taxzen',
+			__( 'Settings', 'taxzen-for-woocommerce' ),
+			__( 'Settings', 'taxzen-for-woocommerce' ),
 			'manage_woocommerce',
-			'taxpilot-settings',
+			'taxzen-settings',
 			[ $this, 'render_settings' ]
 		);
 	}
@@ -73,12 +73,12 @@ class AdminMenu {
 	 * Render the dashboard page.
 	 */
 	public function render_dashboard(): void {
-		echo '<div class="taxpilot-wrap">';
-		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'TaxPilot Dashboard', 'taxpilot-for-woocommerce' ) . '</h1>';
-		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
+		echo '<div class="taxzen-wrap">';
+		echo '<div class="taxzen-header">';
+		echo '<h1>' . esc_html__( 'TaxZen Dashboard', 'taxzen-for-woocommerce' ) . '</h1>';
+		echo '<span class="taxzen-version">v' . esc_html( TAXZEN_VERSION ) . '</span>';
 		echo '</div>';
-		echo '<div id="taxpilot-dashboard-root"></div>';
+		echo '<div id="taxzen-dashboard-root"></div>';
 		echo '</div>';
 	}
 
@@ -86,12 +86,12 @@ class AdminMenu {
 	 * Render the wizard page.
 	 */
 	public function render_wizard(): void {
-		echo '<div class="taxpilot-wrap">';
-		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'Tax Setup Wizard', 'taxpilot-for-woocommerce' ) . '</h1>';
-		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
+		echo '<div class="taxzen-wrap">';
+		echo '<div class="taxzen-header">';
+		echo '<h1>' . esc_html__( 'Tax Setup Wizard', 'taxzen-for-woocommerce' ) . '</h1>';
+		echo '<span class="taxzen-version">v' . esc_html( TAXZEN_VERSION ) . '</span>';
 		echo '</div>';
-		echo '<div id="taxpilot-wizard-root"></div>';
+		echo '<div id="taxzen-wizard-root"></div>';
 		echo '</div>';
 	}
 
@@ -100,65 +100,65 @@ class AdminMenu {
 	 */
 	public function render_settings(): void {
 		// Handle form submission.
-		if ( isset( $_POST['taxpilot_settings_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['taxpilot_settings_nonce'] ) ), 'taxpilot_save_settings' ) ) {
+		if ( isset( $_POST['taxzen_settings_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['taxzen_settings_nonce'] ) ), 'taxzen_save_settings' ) ) {
 			$this->save_settings();
 		}
 
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
-		echo '<div class="taxpilot-wrap">';
-		echo '<div class="taxpilot-header">';
-		echo '<h1>' . esc_html__( 'TaxPilot Settings', 'taxpilot-for-woocommerce' ) . '</h1>';
-		echo '<span class="taxpilot-version">v' . esc_html( TAXPILOT_VERSION ) . '</span>';
+		echo '<div class="taxzen-wrap">';
+		echo '<div class="taxzen-header">';
+		echo '<h1>' . esc_html__( 'TaxZen Settings', 'taxzen-for-woocommerce' ) . '</h1>';
+		echo '<span class="taxzen-version">v' . esc_html( TAXZEN_VERSION ) . '</span>';
 		echo '</div>';
 
-		echo '<div class="taxpilot-card">';
+		echo '<div class="taxzen-card">';
 		echo '<form method="post" action="">';
-		wp_nonce_field( 'taxpilot_save_settings', 'taxpilot_settings_nonce' );
+		wp_nonce_field( 'taxzen_save_settings', 'taxzen_settings_nonce' );
 
 		// API Provider.
-		echo '<div class="taxpilot-field">';
-		echo '<label for="api_provider">' . esc_html__( 'Tax Rate Source', 'taxpilot-for-woocommerce' ) . '</label>';
+		echo '<div class="taxzen-field">';
+		echo '<label for="api_provider">' . esc_html__( 'Tax Rate Source', 'taxzen-for-woocommerce' ) . '</label>';
 		echo '<select id="api_provider" name="api_provider" class="regular-text">';
-		echo '<option value="static"' . selected( $settings['api_provider'] ?? 'static', 'static', false ) . '>' . esc_html__( 'Static Bundle', 'taxpilot-for-woocommerce' ) . '</option>';
-		echo '<option value="vatsense"' . selected( $settings['api_provider'] ?? '', 'vatsense', false ) . '>' . esc_html__( 'VATSense API', 'taxpilot-for-woocommerce' ) . '</option>';
+		echo '<option value="static"' . selected( $settings['api_provider'] ?? 'static', 'static', false ) . '>' . esc_html__( 'Static Bundle', 'taxzen-for-woocommerce' ) . '</option>';
+		echo '<option value="vatsense"' . selected( $settings['api_provider'] ?? '', 'vatsense', false ) . '>' . esc_html__( 'VATSense API', 'taxzen-for-woocommerce' ) . '</option>';
 		echo '</select>';
-		echo '<p class="description">' . esc_html__( 'Choose the source for tax rate data.', 'taxpilot-for-woocommerce' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Choose the source for tax rate data.', 'taxzen-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// API Key.
-		echo '<div class="taxpilot-field">';
-		echo '<label for="api_key">' . esc_html__( 'API Key', 'taxpilot-for-woocommerce' ) . '</label>';
+		echo '<div class="taxzen-field">';
+		echo '<label for="api_key">' . esc_html__( 'API Key', 'taxzen-for-woocommerce' ) . '</label>';
 		echo '<input type="password" id="api_key" name="api_key" value="' . esc_attr( $settings['api_key'] ?? '' ) . '" class="regular-text" />';
-		echo '<p class="description">' . esc_html__( 'Required for VATSense API. Your key is stored encrypted.', 'taxpilot-for-woocommerce' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Required for VATSense API. Your key is stored encrypted.', 'taxzen-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// Alert Email.
-		echo '<div class="taxpilot-field">';
-		echo '<label for="alert_email">' . esc_html__( 'Alert Email', 'taxpilot-for-woocommerce' ) . '</label>';
+		echo '<div class="taxzen-field">';
+		echo '<label for="alert_email">' . esc_html__( 'Alert Email', 'taxzen-for-woocommerce' ) . '</label>';
 		echo '<input type="email" id="alert_email" name="alert_email" value="' . esc_attr( $settings['alert_email'] ?? '' ) . '" class="regular-text" />';
-		echo '<p class="description">' . esc_html__( 'Email address for tax rate change alerts.', 'taxpilot-for-woocommerce' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Email address for tax rate change alerts.', 'taxzen-for-woocommerce' ) . '</p>';
 		echo '</div>';
 
 		// Alerts Enabled.
-		echo '<div class="taxpilot-field">';
+		echo '<div class="taxzen-field">';
 		echo '<label>';
 		echo '<input type="checkbox" name="alerts_enabled" value="1"' . checked( $settings['alerts_enabled'] ?? true, true, false ) . ' /> ';
-		echo esc_html__( 'Enable email alerts for tax rate changes', 'taxpilot-for-woocommerce' );
+		echo esc_html__( 'Enable email alerts for tax rate changes', 'taxzen-for-woocommerce' );
 		echo '</label>';
 		echo '</div>';
 
 		// Refresh Interval.
-		echo '<div class="taxpilot-field">';
-		echo '<label for="refresh_interval">' . esc_html__( 'Rate Refresh Interval', 'taxpilot-for-woocommerce' ) . '</label>';
+		echo '<div class="taxzen-field">';
+		echo '<label for="refresh_interval">' . esc_html__( 'Rate Refresh Interval', 'taxzen-for-woocommerce' ) . '</label>';
 		echo '<select id="refresh_interval" name="refresh_interval" class="regular-text">';
-		echo '<option value="daily"' . selected( $settings['refresh_interval'] ?? 'daily', 'daily', false ) . '>' . esc_html__( 'Daily', 'taxpilot-for-woocommerce' ) . '</option>';
-		echo '<option value="weekly"' . selected( $settings['refresh_interval'] ?? '', 'weekly', false ) . '>' . esc_html__( 'Weekly', 'taxpilot-for-woocommerce' ) . '</option>';
-		echo '<option value="manual"' . selected( $settings['refresh_interval'] ?? '', 'manual', false ) . '>' . esc_html__( 'Manual Only', 'taxpilot-for-woocommerce' ) . '</option>';
+		echo '<option value="daily"' . selected( $settings['refresh_interval'] ?? 'daily', 'daily', false ) . '>' . esc_html__( 'Daily', 'taxzen-for-woocommerce' ) . '</option>';
+		echo '<option value="weekly"' . selected( $settings['refresh_interval'] ?? '', 'weekly', false ) . '>' . esc_html__( 'Weekly', 'taxzen-for-woocommerce' ) . '</option>';
+		echo '<option value="manual"' . selected( $settings['refresh_interval'] ?? '', 'manual', false ) . '>' . esc_html__( 'Manual Only', 'taxzen-for-woocommerce' ) . '</option>';
 		echo '</select>';
 		echo '</div>';
 
-		submit_button( __( 'Save Settings', 'taxpilot-for-woocommerce' ) );
+		submit_button( __( 'Save Settings', 'taxzen-for-woocommerce' ) );
 
 		echo '</form>';
 		echo '</div>';
@@ -173,11 +173,11 @@ class AdminMenu {
 			return;
 		}
 
-		if ( ! isset( $_POST['taxpilot_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['taxpilot_settings_nonce'] ) ), 'taxpilot_save_settings' ) ) {
+		if ( ! isset( $_POST['taxzen_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['taxzen_settings_nonce'] ) ), 'taxzen_save_settings' ) ) {
 			return;
 		}
 
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		$settings['api_provider']     = sanitize_text_field( wp_unslash( $_POST['api_provider'] ?? 'static' ) );
 		$settings['api_key']          = sanitize_text_field( wp_unslash( $_POST['api_key'] ?? '' ) );
@@ -185,12 +185,12 @@ class AdminMenu {
 		$settings['alerts_enabled']   = isset( $_POST['alerts_enabled'] );
 		$settings['refresh_interval'] = sanitize_text_field( wp_unslash( $_POST['refresh_interval'] ?? 'daily' ) );
 
-		update_option( 'taxpilot_settings', $settings );
+		update_option( 'taxzen_settings', $settings );
 
 		add_action(
 			'admin_notices',
 			function () {
-				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'taxpilot-for-woocommerce' ) . '</p></div>';
+				echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Settings saved.', 'taxzen-for-woocommerce' ) . '</p></div>';
 			}
 		);
 	}

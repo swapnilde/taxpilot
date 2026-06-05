@@ -2,17 +2,17 @@
 /**
  * WooCommerce Settings tab integration.
  *
- * @package TaxPilot\Admin
+ * @package TaxZen\Admin
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Admin;
+namespace TaxZen\Admin;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Adds a TaxPilot tab under WooCommerce → Settings.
+ * Adds a TaxZen tab under WooCommerce → Settings.
  */
 class SettingsPage {
 
@@ -21,30 +21,30 @@ class SettingsPage {
 	 */
 	public function register(): void {
 		add_filter( 'woocommerce_settings_tabs_array', [ $this, 'add_settings_tab' ], 50 );
-		add_action( 'woocommerce_settings_tabs_taxpilot', [ $this, 'output_settings' ] );
-		add_action( 'woocommerce_update_options_taxpilot', [ $this, 'save_settings' ] );
+		add_action( 'woocommerce_settings_tabs_taxzen', [ $this, 'output_settings' ] );
+		add_action( 'woocommerce_update_options_taxzen', [ $this, 'save_settings' ] );
 	}
 
 	/**
-	 * Add TaxPilot tab to WooCommerce settings.
+	 * Add TaxZen tab to WooCommerce settings.
 	 *
 	 * @param array $tabs Existing tabs.
 	 * @return array Modified tabs.
 	 */
 	public function add_settings_tab( array $tabs ): array {
-		$tabs['taxpilot'] = __( 'TaxPilot', 'taxpilot-for-woocommerce' );
+		$tabs['taxzen'] = __( 'TaxZen', 'taxzen-for-woocommerce' );
 		return $tabs;
 	}
 
 	/**
-	 * Output the settings for the TaxPilot tab.
+	 * Output the settings for the TaxZen tab.
 	 */
 	public function output_settings(): void {
 		woocommerce_admin_fields( $this->get_settings() );
 	}
 
 	/**
-	 * Save the settings for the TaxPilot tab.
+	 * Save the settings for the TaxZen tab.
 	 */
 	public function save_settings(): void {
 		woocommerce_update_options( $this->get_settings() );
@@ -58,40 +58,40 @@ class SettingsPage {
 	private function get_settings(): array {
 		return [
 			[
-				'title' => __( 'TaxPilot Settings', 'taxpilot-for-woocommerce' ),
+				'title' => __( 'TaxZen Settings', 'taxzen-for-woocommerce' ),
 				'type'  => 'title',
-				'desc'  => __( 'Configure TaxPilot integration with WooCommerce.', 'taxpilot-for-woocommerce' ),
-				'id'    => 'taxpilot_woo_settings_start',
+				'desc'  => __( 'Configure TaxZen integration with WooCommerce.', 'taxzen-for-woocommerce' ),
+				'id'    => 'taxzen_woo_settings_start',
 			],
 			[
-				'title'   => __( 'Enable Tax Wizard', 'taxpilot-for-woocommerce' ),
-				'desc'    => __( 'Allow TaxPilot to manage tax rates in WooCommerce.', 'taxpilot-for-woocommerce' ),
-				'id'      => 'taxpilot_woo_enabled',
+				'title'   => __( 'Enable Tax Wizard', 'taxzen-for-woocommerce' ),
+				'desc'    => __( 'Allow TaxZen to manage tax rates in WooCommerce.', 'taxzen-for-woocommerce' ),
+				'id'      => 'taxzen_woo_enabled',
 				'default' => 'yes',
 				'type'    => 'checkbox',
 			],
 			[
-				'title'   => __( 'Override Existing Rates', 'taxpilot-for-woocommerce' ),
-				'desc'    => __( 'When applying rates, replace any existing WooCommerce tax rates.', 'taxpilot-for-woocommerce' ),
-				'id'      => 'taxpilot_woo_override_rates',
+				'title'   => __( 'Override Existing Rates', 'taxzen-for-woocommerce' ),
+				'desc'    => __( 'When applying rates, replace any existing WooCommerce tax rates.', 'taxzen-for-woocommerce' ),
+				'id'      => 'taxzen_woo_override_rates',
 				'default' => 'no',
 				'type'    => 'checkbox',
 			],
 			[
-				'title'   => __( 'Tax Display', 'taxpilot-for-woocommerce' ),
-				'desc'    => __( 'How to display tax in the cart/checkout.', 'taxpilot-for-woocommerce' ),
-				'id'      => 'taxpilot_woo_tax_display',
+				'title'   => __( 'Tax Display', 'taxzen-for-woocommerce' ),
+				'desc'    => __( 'How to display tax in the cart/checkout.', 'taxzen-for-woocommerce' ),
+				'id'      => 'taxzen_woo_tax_display',
 				'default' => 'inherit',
 				'type'    => 'select',
 				'options' => [
-					'inherit' => __( 'Use WooCommerce default', 'taxpilot-for-woocommerce' ),
-					'incl'    => __( 'Including tax', 'taxpilot-for-woocommerce' ),
-					'excl'    => __( 'Excluding tax', 'taxpilot-for-woocommerce' ),
+					'inherit' => __( 'Use WooCommerce default', 'taxzen-for-woocommerce' ),
+					'incl'    => __( 'Including tax', 'taxzen-for-woocommerce' ),
+					'excl'    => __( 'Excluding tax', 'taxzen-for-woocommerce' ),
 				],
 			],
 			[
 				'type' => 'sectionend',
-				'id'   => 'taxpilot_woo_settings_end',
+				'id'   => 'taxzen_woo_settings_end',
 			],
 		];
 	}

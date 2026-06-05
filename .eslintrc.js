@@ -17,7 +17,7 @@ module.exports = {
 		// Enforce correct text domain.
 		'@wordpress/i18n-text-domain': [
 			'error',
-			{ allowedTextDomain: 'taxpilot-for-woocommerce' },
+			{ allowedTextDomain: 'taxzen-for-woocommerce' },
 		],
 	},
 	settings: {

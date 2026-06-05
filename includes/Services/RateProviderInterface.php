@@ -2,12 +2,12 @@
 /**
  * Rate provider interface.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
 /**
  * Contract for tax rate data providers.

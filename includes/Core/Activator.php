@@ -2,14 +2,14 @@
 /**
  * Plugin activator.
  *
- * @package TaxPilot\Core
+ * @package TaxZen\Core
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Core;
+namespace TaxZen\Core;
 
-use TaxPilot\Database\Migrator;
+use TaxZen\Database\Migrator;
 
 /**
  * Handles plugin activation tasks.
@@ -30,8 +30,8 @@ class Activator {
 		self::schedule_events();
 
 		// Record installation time.
-		if ( ! get_option( 'taxpilot_installed_at' ) ) {
-			update_option( 'taxpilot_installed_at', time() );
+		if ( ! get_option( 'taxzen_installed_at' ) ) {
+			update_option( 'taxzen_installed_at', time() );
 		}
 
 		// Auto-enable WooCommerce tax calculation.
@@ -60,8 +60,8 @@ class Activator {
 			'wizard_completed' => false,
 		];
 
-		if ( ! get_option( 'taxpilot_settings' ) ) {
-			add_option( 'taxpilot_settings', $defaults );
+		if ( ! get_option( 'taxzen_settings' ) ) {
+			add_option( 'taxzen_settings', $defaults );
 		}
 	}
 
@@ -69,14 +69,14 @@ class Activator {
 	 * Schedule cron events.
 	 */
 	private static function schedule_events(): void {
-		if ( ! wp_next_scheduled( 'taxpilot_daily_rate_check' ) ) {
-			wp_schedule_event( time(), 'daily', 'taxpilot_daily_rate_check' );
+		if ( ! wp_next_scheduled( 'taxzen_daily_rate_check' ) ) {
+			wp_schedule_event( time(), 'daily', 'taxzen_daily_rate_check' );
 		}
-		if ( ! wp_next_scheduled( 'taxpilot_weekly_report' ) ) {
-			wp_schedule_event( time(), 'weekly', 'taxpilot_weekly_report' );
+		if ( ! wp_next_scheduled( 'taxzen_weekly_report' ) ) {
+			wp_schedule_event( time(), 'weekly', 'taxzen_weekly_report' );
 		}
-		if ( ! wp_next_scheduled( 'taxpilot_sync_dynamic_rates' ) ) {
-			wp_schedule_event( time(), 'weekly', 'taxpilot_sync_dynamic_rates' );
+		if ( ! wp_next_scheduled( 'taxzen_sync_dynamic_rates' ) ) {
+			wp_schedule_event( time(), 'weekly', 'taxzen_sync_dynamic_rates' );
 		}
 	}
 }

@@ -1,5 +1,5 @@
 {
-	"name": "taxpilot/taxpilot",
+	"name": "taxzen/taxzen-for-woocommerce",
 	"description": "Smart tax configuration wizard for WooCommerce.",
 	"type": "wordpress-plugin",
 	"license": "GPL-2.0-or-later",
@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"TaxPilot\\": "includes/"
+			"TaxZen\\": "includes/"
 		}
 	},
 	"config": {

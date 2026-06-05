@@ -2,12 +2,12 @@
 /**
  * Static rates provider.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
 /**
  * Provides tax rates from the bundled static JSON file.
@@ -40,7 +40,7 @@ class StaticRatesProvider implements RateProviderInterface {
 		$rates        = [];
 
 		// Get the product types selected in the wizard to know which classes to populate.
-		$settings      = get_option( 'taxpilot_settings', [] );
+		$settings      = get_option( 'taxzen_settings', [] );
 		$product_types = $settings['product_types'] ?? [];
 		$tax_name      = $country_data['tax_name'] ?? 'Tax';
 		$country_name  = $country_data['name'];
@@ -224,8 +224,8 @@ class StaticRatesProvider implements RateProviderInterface {
 		}
 
 		$upload_dir   = wp_upload_dir();
-		$dynamic_file = $upload_dir['basedir'] . '/taxpilot/dynamic-rates.json';
-		$static_file  = TAXPILOT_PATH . 'data/static-rates.json';
+		$dynamic_file = $upload_dir['basedir'] . '/taxzen/dynamic-rates.json';
+		$static_file  = TAXZEN_PATH . 'data/static-rates.json';
 
 		$file_to_load = '';
 

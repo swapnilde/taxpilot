@@ -2,15 +2,15 @@
 /**
  * Tax rate service — main facade.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
-use TaxPilot\Database\RatesTable;
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\RatesTable;
+use TaxZen\Database\LogsTable;
 
 /**
  * Facade service for tax rate operations.
@@ -29,7 +29,7 @@ class TaxRateService {
 	 * @return RateProviderInterface
 	 */
 	public function get_provider(): RateProviderInterface {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 		$provider = $settings['api_provider'] ?? 'static';
 
 		return match ( $provider ) {
@@ -49,7 +49,7 @@ class TaxRateService {
 
 		foreach ( $countries as $country_code ) {
 			$country_code = strtoupper( $country_code );
-			$cache_key    = 'taxpilot_rates_' . $country_code;
+			$cache_key    = 'taxzen_rates_' . $country_code;
 
 			// Try cache first.
 			$cached = get_transient( $cache_key );
@@ -81,7 +81,7 @@ class TaxRateService {
 
 		foreach ( $countries as $country_code ) {
 			$country_code = strtoupper( $country_code );
-			$cache_key    = 'taxpilot_rates_' . $country_code;
+			$cache_key    = 'taxzen_rates_' . $country_code;
 
 			// Clear cache.
 			delete_transient( $cache_key );

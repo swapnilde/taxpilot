@@ -2,20 +2,20 @@
 /**
  * Dynamic Rates Aggregator.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\LogsTable;
 
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Connects to open-source JSON projects, reformats their raw data into TaxPilot's
- * schema, and saves the final result locally into uploads/taxpilot/dynamic-rates.json.
+ * Connects to open-source JSON projects, reformats their raw data into TaxZen's
+ * schema, and saves the final result locally into uploads/taxzen/dynamic-rates.json.
  */
 class RatesAggregator {
 
@@ -69,10 +69,10 @@ class RatesAggregator {
 	}
 
 	/**
-	 * Transform the external schema into TaxPilot's internal schema.
+	 * Transform the external schema into TaxZen's internal schema.
 	 *
 	 * @param array $raw Incoming external JSON schema.
-	 * @return array TaxPilot's internal static-rates schema.
+	 * @return array TaxZen's internal static-rates schema.
 	 */
 	private function transform( array $raw ): array {
 		$schema = [];
@@ -115,7 +115,7 @@ class RatesAggregator {
 	}
 
 	/**
-	 * Writes the standardized payload securely into the wp-content/uploads/taxpilot dir.
+	 * Writes the standardized payload securely into the wp-content/uploads/taxzen dir.
 	 *
 	 * @param array $payload The finalized internal schema.
 	 * @return bool
@@ -129,7 +129,7 @@ class RatesAggregator {
 		}
 
 		$upload_dir = wp_upload_dir();
-		$plugin_dir = $upload_dir['basedir'] . '/taxpilot';
+		$plugin_dir = $upload_dir['basedir'] . '/taxzen';
 
 		if ( ! $wp_filesystem->is_dir( $plugin_dir ) ) {
 			$wp_filesystem->mkdir( $plugin_dir, FS_CHMOD_DIR );

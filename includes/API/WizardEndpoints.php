@@ -2,16 +2,16 @@
 /**
  * Wizard REST API endpoints.
  *
- * @package TaxPilot\API
+ * @package TaxZen\API
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\API;
+namespace TaxZen\API;
 
-use TaxPilot\Database\LogsTable;
-use TaxPilot\Services\TaxRateService;
-use TaxPilot\Services\WooTaxSync;
+use TaxZen\Database\LogsTable;
+use TaxZen\Services\TaxRateService;
+use TaxZen\Services\WooTaxSync;
 use WP_REST_Controller;
 use WP_REST_Request;
 use WP_REST_Response;
@@ -27,7 +27,7 @@ class WizardEndpoints extends WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'taxpilot/v1';
+	protected $namespace = 'taxzen/v1';
 
 	/**
 	 * Register routes.
@@ -146,7 +146,7 @@ class WizardEndpoints extends WP_REST_Controller {
 	 * Step 1 GET: Get current store setup.
 	 */
 	public function get_store_setup(): WP_REST_Response {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		// Auto-detect from WooCommerce if not set.
 		$country  = $settings['base_country'] ?? '';
@@ -181,10 +181,10 @@ class WizardEndpoints extends WP_REST_Controller {
 		$country  = $request->get_param( 'country' );
 		$currency = $request->get_param( 'currency' );
 
-		$settings                  = get_option( 'taxpilot_settings', [] );
+		$settings                  = get_option( 'taxzen_settings', [] );
 		$settings['base_country']  = strtoupper( $country );
 		$settings['base_currency'] = strtoupper( $currency );
-		update_option( 'taxpilot_settings', $settings );
+		update_option( 'taxzen_settings', $settings );
 
 		// Also update WooCommerce settings.
 		update_option( 'woocommerce_default_country', strtoupper( $country ) );
@@ -219,9 +219,9 @@ class WizardEndpoints extends WP_REST_Controller {
 		$allowed_types = [ 'physical', 'digital', 'services' ];
 		$types         = array_intersect( $types, $allowed_types );
 
-		$settings                  = get_option( 'taxpilot_settings', [] );
+		$settings                  = get_option( 'taxzen_settings', [] );
 		$settings['product_types'] = array_values( $types );
-		update_option( 'taxpilot_settings', $settings );
+		update_option( 'taxzen_settings', $settings );
 
 		// Create corresponding WooCommerce tax classes.
 		$tax_class_map = [
@@ -278,9 +278,9 @@ class WizardEndpoints extends WP_REST_Controller {
 		);
 		$countries = array_map( 'strtoupper', $countries );
 
-		$settings                     = get_option( 'taxpilot_settings', [] );
+		$settings                     = get_option( 'taxzen_settings', [] );
 		$settings['target_countries'] = array_values( $countries );
-		update_option( 'taxpilot_settings', $settings );
+		update_option( 'taxzen_settings', $settings );
 
 		LogsTable::insert( 'wizard_target_countries', wp_json_encode( [ 'countries' => $countries ] ) );
 
@@ -297,7 +297,7 @@ class WizardEndpoints extends WP_REST_Controller {
 	 * Step 4: Preview rates for selected countries.
 	 */
 	public function preview_rates(): WP_REST_Response {
-		$settings  = get_option( 'taxpilot_settings', [] );
+		$settings  = get_option( 'taxzen_settings', [] );
 		$countries = $settings['target_countries'] ?? [];
 
 		if ( empty( $countries ) ) {
@@ -321,7 +321,7 @@ class WizardEndpoints extends WP_REST_Controller {
 	 * Step 5: Apply rates to WooCommerce.
 	 */
 	public function apply_rates(): WP_REST_Response {
-		$settings  = get_option( 'taxpilot_settings', [] );
+		$settings  = get_option( 'taxzen_settings', [] );
 		$countries = $settings['target_countries'] ?? [];
 
 		if ( empty( $countries ) ) {
@@ -336,7 +336,7 @@ class WizardEndpoints extends WP_REST_Controller {
 
 		// Mark wizard as completed.
 		$settings['wizard_completed'] = true;
-		update_option( 'taxpilot_settings', $settings );
+		update_option( 'taxzen_settings', $settings );
 
 		LogsTable::insert(
 			'wizard_apply_rates',
@@ -363,7 +363,7 @@ class WizardEndpoints extends WP_REST_Controller {
 	 * Get current wizard state (for resuming).
 	 */
 	public function get_wizard_state(): WP_REST_Response {
-		$settings = get_option( 'taxpilot_settings', [] );
+		$settings = get_option( 'taxzen_settings', [] );
 
 		return new WP_REST_Response(
 			[

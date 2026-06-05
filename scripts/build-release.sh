@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# TaxPilot for WooCommerce — WordPress.org Release Packager
+# Taxzen for WooCommerce — WordPress.org Release Packager
 # This script bundles the plugin into a clean, production-ready .zip file
 # for submission to the WordPress.org SVN repository.
 
@@ -8,17 +8,17 @@
 set -e
 
 # Configuration
-PLUGIN_SLUG="taxpilot"
+PLUGIN_SLUG="taxzen-for-woocommerce"
 VERSION=$(grep -o "Stable tag: [0-9\.]*" readme.txt | cut -d' ' -f3)
 BUILD_DIR="release-build"
 ZIP_NAME="${PLUGIN_SLUG}-${VERSION}.zip"
 
 echo "==========================================="
-echo "📦 Building TaxPilot Release v${VERSION}"
+echo "📦 Building Taxzen Release v${VERSION}"
 echo "==========================================="
 
 # Ensure we're in the plugin root
-if [ ! -f "taxpilot.php" ]; then
+if [ ! -f "taxzen-for-woocommerce.php" ]; then
     echo "❌ Error: Must run from the plugin root directory."
     exit 1
 fi
@@ -31,7 +31,7 @@ mkdir -p $BUILD_DIR/$PLUGIN_SLUG
 
 # Step 2: Build fresh production assets
 echo "🏗️ Building fresh JavaScript/CSS assets..."
-npm run build --silent
+./node_modules/.bin/wp-scripts build
 
 # Step 3: Copy files while respecting .distignore
 echo "📂 Copying files to build directory..."

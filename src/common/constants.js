@@ -1,8 +1,8 @@
 /**
- * TaxPilot for WooCommerce — Shared constants.
+ * TaxZen for WooCommerce — Shared constants.
  */
 
-export const REST_NAMESPACE = 'taxpilot/v1';
+export const REST_NAMESPACE = 'taxzen/v1';
 
 export const WIZARD_STEPS = [
 	{ key: 'store-setup', label: 'Store Setup', number: 1 },

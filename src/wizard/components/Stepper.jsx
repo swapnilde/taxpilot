@@ -10,7 +10,7 @@ export default function Stepper( {
 	onStepClick,
 } ) {
 	return (
-		<div className="taxpilot-stepper">
+		<div className="taxzen-stepper">
 			{ steps.map( ( step, index ) => {
 				let status = 'inactive';
 				if ( index < currentStep ) {
@@ -25,12 +25,12 @@ export default function Stepper( {
 				return (
 					<div
 						key={ step.key }
-						className="taxpilot-step-wrapper"
+						className="taxzen-step-wrapper"
 						style={ { display: 'flex', alignItems: 'center' } }
 					>
 						<div
-							className={ `taxpilot-step taxpilot-step--${ status }${
-								isClickable ? ' taxpilot-step--clickable' : ''
+							className={ `taxzen-step taxzen-step--${ status }${
+								isClickable ? ' taxzen-step--clickable' : ''
 							}` }
 							onClick={
 								isClickable
@@ -50,23 +50,23 @@ export default function Stepper( {
 								isClickable
 									? `${ __(
 											'Go back to',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 									  ) } ${ step.label }`
 									: undefined
 							}
 						>
-							<span className="taxpilot-step-number">
+							<span className="taxzen-step-number">
 								{ status === 'completed' ? '✓' : step.number }
 							</span>
-							<span className="taxpilot-step-label">
+							<span className="taxzen-step-label">
 								{ step.label }
 							</span>
 						</div>
 						{ index < steps.length - 1 && (
 							<div
-								className={ `taxpilot-step-connector${
+								className={ `taxzen-step-connector${
 									index < currentStep
-										? ' taxpilot-step-connector--completed'
+										? ' taxzen-step-connector--completed'
 										: ''
 								}` }
 							/>

@@ -1,10 +1,10 @@
 /**
- * TaxPilot for WooCommerce — Dashboard Entry Point.
+ * TaxZen for WooCommerce — Dashboard Entry Point.
  */
 import { createRoot, render } from '@wordpress/element';
 import App from './App';
 
-const rootEl = document.getElementById( 'taxpilot-dashboard-root' );
+const rootEl = document.getElementById( 'taxzen-dashboard-root' );
 if ( rootEl ) {
 	if ( createRoot ) {
 		const root = createRoot( rootEl );

@@ -71,7 +71,7 @@ export default function TargetCountries( {
 			showNotice(
 				__(
 					'Please select at least one country.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -84,13 +84,13 @@ export default function TargetCountries( {
 			showNotice(
 				`${ selected.length } ${ __(
 					'countries selected!',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }`
 			);
 			onNext();
 		} catch {
 			showNotice(
-				__( 'Failed to save countries.', 'taxpilot-for-woocommerce' ),
+				__( 'Failed to save countries.', 'taxzen-for-woocommerce' ),
 				'error'
 			);
 		} finally {
@@ -100,53 +100,53 @@ export default function TargetCountries( {
 
 	return (
 		<div>
-			<h2>{ __( 'Target Countries', 'taxpilot-for-woocommerce' ) }</h2>
+			<h2>{ __( 'Target Countries', 'taxzen-for-woocommerce' ) }</h2>
 			<p className="description">
 				{ __(
 					"Select the countries where you sell. We'll fetch the correct tax rates for each one.",
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }
 			</p>
 
 			{ /* Region presets */ }
-			<div className="taxpilot-region-presets">
+			<div className="taxzen-region-presets">
 				{ Object.entries( REGION_PRESETS ).map( ( [ key, preset ] ) => (
 					<button
 						key={ key }
-						className="taxpilot-region-btn"
+						className="taxzen-region-btn"
 						onClick={ () => toggleRegion( key ) }
 					>
 						{ preset.label }
 					</button>
 				) ) }
-				<button className="taxpilot-region-btn" onClick={ selectAll }>
-					{ __( 'Select All', 'taxpilot-for-woocommerce' ) }
+				<button className="taxzen-region-btn" onClick={ selectAll }>
+					{ __( 'Select All', 'taxzen-for-woocommerce' ) }
 				</button>
-				<button className="taxpilot-region-btn" onClick={ clearAll }>
-					{ __( 'Clear All', 'taxpilot-for-woocommerce' ) }
+				<button className="taxzen-region-btn" onClick={ clearAll }>
+					{ __( 'Clear All', 'taxzen-for-woocommerce' ) }
 				</button>
 			</div>
 
 			{ /* Search */ }
 			<input
 				type="text"
-				className="taxpilot-search"
+				className="taxzen-search"
 				placeholder={ __(
 					'Search countries…',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }
 				value={ search }
 				onChange={ ( e ) => setSearch( e.target.value ) }
 			/>
 
 			{ /* Country grid */ }
-			<div className="taxpilot-country-grid">
+			<div className="taxzen-country-grid">
 				{ filteredCountries.map( ( [ code, name ] ) => (
 					<div
 						key={ code }
-						className={ `taxpilot-country-item${
+						className={ `taxzen-country-item${
 							selected.includes( code )
-								? ' taxpilot-country-item--selected'
+								? ' taxzen-country-item--selected'
 								: ''
 						}` }
 						onClick={ () => toggleCountry( code ) }
@@ -171,24 +171,24 @@ export default function TargetCountries( {
 				} }
 			>
 				{ selected.length }{ ' ' }
-				{ __( 'countries selected', 'taxpilot-for-woocommerce' ) }
+				{ __( 'countries selected', 'taxzen-for-woocommerce' ) }
 			</p>
 
-			<div className="taxpilot-step-actions">
+			<div className="taxzen-step-actions">
 				<button
-					className="taxpilot-btn taxpilot-btn--secondary"
+					className="taxzen-btn taxzen-btn--secondary"
 					onClick={ onBack }
 				>
-					{ __( '← Back', 'taxpilot-for-woocommerce' ) }
+					{ __( '← Back', 'taxzen-for-woocommerce' ) }
 				</button>
 				<button
-					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+					className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					onClick={ handleNext }
 					disabled={ saving }
 				>
 					{ saving
-						? __( 'Saving…', 'taxpilot-for-woocommerce' )
-						: __( 'Continue →', 'taxpilot-for-woocommerce' ) }
+						? __( 'Saving…', 'taxzen-for-woocommerce' )
+						: __( 'Continue →', 'taxzen-for-woocommerce' ) }
 				</button>
 			</div>
 		</div>

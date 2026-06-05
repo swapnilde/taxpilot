@@ -1,5 +1,5 @@
 /**
- * TaxPilot for WooCommerce — Dashboard App.
+ * TaxZen for WooCommerce — Dashboard App.
  */
 import { useState, useEffect } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
@@ -71,8 +71,8 @@ export default function App() {
 	};
 
 	const handleExportCSV = () => {
-		const baseUrl = window.taxPilotData?.restUrl || '/wp-json/taxpilot/v1/';
-		const nonce = window.taxPilotData?.nonce || '';
+		const baseUrl = window.taxZenData?.restUrl || '/wp-json/taxzen/v1/';
+		const nonce = window.taxZenData?.nonce || '';
 		const url = `${ baseUrl }reports/csv${
 			nonce ? '?_wpnonce=' + nonce : ''
 		}`;
@@ -80,8 +80,8 @@ export default function App() {
 	};
 
 	const handleExportPDF = () => {
-		const baseUrl = window.taxPilotData?.restUrl || '/wp-json/taxpilot/v1/';
-		const nonce = window.taxPilotData?.nonce || '';
+		const baseUrl = window.taxZenData?.restUrl || '/wp-json/taxzen/v1/';
+		const nonce = window.taxZenData?.nonce || '';
 		const url = `${ baseUrl }reports/pdf${
 			nonce ? '?_wpnonce=' + nonce : ''
 		}`;
@@ -89,8 +89,8 @@ export default function App() {
 	};
 
 	const handleExportOSS = () => {
-		const baseUrl = window.taxPilotData?.restUrl || '/wp-json/taxpilot/v1/';
-		const nonce = window.taxPilotData?.nonce || '';
+		const baseUrl = window.taxZenData?.restUrl || '/wp-json/taxzen/v1/';
+		const nonce = window.taxZenData?.nonce || '';
 		const url = `${ baseUrl }reports/oss/csv?year=${ ossYear }&quarter=${ ossQuarter }${
 			nonce ? '&_wpnonce=' + nonce : ''
 		}`;
@@ -99,153 +99,153 @@ export default function App() {
 
 	if ( loading ) {
 		return (
-			<div className="taxpilot-loading">
-				<div className="taxpilot-spinner taxpilot-spinner--lg"></div>
-				<span className="taxpilot-loading-text">
-					{ __( 'Loading dashboard…', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-loading">
+				<div className="taxzen-spinner taxzen-spinner--lg"></div>
+				<span className="taxzen-loading-text">
+					{ __( 'Loading dashboard…', 'taxzen-for-woocommerce' ) }
 				</span>
 			</div>
 		);
 	}
 
-	const settings = window.taxPilotData?.settings || {};
+	const settings = window.taxZenData?.settings || {};
 	const wizardCompleted = settings.wizard_completed;
 
 	// Show wizard prompt if not completed.
 	if ( ! wizardCompleted ) {
 		return (
-			<div className="taxpilot-empty">
-				<div className="taxpilot-empty-icon">🧙</div>
-				<h2 className="taxpilot-empty-title">
-					{ __( 'Welcome to TaxPilot!', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-empty">
+				<div className="taxzen-empty-icon">🧙</div>
+				<h2 className="taxzen-empty-title">
+					{ __( 'Welcome to TaxZen!', 'taxzen-for-woocommerce' ) }
 				</h2>
-				<p className="taxpilot-empty-message">
+				<p className="taxzen-empty-message">
 					{ __(
 						'Run the setup wizard to configure your tax rates.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</p>
 				<a
 					href={
-						( window.taxPilotData?.adminUrl || '/wp-admin/' ) +
-						'admin.php?page=taxpilot-wizard'
+						( window.taxZenData?.adminUrl || '/wp-admin/' ) +
+						'admin.php?page=taxzen-wizard'
 					}
-					className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+					className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 					style={ { marginTop: 'var(--tw-space-4)' } }
 				>
-					{ __( 'Start Setup Wizard →', 'taxpilot-for-woocommerce' ) }
+					{ __( 'Start Setup Wizard →', 'taxzen-for-woocommerce' ) }
 				</a>
 			</div>
 		);
 	}
 
 	return (
-		<div className="taxpilot-dashboard">
+		<div className="taxzen-dashboard">
 			{ /* Stats Grid */ }
-			<div className="taxpilot-stats-grid">
-				<div className="taxpilot-stat-card">
-					<div className="taxpilot-stat-label">
-						{ __( 'Total Rates', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-stats-grid">
+				<div className="taxzen-stat-card">
+					<div className="taxzen-stat-label">
+						{ __( 'Total Rates', 'taxzen-for-woocommerce' ) }
 					</div>
-					<div className="taxpilot-stat-value">
+					<div className="taxzen-stat-value">
 						{ stats?.total_rates || 0 }
 					</div>
-					<div className="taxpilot-stat-meta">
-						{ __( 'Active tax rates', 'taxpilot-for-woocommerce' ) }
+					<div className="taxzen-stat-meta">
+						{ __( 'Active tax rates', 'taxzen-for-woocommerce' ) }
 					</div>
 				</div>
-				<div className="taxpilot-stat-card">
-					<div className="taxpilot-stat-label">
-						{ __( 'Countries', 'taxpilot-for-woocommerce' ) }
+				<div className="taxzen-stat-card">
+					<div className="taxzen-stat-label">
+						{ __( 'Countries', 'taxzen-for-woocommerce' ) }
 					</div>
-					<div className="taxpilot-stat-value">
+					<div className="taxzen-stat-value">
 						{ stats?.total_countries || 0 }
 					</div>
-					<div className="taxpilot-stat-meta">
+					<div className="taxzen-stat-meta">
 						{ __(
 							'Countries configured',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</div>
 				</div>
-				<div className="taxpilot-stat-card">
-					<div className="taxpilot-stat-label">
-						{ __( 'Alerts', 'taxpilot-for-woocommerce' ) }
+				<div className="taxzen-stat-card">
+					<div className="taxzen-stat-label">
+						{ __( 'Alerts', 'taxzen-for-woocommerce' ) }
 					</div>
-					<div className="taxpilot-stat-value">{ unreadCount }</div>
-					<div className="taxpilot-stat-meta">
+					<div className="taxzen-stat-value">{ unreadCount }</div>
+					<div className="taxzen-stat-meta">
 						{ __(
 							'Unread notifications',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</div>
 				</div>
-				<div className="taxpilot-stat-card">
-					<div className="taxpilot-stat-label">
-						{ __( 'Last Updated', 'taxpilot-for-woocommerce' ) }
+				<div className="taxzen-stat-card">
+					<div className="taxzen-stat-label">
+						{ __( 'Last Updated', 'taxzen-for-woocommerce' ) }
 					</div>
 					<div
-						className="taxpilot-stat-value"
+						className="taxzen-stat-value"
 						style={ { fontSize: 'var(--tw-font-size-sm)' } }
 					>
 						{ stats?.last_update
 							? new Date( stats.last_update ).toLocaleDateString()
 							: '—' }
 					</div>
-					<div className="taxpilot-stat-meta">
+					<div className="taxzen-stat-meta">
 						{ __(
 							'Rate data refresh',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</div>
 				</div>
 			</div>
 
 			{ /* Action buttons */ }
-			<div className="taxpilot-dashboard-actions">
+			<div className="taxzen-dashboard-actions">
 				<button
-					className="taxpilot-btn taxpilot-btn--primary"
+					className="taxzen-btn taxzen-btn--primary"
 					onClick={ handleRefresh }
 					disabled={ refreshing }
 				>
 					{ refreshing
-						? __( 'Refreshing…', 'taxpilot-for-woocommerce' )
-						: __( '↻ Refresh Rates', 'taxpilot-for-woocommerce' ) }
+						? __( 'Refreshing…', 'taxzen-for-woocommerce' )
+						: __( '↻ Refresh Rates', 'taxzen-for-woocommerce' ) }
 				</button>
 				<button
-					className="taxpilot-btn taxpilot-btn--outline"
+					className="taxzen-btn taxzen-btn--outline"
 					onClick={ handleExportCSV }
 				>
-					{ __( '📄 Export CSV', 'taxpilot-for-woocommerce' ) }
+					{ __( '📄 Export CSV', 'taxzen-for-woocommerce' ) }
 				</button>
 				<button
-					className="taxpilot-btn taxpilot-btn--outline"
+					className="taxzen-btn taxzen-btn--outline"
 					onClick={ handleExportPDF }
 				>
-					{ __( '📥 Export PDF', 'taxpilot-for-woocommerce' ) }
+					{ __( '📥 Export PDF', 'taxzen-for-woocommerce' ) }
 				</button>
 				<a
 					href={
-						( window.taxPilotData?.adminUrl || '/wp-admin/' ) +
-						'admin.php?page=taxpilot-wizard&restart=1'
+						( window.taxZenData?.adminUrl || '/wp-admin/' ) +
+						'admin.php?page=taxzen-wizard&restart=1'
 					}
-					className="taxpilot-btn taxpilot-btn--secondary"
+					className="taxzen-btn taxzen-btn--secondary"
 				>
-					{ __( '🧙 Re-run Wizard', 'taxpilot-for-woocommerce' ) }
+					{ __( '🧙 Re-run Wizard', 'taxzen-for-woocommerce' ) }
 				</a>
 			</div>
 
 			{ /* OSS Report Generator */ }
 			<div
-				className="taxpilot-card"
+				className="taxzen-card"
 				style={ { marginBottom: 'var(--tw-space-6)' } }
 			>
-				<div className="taxpilot-card-header">
-					<h3 className="taxpilot-card-title">
+				<div className="taxzen-card-header">
+					<h3 className="taxzen-card-title">
 						🇪🇺{ ' ' }
 						{ __(
 							'EU OSS/MOSS Report Generator',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</h3>
 				</div>
@@ -287,35 +287,35 @@ export default function App() {
 						<option value="1">
 							{ __(
 								'Q1 (Jan - Mar)',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</option>
 						<option value="2">
 							{ __(
 								'Q2 (Apr - Jun)',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</option>
 						<option value="3">
 							{ __(
 								'Q3 (Jul - Sep)',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</option>
 						<option value="4">
 							{ __(
 								'Q4 (Oct - Dec)',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</option>
 					</select>
 					<button
-						className="taxpilot-btn taxpilot-btn--primary"
+						className="taxzen-btn taxzen-btn--primary"
 						onClick={ handleExportOSS }
 					>
 						{ __(
 							'📥 Export OSS CSV',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</button>
 				</div>
@@ -328,64 +328,64 @@ export default function App() {
 				>
 					{ __(
 						'Automatically aggregates non-B2B WooCommerce orders shipped to EU member states by destination country and tax rate.',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }
 				</p>
 			</div>
 
 			{ /* Rates table */ }
-			<div className="taxpilot-card">
-				<div className="taxpilot-card-header">
-					<h3 className="taxpilot-card-title">
+			<div className="taxzen-card">
+				<div className="taxzen-card-header">
+					<h3 className="taxzen-card-title">
 						{ __(
 							'Current Tax Rates',
-							'taxpilot-for-woocommerce'
+							'taxzen-for-woocommerce'
 						) }
 					</h3>
-					<span className="taxpilot-badge taxpilot-badge--info">
+					<span className="taxzen-badge taxzen-badge--info">
 						{ rates.length }{ ' ' }
-						{ __( 'rates', 'taxpilot-for-woocommerce' ) }
+						{ __( 'rates', 'taxzen-for-woocommerce' ) }
 					</span>
 				</div>
 				{ rates.length > 0 ? (
-					<div className="taxpilot-table-scrollable">
-						<table className="taxpilot-table">
+					<div className="taxzen-table-scrollable">
+						<table className="taxzen-table">
 							<thead>
 								<tr>
 									<th>
 										{ __(
 											'Country',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 									<th>
 										{ __(
 											'State',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 									<th>
 										{ __(
 											'Rate',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 									<th>
 										{ __(
 											'Name',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 									<th>
 										{ __(
 											'Type',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 									<th>
 										{ __(
 											'Source',
-											'taxpilot-for-woocommerce'
+											'taxzen-for-woocommerce'
 										) }
 									</th>
 								</tr>
@@ -428,7 +428,7 @@ export default function App() {
 										<td>{ rate.rate_name }</td>
 										<td>
 											<span
-												className={ `taxpilot-badge taxpilot-badge--${
+												className={ `taxzen-badge taxzen-badge--${
 													rate.rate_type ===
 													'standard'
 														? 'success'
@@ -440,7 +440,7 @@ export default function App() {
 										</td>
 										<td>
 											<span
-												className={ `taxpilot-badge taxpilot-badge--${
+												className={ `taxzen-badge taxzen-badge--${
 													rate.source === 'static'
 														? 'warning'
 														: 'success'
@@ -455,11 +455,11 @@ export default function App() {
 						</table>
 					</div>
 				) : (
-					<div className="taxpilot-empty">
-						<p className="taxpilot-empty-message">
+					<div className="taxzen-empty">
+						<p className="taxzen-empty-message">
 							{ __(
 								'No tax rates configured yet.',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</p>
 					</div>
@@ -467,13 +467,13 @@ export default function App() {
 			</div>
 
 			{ /* Alerts */ }
-			<div className="taxpilot-card">
-				<div className="taxpilot-card-header">
-					<h3 className="taxpilot-card-title">
-						{ __( 'Recent Alerts', 'taxpilot-for-woocommerce' ) }
+			<div className="taxzen-card">
+				<div className="taxzen-card-header">
+					<h3 className="taxzen-card-title">
+						{ __( 'Recent Alerts', 'taxzen-for-woocommerce' ) }
 						{ unreadCount > 0 && (
 							<span
-								className="taxpilot-badge taxpilot-badge--danger"
+								className="taxzen-badge taxzen-badge--danger"
 								style={ { marginLeft: '8px' } }
 							>
 								{ unreadCount }
@@ -482,13 +482,13 @@ export default function App() {
 					</h3>
 					{ unreadCount > 0 && (
 						<button
-							className="taxpilot-btn taxpilot-btn--secondary"
+							className="taxzen-btn taxzen-btn--secondary"
 							onClick={ handleMarkAllRead }
 							style={ { fontSize: 'var(--tw-font-size-xs)' } }
 						>
 							{ __(
 								'Mark all read',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</button>
 					) }
@@ -498,7 +498,7 @@ export default function App() {
 						{ alerts.map( ( alert ) => (
 							<div
 								key={ alert.id }
-								className="taxpilot-alert-item"
+								className="taxzen-alert-item"
 								style={
 									alert.is_read === '0'
 										? { background: 'var(--tw-primary-50)' }
@@ -506,19 +506,19 @@ export default function App() {
 								}
 							>
 								<div
-									className={ `taxpilot-alert-icon taxpilot-alert-icon--${ alert.severity }` }
+									className={ `taxzen-alert-icon taxzen-alert-icon--${ alert.severity }` }
 								>
 									{ getSeverityIcon( alert.severity ) }
 								</div>
-								<div className="taxpilot-alert-content">
-									<h4 className="taxpilot-alert-title">
+								<div className="taxzen-alert-content">
+									<h4 className="taxzen-alert-title">
 										{ alert.title }
 									</h4>
-									<p className="taxpilot-alert-message">
+									<p className="taxzen-alert-message">
 										{ alert.message }
 									</p>
 								</div>
-								<span className="taxpilot-alert-time">
+								<span className="taxzen-alert-time">
 									{ new Date(
 										alert.created_at
 									).toLocaleDateString() }
@@ -528,13 +528,13 @@ export default function App() {
 					</div>
 				) : (
 					<div
-						className="taxpilot-empty"
+						className="taxzen-empty"
 						style={ { padding: 'var(--tw-space-6)' } }
 					>
-						<p className="taxpilot-empty-message">
+						<p className="taxzen-empty-message">
 							{ __(
 								'No alerts. Everything looks good! ✅',
-								'taxpilot-for-woocommerce'
+								'taxzen-for-woocommerce'
 							) }
 						</p>
 					</div>

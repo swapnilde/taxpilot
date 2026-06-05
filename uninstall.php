@@ -1,11 +1,11 @@
 <?php
 /**
- * TaxPilot for WooCommerce Uninstall.
+ * TaxZen for WooCommerce Uninstall.
  *
  * Fires when the plugin is deleted via WP Admin.
  * Removes all custom DB tables, options, and transients.
  *
- * @package TaxPilot
+ * @package TaxZen
  */
 
 declare( strict_types=1 );
@@ -18,39 +18,39 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 global $wpdb;
 
 // Drop custom tables.
-$taxpilot_tables = [
-	$wpdb->prefix . 'taxpilot_rates',
-	$wpdb->prefix . 'taxpilot_logs',
-	$wpdb->prefix . 'taxpilot_alerts',
+$taxzen_tables = [
+	$wpdb->prefix . 'taxzen_rates',
+	$wpdb->prefix . 'taxzen_logs',
+	$wpdb->prefix . 'taxzen_alerts',
 ];
 
-foreach ( $taxpilot_tables as $taxpilot_table ) {
-	$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $taxpilot_table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+foreach ( $taxzen_tables as $taxzen_table ) {
+	$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $taxzen_table ) ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
 }
 
 // Delete options.
-$taxpilot_options = [
-	'taxpilot_settings',
-	'taxpilot_wizard_state',
-	'taxpilot_db_version',
-	'taxpilot_installed_at',
-	'taxpilot_woo_configured',
-	'taxpilot_rates_last_updated',
-	'taxpilot_woo_enabled',
-	'taxpilot_woo_override_rates',
-	'taxpilot_woo_tax_display',
+$taxzen_options = [
+	'taxzen_settings',
+	'taxzen_wizard_state',
+	'taxzen_db_version',
+	'taxzen_installed_at',
+	'taxzen_woo_configured',
+	'taxzen_rates_last_updated',
+	'taxzen_woo_enabled',
+	'taxzen_woo_override_rates',
+	'taxzen_woo_tax_display',
 ];
 
-foreach ( $taxpilot_options as $taxpilot_option ) {
-	delete_option( $taxpilot_option );
+foreach ( $taxzen_options as $taxzen_option ) {
+	delete_option( $taxzen_option );
 }
 
 // Clean transients.
 // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 $wpdb->query(
-	"DELETE FROM {$wpdb->options} WHERE option_name LIKE '%_transient_taxpilot_%' OR option_name LIKE '%_transient_timeout_taxpilot_%'"
+	"DELETE FROM {$wpdb->options} WHERE option_name LIKE '%_transient_taxzen_%' OR option_name LIKE '%_transient_timeout_taxzen_%'"
 );
 
 // Clear scheduled cron events.
-wp_clear_scheduled_hook( 'taxpilot_daily_rate_check' );
-wp_clear_scheduled_hook( 'taxpilot_weekly_report' );
+wp_clear_scheduled_hook( 'taxzen_daily_rate_check' );
+wp_clear_scheduled_hook( 'taxzen_weekly_report' );

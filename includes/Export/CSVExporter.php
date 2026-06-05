@@ -2,14 +2,14 @@
 /**
  * CSV compliance report exporter.
  *
- * @package TaxPilot\Export
+ * @package TaxZen\Export
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Export;
+namespace TaxZen\Export;
 
-use TaxPilot\Database\RatesTable;
+use TaxZen\Database\RatesTable;
 
 /**
  * Exports tax rates as a CSV compliance report.
@@ -22,7 +22,7 @@ class CSVExporter {
 	public function export(): void {
 		$rates = RatesTable::get_all( [ 'limit' => 10000 ] );
 
-		$filename = 'taxpilot-compliance-report-' . gmdate( 'Y-m-d' ) . '.csv';
+		$filename = 'taxzen-compliance-report-' . gmdate( 'Y-m-d' ) . '.csv';
 
 		header( 'Content-Type: text/csv; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );

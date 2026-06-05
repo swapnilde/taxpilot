@@ -30,7 +30,7 @@ export default function PreviewRates( {
 			showNotice(
 				__(
 					'Failed to fetch rates. Check your settings.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				),
 				'error'
 			);
@@ -45,15 +45,15 @@ export default function PreviewRates( {
 
 	if ( loading ) {
 		return (
-			<div className="taxpilot-loading">
-				<div className="taxpilot-spinner taxpilot-spinner--lg"></div>
-				<span className="taxpilot-loading-text">
+			<div className="taxzen-loading">
+				<div className="taxzen-spinner taxzen-spinner--lg"></div>
+				<span className="taxzen-loading-text">
 					{ __(
 						'Fetching tax rates for',
-						'taxpilot-for-woocommerce'
+						'taxzen-for-woocommerce'
 					) }{ ' ' }
 					{ data.targetCountries?.length || 0 }{ ' ' }
-					{ __( 'countries…', 'taxpilot-for-woocommerce' ) }
+					{ __( 'countries…', 'taxzen-for-woocommerce' ) }
 				</span>
 			</div>
 		);
@@ -61,39 +61,39 @@ export default function PreviewRates( {
 
 	return (
 		<div>
-			<h2>{ __( 'Preview Tax Rates', 'taxpilot-for-woocommerce' ) }</h2>
+			<h2>{ __( 'Preview Tax Rates', 'taxzen-for-woocommerce' ) }</h2>
 			<p className="description">
 				{ __(
 					'Review the tax rates we found. These will be applied to your WooCommerce tax tables.',
-					'taxpilot-for-woocommerce'
+					'taxzen-for-woocommerce'
 				) }{ ' ' }
-				<span className="taxpilot-badge taxpilot-badge--info">
-					{ __( 'Source:', 'taxpilot-for-woocommerce' ) }{ ' ' }
+				<span className="taxzen-badge taxzen-badge--info">
+					{ __( 'Source:', 'taxzen-for-woocommerce' ) }{ ' ' }
 					{ ratesData.source || 'static' }
 				</span>
 			</p>
 
-			<div className="taxpilot-rate-preview">
-				<table className="taxpilot-table">
+			<div className="taxzen-rate-preview">
+				<table className="taxzen-table">
 					<thead>
 						<tr>
 							<th>
-								{ __( 'Country', 'taxpilot-for-woocommerce' ) }
+								{ __( 'Country', 'taxzen-for-woocommerce' ) }
 							</th>
 							<th>
-								{ __( 'State', 'taxpilot-for-woocommerce' ) }
+								{ __( 'State', 'taxzen-for-woocommerce' ) }
 							</th>
 							<th>
-								{ __( 'Rate', 'taxpilot-for-woocommerce' ) }
+								{ __( 'Rate', 'taxzen-for-woocommerce' ) }
 							</th>
 							<th>
-								{ __( 'Name', 'taxpilot-for-woocommerce' ) }
+								{ __( 'Name', 'taxzen-for-woocommerce' ) }
 							</th>
 							<th>
-								{ __( 'Type', 'taxpilot-for-woocommerce' ) }
+								{ __( 'Type', 'taxzen-for-woocommerce' ) }
 							</th>
 							<th>
-								{ __( 'Shipping', 'taxpilot-for-woocommerce' ) }
+								{ __( 'Shipping', 'taxzen-for-woocommerce' ) }
 							</th>
 						</tr>
 					</thead>
@@ -125,7 +125,7 @@ export default function PreviewRates( {
 								<td>{ rate.rate_name }</td>
 								<td>
 									<span
-										className={ `taxpilot-badge taxpilot-badge--${
+										className={ `taxzen-badge taxzen-badge--${
 											rate.rate_type === 'standard'
 												? 'success'
 												: 'info'
@@ -149,7 +149,7 @@ export default function PreviewRates( {
 								>
 									{ __(
 										'No rates found. Try selecting different countries.',
-										'taxpilot-for-woocommerce'
+										'taxzen-for-woocommerce'
 									) }
 								</td>
 							</tr>
@@ -166,29 +166,29 @@ export default function PreviewRates( {
 				} }
 			>
 				{ ratesData.count }{ ' ' }
-				{ __( 'rates found', 'taxpilot-for-woocommerce' ) }
+				{ __( 'rates found', 'taxzen-for-woocommerce' ) }
 			</p>
 
-			<div className="taxpilot-step-actions">
+			<div className="taxzen-step-actions">
 				<button
-					className="taxpilot-btn taxpilot-btn--secondary"
+					className="taxzen-btn taxzen-btn--secondary"
 					onClick={ onBack }
 				>
-					{ __( '← Back', 'taxpilot-for-woocommerce' ) }
+					{ __( '← Back', 'taxzen-for-woocommerce' ) }
 				</button>
 				<div style={ { display: 'flex', gap: 'var(--tw-space-3)' } }>
 					<button
-						className="taxpilot-btn taxpilot-btn--outline"
+						className="taxzen-btn taxzen-btn--outline"
 						onClick={ fetchRates }
 					>
-						{ __( '↻ Refresh', 'taxpilot-for-woocommerce' ) }
+						{ __( '↻ Refresh', 'taxzen-for-woocommerce' ) }
 					</button>
 					<button
-						className="taxpilot-btn taxpilot-btn--primary taxpilot-btn--lg"
+						className="taxzen-btn taxzen-btn--primary taxzen-btn--lg"
 						onClick={ onNext }
 						disabled={ ! ratesData.rates?.length }
 					>
-						{ __( 'Continue →', 'taxpilot-for-woocommerce' ) }
+						{ __( 'Continue →', 'taxzen-for-woocommerce' ) }
 					</button>
 				</div>
 			</div>

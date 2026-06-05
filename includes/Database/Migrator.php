@@ -2,12 +2,12 @@
 /**
  * Database migrator.
  *
- * @package TaxPilot\Database
+ * @package TaxZen\Database
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Database;
+namespace TaxZen\Database;
 
 /**
  * Creates and updates custom database tables via dbDelta.
@@ -30,7 +30,7 @@ class Migrator {
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
 		// Rates table.
-		$rates_table = $wpdb->prefix . 'taxpilot_rates';
+		$rates_table = $wpdb->prefix . 'taxzen_rates';
 		$sql_rates   = "CREATE TABLE {$rates_table} (
 			id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 			country_code varchar(2) NOT NULL DEFAULT '',
@@ -55,7 +55,7 @@ class Migrator {
 		) {$charset_collate};";
 
 		// Logs table.
-		$logs_table = $wpdb->prefix . 'taxpilot_logs';
+		$logs_table = $wpdb->prefix . 'taxzen_logs';
 		$sql_logs   = "CREATE TABLE {$logs_table} (
 			id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 			action varchar(100) NOT NULL DEFAULT '',
@@ -69,7 +69,7 @@ class Migrator {
 		) {$charset_collate};";
 
 		// Alerts table.
-		$alerts_table = $wpdb->prefix . 'taxpilot_alerts';
+		$alerts_table = $wpdb->prefix . 'taxzen_alerts';
 		$sql_alerts   = "CREATE TABLE {$alerts_table} (
 			id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
 			type varchar(50) NOT NULL DEFAULT 'rate_change',
@@ -90,13 +90,13 @@ class Migrator {
 		dbDelta( $sql_logs );
 		dbDelta( $sql_alerts );
 
-		update_option( 'taxpilot_db_version', self::DB_VERSION );
+		update_option( 'taxzen_db_version', self::DB_VERSION );
 	}
 
 	/**
 	 * Check if tables need updating.
 	 */
 	public static function needs_update(): bool {
-		return get_option( 'taxpilot_db_version', '' ) !== self::DB_VERSION;
+		return get_option( 'taxzen_db_version', '' ) !== self::DB_VERSION;
 	}
 }

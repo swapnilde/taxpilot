@@ -2,30 +2,30 @@
 /**
  * WooCommerce Tax Sync service.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
 // This service bulk-syncs with WC tables directly for performance.
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching
 // phpcs:disable PluginCheck.Security.DirectDB.UnescapedDBParameter
 
-use TaxPilot\Database\RatesTable;
-use TaxPilot\Database\LogsTable;
+use TaxZen\Database\RatesTable;
+use TaxZen\Database\LogsTable;
 
 /**
- * Syncs TaxPilot rates into WooCommerce tax tables.
+ * Syncs TaxZen rates into WooCommerce tax tables.
  */
 class WooTaxSync {
 
 	/**
 	 * Apply rates to WooCommerce tax tables.
 	 *
-	 * Always clears old TaxPilot-managed rates first to prevent duplicates,
+	 * Always clears old TaxZen-managed rates first to prevent duplicates,
 	 * then inserts fresh rates from the provider.
 	 *
 	 * @param array $rates Array of rate data from TaxRateService.
@@ -35,8 +35,8 @@ class WooTaxSync {
 		$applied = 0;
 		$errors  = [];
 
-		// Always clear old TaxPilot rates before re-applying to prevent duplicates.
-		$this->clear_taxpilot_rates();
+		// Always clear old TaxZen rates before re-applying to prevent duplicates.
+		$this->clear_taxzen_rates();
 
 		// Also clean up any orphaned duplicates in WC tax tables.
 		$this->delete_duplicate_wc_rates();
@@ -61,7 +61,7 @@ class WooTaxSync {
 		}
 
 		// Update last-applied timestamp.
-		update_option( 'taxpilot_rates_last_updated', current_time( 'mysql' ) );
+		update_option( 'taxzen_rates_last_updated', current_time( 'mysql' ) );
 
 		LogsTable::insert(
 			'rates_applied',
@@ -215,9 +215,9 @@ class WooTaxSync {
 	}
 
 	/**
-	 * Clear all WooCommerce rates that were created by TaxPilot.
+	 * Clear all WooCommerce rates that were created by TaxZen.
 	 */
-	private function clear_taxpilot_rates(): void {
+	private function clear_taxzen_rates(): void {
 		$our_rates = RatesTable::get_all( [ 'limit' => 10000 ] );
 
 		foreach ( $our_rates as $rate ) {

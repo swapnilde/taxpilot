@@ -2,19 +2,19 @@
 /**
  * Rates table model.
  *
- * @package TaxPilot\Database
+ * @package TaxZen\Database
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Database;
+namespace TaxZen\Database;
 
 // Custom database tables require direct queries.
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching
 
 /**
- * CRUD model for the taxpilot_rates table.
+ * CRUD model for the taxzen_rates table.
  */
 class RatesTable {
 
@@ -23,7 +23,7 @@ class RatesTable {
 	 */
 	public static function table_name(): string {
 		global $wpdb;
-		return $wpdb->prefix . 'taxpilot_rates';
+		return $wpdb->prefix . 'taxzen_rates';
 	}
 
 	/**

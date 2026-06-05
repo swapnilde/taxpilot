@@ -2,22 +2,22 @@
 /**
  * Plugin orchestrator.
  *
- * @package TaxPilot\Core
+ * @package TaxZen\Core
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Core;
+namespace TaxZen\Core;
 
 defined( 'ABSPATH' ) || exit;
 
-use TaxPilot\Admin\AdminMenu;
-use TaxPilot\Admin\SettingsPage;
-use TaxPilot\API\WizardEndpoints;
-use TaxPilot\API\RatesEndpoints;
-use TaxPilot\API\ReportsEndpoints;
-use TaxPilot\Services\CronManager;
-use TaxPilot\Integration\WooIntegration;
+use TaxZen\Admin\AdminMenu;
+use TaxZen\Admin\SettingsPage;
+use TaxZen\API\WizardEndpoints;
+use TaxZen\API\RatesEndpoints;
+use TaxZen\API\ReportsEndpoints;
+use TaxZen\Services\CronManager;
+use TaxZen\Integration\WooIntegration;
 
 /**
  * Main Plugin class — singleton orchestrator.

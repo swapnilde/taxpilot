@@ -2,12 +2,12 @@
 /**
  * Smart Address Validation Service.
  *
- * @package TaxPilot\Services
+ * @package TaxZen\Services
  */
 
 declare( strict_types=1 );
 
-namespace TaxPilot\Services;
+namespace TaxZen\Services;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -51,7 +51,7 @@ class AddressValidator {
 		// Nominatim requires a valid standard User-Agent.
 		$args = [
 			'timeout'    => 4,
-			'user-agent' => 'TaxPilotForWooCommerce/1.0 (WordPress Plugin; swapnil@example.com)',
+			'user-agent' => 'TaxZenForWooCommerce/1.0 (WordPress Plugin; swapnil@example.com)',
 		];
 
 		$response = wp_remote_get( $url, $args );
@@ -82,7 +82,7 @@ class AddressValidator {
 				'is_valid' => false,
 				'message'  => sprintf(
 					/* translators: 1: postal code, 2: entered city */
-					__( 'TaxPilot Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations.', 'taxpilot-for-woocommerce' ),
+					__( 'TaxZen Validation: We could not verify that zip code <strong>%1$s</strong> belongs to the city of <strong>%2$s</strong>. Please double-check your shipping/billing address to prevent incorrect tax calculations.', 'taxzen-for-woocommerce' ),
 					esc_html( $postcode ),
 					esc_html( $city )
 				),

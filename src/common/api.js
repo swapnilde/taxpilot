@@ -1,10 +1,10 @@
 /**
- * TaxPilot for WooCommerce — API helper.
+ * TaxZen for WooCommerce — API helper.
  */
 import apiFetch from '@wordpress/api-fetch';
 
 /**
- * Make a REST API call to the TaxPilot endpoints.
+ * Make a REST API call to the TaxZen endpoints.
  *
  * @param {string} endpoint - Endpoint path (e.g., 'wizard/store-setup').
  * @param {Object} options  - Fetch options (method, data, etc.).
@@ -14,7 +14,7 @@ export async function apiCall( endpoint, options = {} ) {
 	const { method = 'GET', data = null } = options;
 
 	const fetchOptions = {
-		path: `/taxpilot/v1/${ endpoint }`,
+		path: `/taxzen/v1/${ endpoint }`,
 		method,
 	};
 
@@ -25,7 +25,7 @@ export async function apiCall( endpoint, options = {} ) {
 	try {
 		return await apiFetch( fetchOptions );
 	} catch ( error ) {
-		console.error( `TaxPilot API Error [${ endpoint }]:`, error );
+		console.error( `TaxZen API Error [${ endpoint }]:`, error );
 		throw error;
 	}
 }
