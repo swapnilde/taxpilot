@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# Taxzen for WooCommerce — WordPress.org Release Packager
+# TaxZen for WooCommerce — WordPress.org Release Packager
 # This script bundles the plugin into a clean, production-ready .zip file
 # for submission to the WordPress.org SVN repository.
 
@@ -14,7 +14,7 @@ BUILD_DIR="release-build"
 ZIP_NAME="${PLUGIN_SLUG}-${VERSION}.zip"
 
 echo "==========================================="
-echo "📦 Building Taxzen Release v${VERSION}"
+echo "📦 Building TaxZen Release v${VERSION}"
 echo "==========================================="
 
 # Ensure we're in the plugin root

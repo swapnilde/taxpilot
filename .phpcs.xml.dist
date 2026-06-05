@@ -3,7 +3,7 @@
 	<description>PHPCS ruleset for the TaxZen for WooCommerce plugin.</description>
 
 	<!-- What to scan. -->
-	<file>./taxzen.php</file>
+	<file>./taxzen-for-woocommerce.php</file>
 	<file>./includes/</file>
 	<file>./uninstall.php</file>
 

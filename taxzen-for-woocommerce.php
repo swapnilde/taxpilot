@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Taxzen for WooCommerce
+ * Plugin Name:       TaxZen for WooCommerce
  * Plugin URI:        https://swapnild.com/taxzen-for-woocommerce
  * Description:       Smart tax configuration wizard for WooCommerce — auto-detect rates, one-click setup, compliance monitoring & alerts.
  * Version:           1.0.0
@@ -55,7 +55,7 @@ function taxzen_wc_missing_notice(): void {
 	?>
 	<div class="notice notice-error">
 		<p>
-			<strong><?php esc_html_e( 'Taxzen for WooCommerce', 'taxzen-for-woocommerce' ); ?></strong>:
+			<strong><?php esc_html_e( 'TaxZen for WooCommerce', 'taxzen-for-woocommerce' ); ?></strong>:
 			<?php esc_html_e( 'This plugin requires WooCommerce to be installed and active.', 'taxzen-for-woocommerce' ); ?>
 		</p>
 	</div>
