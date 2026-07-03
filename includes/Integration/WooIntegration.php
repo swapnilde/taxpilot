@@ -311,7 +311,7 @@ class WooIntegration {
 		if ( empty( $settings['vat_validation_enabled'] ) ) {
 			return $fields;
 		}
-		$targets  = $settings['target_countries'] ?? [];
+		$targets = $settings['target_countries'] ?? [];
 
 		// Only show if selling to EU countries.
 		$eu_countries = function_exists( 'WC' ) && WC()->countries
