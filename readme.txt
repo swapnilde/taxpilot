@@ -52,13 +52,16 @@ Re-run the wizard anytime. TaxZen cleans up old rates automatically — no dupli
 To provide accurate tax calculations, real-time address validation, and VAT number compliance monitoring, this plugin connects to external third-party services. Below is a detailed disclosure of each service utilized by this plugin:
 
 1. **GitHub Raw CDN** (https://raw.githubusercontent.com)
-   * **What the service is:** A CDN used to retrieve raw data hosted on GitHub.
+   * **Service Name:** GitHub Raw CDN
+   * **What the service is:** A content delivery network used to retrieve raw data hosted on GitHub.
    * **What it is used for:** Fetching the latest community-maintained open-source global sales tax rates database.
    * **What data is sent:** No user or store data is sent. Only a standard HTTP GET request is made.
    * **When data is sent:** Manually when triggered from the dashboard, or once a week via a scheduled cron job only if the store administrator explicitly enables automatic weekly sync in settings (disabled by default).
+   * **Account needed:** None.
    * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 2. **VATSense API** (https://api.vatsense.com)
+   * **Service Name:** VATSense API
    * **What the service is:** A commercial SaaS API for global sales tax rates.
    * **What it is used for:** Looking up real-time, verified corporate sales tax rates for the store base and customer location.
    * **What data is sent:** The customer's country code, state, and city. No personal user identifiers (like names or emails) are transmitted.
@@ -68,6 +71,7 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **Privacy Policy:** https://vatsense.com/privacy
 
 3. **OpenStreetMap Nominatim API** (https://nominatim.openstreetmap.org)
+   * **Service Name:** OpenStreetMap Nominatim API
    * **What the service is:** A public geocoding service based on OpenStreetMap data.
    * **What it is used for:** Validating customer shipping addresses (city, state, and zip code) at checkout to prevent incorrect tax calculations.
    * **What data is sent:** The billing or shipping address details (specifically street address, city, state, zip code, and country).
@@ -77,6 +81,7 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **Privacy Policy:** https://wiki.osmfoundation.org/wiki/Privacy_Policy
 
 4. **EU VIES VAT Validation Service** (https://ec.europa.eu/taxation_customs/vies)
+   * **Service Name:** EU VIES VAT Validation Service
    * **What the service is:** The European Commission's official VAT Information Exchange System (VIES) REST API.
    * **What it is used for:** Validating EU B2B VAT identification numbers in real-time to apply B2B tax exemptions.
    * **What data is sent:** The customer's EU VAT identification number and country code.
