@@ -255,6 +255,17 @@ class WooIntegration {
 	 * @param string $posted_data Serialized form data.
 	 */
 	public function update_vat_exemption( $posted_data ): void {
+		$settings = get_option( 'taxzen_settings', [] );
+		if ( empty( $settings['vat_validation_enabled'] ) ) {
+			if ( WC()->session ) {
+				WC()->session->set( 'taxzen_vat_exempt', false );
+			}
+			if ( WC()->customer ) {
+				WC()->customer->set_is_vat_exempt( false );
+			}
+			return;
+		}
+
 		parse_str( $posted_data, $data );
 
 		$vat_number = sanitize_text_field( $data['billing_vat_number'] ?? '' );
@@ -297,6 +308,9 @@ class WooIntegration {
 	 */
 	public function add_vat_number_field( array $fields ): array {
 		$settings = get_option( 'taxzen_settings', [] );
+		if ( empty( $settings['vat_validation_enabled'] ) ) {
+			return $fields;
+		}
 		$targets  = $settings['target_countries'] ?? [];
 
 		// Only show if selling to EU countries.
@@ -658,6 +672,11 @@ class WooIntegration {
 		// Only run our validation if there aren't already critical base errors (like missing fields).
 		// We don't want to overwhelm the user with messages for an empty form.
 		if ( $errors->get_error_codes() ) {
+			return;
+		}
+
+		$settings = get_option( 'taxzen_settings', [] );
+		if ( empty( $settings['address_validation_enabled'] ) ) {
 			return;
 		}
 

@@ -46,14 +46,14 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **What the service is:** A CDN used to retrieve raw data hosted on GitHub.
    * **What it is used for:** Fetching the latest community-maintained open-source global sales tax rates database.
    * **What data is sent:** No user or store data is sent. Only a standard HTTP GET request is made.
-   * **When data is sent:** Automatically once a week via a scheduled background cron job, or when manually triggered from the settings dashboard.
+   * **When data is sent:** Manually when triggered from the dashboard, or once a week via a scheduled cron job only if the store administrator explicitly enables automatic weekly sync in settings (disabled by default).
    * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
 
 2. **VATSense API** (https://api.vatsense.com)
    * **What the service is:** A commercial SaaS API for global sales tax rates.
    * **What it is used for:** Looking up real-time, verified corporate sales tax rates for the store base and customer location.
    * **What data is sent:** The customer's country code, state, and city. No personal user identifiers (like names or emails) are transmitted.
-   * **When data is sent:** During tax calculation at checkout and when saving settings (if VATSense is selected as the active rate provider).
+   * **When data is sent:** During tax calculation at checkout and when saving settings (only if the administrator selects VATSense as the active rate provider; static rates are used by default).
    * **Account needed:** Yes (requires a VATSense API key).
    * **Terms of Service:** https://vatsense.com/terms
    * **Privacy Policy:** https://vatsense.com/privacy
@@ -62,7 +62,7 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **What the service is:** A public geocoding service based on OpenStreetMap data.
    * **What it is used for:** Validating customer shipping addresses (city, state, and zip code) at checkout to prevent incorrect tax calculations.
    * **What data is sent:** The billing or shipping address details (specifically street address, city, state, zip code, and country).
-   * **When data is sent:** When a customer changes their shipping address on the WooCommerce checkout page (if address validation is enabled in settings).
+   * **When data is sent:** When a customer validates their address during WooCommerce checkout, only if the administrator explicitly enables address validation in settings (disabled by default).
    * **Account needed:** None.
    * **Usage Policy & Terms:** https://operations.osmfoundation.org/policies/nominatim/
    * **Privacy Policy:** https://wiki.osmfoundation.org/wiki/Privacy_Policy
@@ -71,7 +71,7 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **What the service is:** The European Commission's official VAT Information Exchange System (VIES) REST API.
    * **What it is used for:** Validating EU B2B VAT identification numbers in real-time to apply B2B tax exemptions.
    * **What data is sent:** The customer's EU VAT identification number and country code.
-   * **When data is sent:** During checkout when a customer enters an EU VAT number and clicks to validate or place an order.
+   * **When data is sent:** During checkout when a customer enters an EU VAT number, only if the administrator explicitly enables B2B VAT validation in settings (disabled by default).
    * **Account needed:** None.
    * **Terms & Privacy Policy:** https://ec.europa.eu/info/privacy-policy_en
 

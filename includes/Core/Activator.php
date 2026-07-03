@@ -48,16 +48,19 @@ class Activator {
 	 */
 	private static function set_defaults(): void {
 		$defaults = [
-			'api_provider'     => 'static',
-			'api_key'          => '',
-			'base_country'     => '',
-			'base_currency'    => '',
-			'product_types'    => [],
-			'target_countries' => [],
-			'refresh_interval' => 'daily',
-			'alerts_enabled'   => true,
-			'alert_email'      => get_option( 'admin_email' ),
-			'wizard_completed' => false,
+			'api_provider'               => 'static',
+			'api_key'                    => '',
+			'base_country'               => '',
+			'base_currency'              => '',
+			'product_types'              => [],
+			'target_countries'           => [],
+			'refresh_interval'           => 'daily',
+			'alerts_enabled'             => true,
+			'alert_email'                => get_option( 'admin_email' ),
+			'wizard_completed'           => false,
+			'github_sync_enabled'        => false,
+			'address_validation_enabled' => false,
+			'vat_validation_enabled'     => false,
 		];
 
 		if ( ! get_option( 'taxzen_settings' ) ) {
@@ -74,9 +77,6 @@ class Activator {
 		}
 		if ( ! wp_next_scheduled( 'taxzen_weekly_report' ) ) {
 			wp_schedule_event( time(), 'weekly', 'taxzen_weekly_report' );
-		}
-		if ( ! wp_next_scheduled( 'taxzen_sync_dynamic_rates' ) ) {
-			wp_schedule_event( time(), 'weekly', 'taxzen_sync_dynamic_rates' );
 		}
 	}
 }

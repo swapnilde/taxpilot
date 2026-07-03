@@ -93,6 +93,12 @@ class CronManager {
 	 * Handle weekly dynamic rates sync.
 	 */
 	public function handle_dynamic_rates_sync(): void {
+		$settings = get_option( 'taxzen_settings', [] );
+		if ( empty( $settings['github_sync_enabled'] ) ) {
+			wp_clear_scheduled_hook( 'taxzen_sync_dynamic_rates' );
+			return;
+		}
+
 		$aggregator = new RatesAggregator();
 		$success    = $aggregator->sync();
 

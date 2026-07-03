@@ -158,6 +158,30 @@ class AdminMenu {
 		echo '</select>';
 		echo '</div>';
 
+		// Weekly GitHub Sync Enabled.
+		echo '<div class="taxzen-field" style="margin-top: 15px;">';
+		echo '<label>';
+		echo '<input type="checkbox" name="github_sync_enabled" value="1"' . checked( $settings['github_sync_enabled'] ?? false, true, false ) . ' /> ';
+		echo esc_html__( 'Enable weekly automatic tax rate sync (fetches updated rate data from an open-source GitHub repository)', 'taxzen-for-woocommerce' );
+		echo '</label>';
+		echo '</div>';
+
+		// Address Validation Enabled.
+		echo '<div class="taxzen-field" style="margin-top: 15px;">';
+		echo '<label>';
+		echo '<input type="checkbox" name="address_validation_enabled" value="1"' . checked( $settings['address_validation_enabled'] ?? false, true, false ) . ' /> ';
+		echo esc_html__( 'Enable checkout address validation (verifies zip codes and cities using OpenStreetMap Nominatim)', 'taxzen-for-woocommerce' );
+		echo '</label>';
+		echo '</div>';
+
+		// VAT Validation Enabled.
+		echo '<div class="taxzen-field" style="margin-top: 15px;">';
+		echo '<label>';
+		echo '<input type="checkbox" name="vat_validation_enabled" value="1"' . checked( $settings['vat_validation_enabled'] ?? false, true, false ) . ' /> ';
+		echo esc_html__( 'Enable B2B VAT validation (verifies EU VAT numbers via the VIES API)', 'taxzen-for-woocommerce' );
+		echo '</label>';
+		echo '</div>';
+
 		submit_button( __( 'Save Settings', 'taxzen-for-woocommerce' ) );
 
 		echo '</form>';
@@ -179,13 +203,25 @@ class AdminMenu {
 
 		$settings = get_option( 'taxzen_settings', [] );
 
-		$settings['api_provider']     = sanitize_text_field( wp_unslash( $_POST['api_provider'] ?? 'static' ) );
-		$settings['api_key']          = sanitize_text_field( wp_unslash( $_POST['api_key'] ?? '' ) );
-		$settings['alert_email']      = sanitize_email( wp_unslash( $_POST['alert_email'] ?? '' ) );
-		$settings['alerts_enabled']   = isset( $_POST['alerts_enabled'] );
-		$settings['refresh_interval'] = sanitize_text_field( wp_unslash( $_POST['refresh_interval'] ?? 'daily' ) );
+		$settings['api_provider']               = sanitize_text_field( wp_unslash( $_POST['api_provider'] ?? 'static' ) );
+		$settings['api_key']                    = sanitize_text_field( wp_unslash( $_POST['api_key'] ?? '' ) );
+		$settings['alert_email']                = sanitize_email( wp_unslash( $_POST['alert_email'] ?? '' ) );
+		$settings['alerts_enabled']             = isset( $_POST['alerts_enabled'] );
+		$settings['refresh_interval']           = sanitize_text_field( wp_unslash( $_POST['refresh_interval'] ?? 'daily' ) );
+		$settings['github_sync_enabled']        = isset( $_POST['github_sync_enabled'] );
+		$settings['address_validation_enabled'] = isset( $_POST['address_validation_enabled'] );
+		$settings['vat_validation_enabled']     = isset( $_POST['vat_validation_enabled'] );
 
 		update_option( 'taxzen_settings', $settings );
+
+		// Manage dynamic rate sync cron scheduling.
+		if ( $settings['github_sync_enabled'] ) {
+			if ( ! wp_next_scheduled( 'taxzen_sync_dynamic_rates' ) ) {
+				wp_schedule_event( time(), 'weekly', 'taxzen_sync_dynamic_rates' );
+			}
+		} else {
+			wp_clear_scheduled_hook( 'taxzen_sync_dynamic_rates' );
+		}
 
 		add_action(
 			'admin_notices',
