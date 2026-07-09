@@ -1,0 +1,31 @@
+name: Auto Update and Deploy Tax Rates
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # Run every Sunday at midnight
+  workflow_dispatch: # Allow running manually from GitHub UI
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download latest sales tax rates
+        run: |
+          mkdir -p data-dist
+          curl -sL https://raw.githubusercontent.com/valeriansaliou/node-sales-tax/master/res/sales_tax_rates.json -o data-dist/rates.json
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./data-dist
+          publish_branch: gh-pages
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Auto-update sales tax rates database [skip ci]'

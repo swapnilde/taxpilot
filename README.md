@@ -42,14 +42,14 @@ Re-run the wizard anytime. TaxZen cleans up old rates automatically — no dupli
 ### Third-Party Services & APIs
 To provide accurate tax calculations, real-time address validation, and VAT number compliance monitoring, this plugin connects to external third-party services. Below is a detailed disclosure of each service utilized by this plugin:
 
-1. **GitHub Raw CDN** (https://raw.githubusercontent.com)
-   * **Service Name:** GitHub Raw CDN
-   * **What the service is:** A content delivery network used to retrieve raw data hosted on GitHub.
-   * **What it is used for:** Fetching the latest community-maintained open-source global sales tax rates database.
+1. **TaxZen Rates Cloud API** (https://swapnilde.github.io/taxzen)
+   * **Service Name:** TaxZen Rates Cloud API
+   * **What the service is:** A first-party static API service hosted on GitHub Pages by the plugin authors to deliver verified global sales tax and VAT rate updates.
+   * **What it is used for:** Fetching the latest global sales tax rates database.
    * **What data is sent:** No user or store data is sent. Only a standard HTTP GET request is made.
    * **When data is sent:** Manually when triggered from the dashboard, or once a week via a scheduled cron job only if the store administrator explicitly enables automatic weekly sync in settings (disabled by default).
-   * **Account needed:** None.
-   * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement
+   * **Account needed:** None (Free Service).
+   * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement (GitHub platform policies).
 
 2. **VATSense API** (https://api.vatsense.com)
    * **Service Name:** VATSense API

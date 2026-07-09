@@ -23,7 +23,7 @@ class RatesAggregator {
 	 * URL of the reliable open-source tax rate JSON file tracking 100+ countries.
 	 * (e.g. valeriansaliou/node-sales-tax master dataset).
 	 */
-	private const RAW_REMOTE_SOURCE = 'https://raw.githubusercontent.com/valeriansaliou/node-sales-tax/master/res/sales_tax_rates.json';
+	private const RAW_REMOTE_SOURCE = 'https://swapnilde.github.io/taxzen/rates.json';
 
 	/**
 	 * Trigger the aggregation process.
