@@ -19,7 +19,7 @@
 		"build:zip": "bash scripts/build-release.sh"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^30.0.0"
+		"@wordpress/scripts": "^33.0.0"
 	},
 	"dependencies": {
 		"@wordpress/api-fetch": "^7.0.0",
