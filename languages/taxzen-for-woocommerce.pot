@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-09T09:42:28+00:00\n"
+"POT-Creation-Date: 2026-08-18T15:06:45+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: taxzen-for-woocommerce\n"
@@ -318,6 +318,380 @@ msgstr ""
 msgid "This plugin requires WooCommerce to be installed and active."
 msgstr ""
 
+#: src/common/constants.js:12
+#: src/wizard/steps/StoreSetup.jsx:110
+msgid "Store Setup"
+msgstr ""
+
+#: src/common/constants.js:17
+#: src/wizard/steps/ApplyRates.jsx:214
+#: src/wizard/steps/ProductTypes.jsx:62
+msgid "Product Types"
+msgstr ""
+
+#: src/common/constants.js:22
+#: src/dashboard/App.jsx:159
+msgid "Countries"
+msgstr ""
+
+#: src/common/constants.js:27
+msgid "Preview Rates"
+msgstr ""
+
+#: src/common/constants.js:32
+#: src/wizard/steps/ApplyRates.jsx:43
+msgid "Apply"
+msgstr ""
+
+#: src/common/constants.js:40
+msgid "Physical Goods"
+msgstr ""
+
+#: src/common/constants.js:41
+msgid "Tangible products shipped to customers."
+msgstr ""
+
+#: src/common/constants.js:48
+msgid "Digital Goods"
+msgstr ""
+
+#: src/common/constants.js:49
+msgid "Downloads, software, e-books, online courses."
+msgstr ""
+
+#: src/common/constants.js:56
+msgid "Services"
+msgstr ""
+
+#: src/common/constants.js:57
+msgid "Consulting, freelancing, SaaS subscriptions."
+msgstr ""
+
+#: src/common/constants.js:66
+msgid "European Union"
+msgstr ""
+
+#: src/common/constants.js:98
+msgid "North America"
+msgstr ""
+
+#: src/common/constants.js:102
+msgid "Asia-Pacific"
+msgstr ""
+
+#: src/common/constants.js:106
+#: src/common/constants.js:115
+msgid "United Kingdom"
+msgstr ""
+
+#: src/common/constants.js:112
+msgid "United States"
+msgstr ""
+
+#: src/common/constants.js:113
+msgid "Canada"
+msgstr ""
+
+#: src/common/constants.js:114
+msgid "Mexico"
+msgstr ""
+
+#: src/common/constants.js:116
+msgid "Germany"
+msgstr ""
+
+#: src/common/constants.js:117
+msgid "France"
+msgstr ""
+
+#: src/common/constants.js:118
+msgid "Italy"
+msgstr ""
+
+#: src/common/constants.js:119
+msgid "Spain"
+msgstr ""
+
+#: src/common/constants.js:120
+msgid "Netherlands"
+msgstr ""
+
+#: src/common/constants.js:121
+msgid "Belgium"
+msgstr ""
+
+#: src/common/constants.js:122
+msgid "Austria"
+msgstr ""
+
+#: src/common/constants.js:123
+msgid "Portugal"
+msgstr ""
+
+#: src/common/constants.js:124
+msgid "Ireland"
+msgstr ""
+
+#: src/common/constants.js:125
+msgid "Sweden"
+msgstr ""
+
+#: src/common/constants.js:126
+msgid "Denmark"
+msgstr ""
+
+#: src/common/constants.js:127
+msgid "Finland"
+msgstr ""
+
+#: src/common/constants.js:128
+msgid "Poland"
+msgstr ""
+
+#: src/common/constants.js:129
+msgid "Czech Republic"
+msgstr ""
+
+#: src/common/constants.js:130
+msgid "Romania"
+msgstr ""
+
+#: src/common/constants.js:131
+msgid "Hungary"
+msgstr ""
+
+#: src/common/constants.js:132
+msgid "Greece"
+msgstr ""
+
+#: src/common/constants.js:133
+msgid "Bulgaria"
+msgstr ""
+
+#: src/common/constants.js:134
+msgid "Croatia"
+msgstr ""
+
+#: src/common/constants.js:135
+msgid "Slovakia"
+msgstr ""
+
+#: src/common/constants.js:136
+msgid "Slovenia"
+msgstr ""
+
+#: src/common/constants.js:137
+msgid "Lithuania"
+msgstr ""
+
+#: src/common/constants.js:138
+msgid "Latvia"
+msgstr ""
+
+#: src/common/constants.js:139
+msgid "Estonia"
+msgstr ""
+
+#: src/common/constants.js:140
+msgid "Luxembourg"
+msgstr ""
+
+#: src/common/constants.js:141
+msgid "Malta"
+msgstr ""
+
+#: src/common/constants.js:142
+msgid "Cyprus"
+msgstr ""
+
+#: src/common/constants.js:143
+msgid "Australia"
+msgstr ""
+
+#: src/common/constants.js:144
+msgid "New Zealand"
+msgstr ""
+
+#: src/common/constants.js:145
+msgid "Japan"
+msgstr ""
+
+#: src/common/constants.js:146
+msgid "India"
+msgstr ""
+
+#: src/common/constants.js:147
+msgid "Singapore"
+msgstr ""
+
+#: src/common/constants.js:148
+msgid "South Korea"
+msgstr ""
+
+#: src/common/constants.js:149
+msgid "Thailand"
+msgstr ""
+
+#: src/common/constants.js:150
+msgid "Malaysia"
+msgstr ""
+
+#: src/common/constants.js:151
+msgid "Philippines"
+msgstr ""
+
+#: src/common/constants.js:152
+msgid "Switzerland"
+msgstr ""
+
+#: src/common/constants.js:153
+msgid "Norway"
+msgstr ""
+
+#: src/common/constants.js:154
+msgid "Iceland"
+msgstr ""
+
+#: src/common/constants.js:155
+msgid "South Africa"
+msgstr ""
+
+#: src/common/constants.js:156
+msgid "Brazil"
+msgstr ""
+
+#: src/common/constants.js:157
+msgid "Turkey"
+msgstr ""
+
+#: src/common/constants.js:158
+msgid "United Arab Emirates"
+msgstr ""
+
+#: src/common/constants.js:159
+msgid "Saudi Arabia"
+msgstr ""
+
+#: src/common/constants.js:163
+msgid "US Dollar"
+msgstr ""
+
+#: src/common/constants.js:164
+msgid "Euro"
+msgstr ""
+
+#: src/common/constants.js:165
+msgid "British Pound"
+msgstr ""
+
+#: src/common/constants.js:166
+msgid "Canadian Dollar"
+msgstr ""
+
+#: src/common/constants.js:167
+msgid "Australian Dollar"
+msgstr ""
+
+#: src/common/constants.js:168
+msgid "New Zealand Dollar"
+msgstr ""
+
+#: src/common/constants.js:169
+msgid "Japanese Yen"
+msgstr ""
+
+#: src/common/constants.js:170
+msgid "Indian Rupee"
+msgstr ""
+
+#: src/common/constants.js:171
+msgid "Singapore Dollar"
+msgstr ""
+
+#: src/common/constants.js:172
+msgid "Swiss Franc"
+msgstr ""
+
+#: src/common/constants.js:173
+msgid "Swedish Krona"
+msgstr ""
+
+#: src/common/constants.js:174
+msgid "Norwegian Krone"
+msgstr ""
+
+#: src/common/constants.js:175
+msgid "Danish Krone"
+msgstr ""
+
+#: src/common/constants.js:176
+msgid "Polish Zloty"
+msgstr ""
+
+#: src/common/constants.js:177
+msgid "Czech Koruna"
+msgstr ""
+
+#: src/common/constants.js:178
+msgid "Hungarian Forint"
+msgstr ""
+
+#: src/common/constants.js:179
+msgid "Romanian Leu"
+msgstr ""
+
+#: src/common/constants.js:180
+msgid "Bulgarian Lev"
+msgstr ""
+
+#: src/common/constants.js:181
+msgid "Croatian Kuna"
+msgstr ""
+
+#: src/common/constants.js:182
+msgid "Brazilian Real"
+msgstr ""
+
+#: src/common/constants.js:183
+msgid "Mexican Peso"
+msgstr ""
+
+#: src/common/constants.js:184
+msgid "South African Rand"
+msgstr ""
+
+#: src/common/constants.js:185
+msgid "Turkish Lira"
+msgstr ""
+
+#: src/common/constants.js:186
+msgid "UAE Dirham"
+msgstr ""
+
+#: src/common/constants.js:187
+msgid "Saudi Riyal"
+msgstr ""
+
+#: src/common/constants.js:188
+msgid "South Korean Won"
+msgstr ""
+
+#: src/common/constants.js:189
+msgid "Thai Baht"
+msgstr ""
+
+#: src/common/constants.js:190
+msgid "Malaysian Ringgit"
+msgstr ""
+
+#: src/common/constants.js:191
+msgid "Philippine Peso"
+msgstr ""
+
+#: src/common/constants.js:192
+msgid "Icelandic Króna"
+msgstr ""
+
 #: src/dashboard/App.jsx:105
 msgid "Loading dashboard…"
 msgstr ""
@@ -340,10 +714,6 @@ msgstr ""
 
 #: src/dashboard/App.jsx:154
 msgid "Active tax rates"
-msgstr ""
-
-#: src/dashboard/App.jsx:159
-msgid "Countries"
 msgstr ""
 
 #: src/dashboard/App.jsx:165
@@ -491,10 +861,6 @@ msgstr ""
 msgid "Confirm & Apply"
 msgstr ""
 
-#: src/wizard/steps/ApplyRates.jsx:43
-msgid "Apply"
-msgstr ""
-
 #: src/wizard/steps/ApplyRates.jsx:44
 msgid "Rates"
 msgstr ""
@@ -558,11 +924,6 @@ msgstr ""
 #: src/wizard/steps/ApplyRates.jsx:205
 #: src/wizard/steps/StoreSetup.jsx:148
 msgid "Store Country"
-msgstr ""
-
-#: src/wizard/steps/ApplyRates.jsx:214
-#: src/wizard/steps/ProductTypes.jsx:62
-msgid "Product Types"
 msgstr ""
 
 #: src/wizard/steps/ApplyRates.jsx:227
@@ -684,10 +1045,6 @@ msgstr ""
 
 #: src/wizard/steps/StoreSetup.jsx:109
 msgid "Update Store Setup"
-msgstr ""
-
-#: src/wizard/steps/StoreSetup.jsx:110
-msgid "Store Setup"
 msgstr ""
 
 #: src/wizard/steps/StoreSetup.jsx:114
