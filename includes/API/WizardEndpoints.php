@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\API;
 
+defined( 'ABSPATH' ) || exit;
+
 use TaxZen\Database\LogsTable;
 use TaxZen\Services\TaxRateService;
 use TaxZen\Services\WooTaxSync;

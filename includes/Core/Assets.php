@@ -79,7 +79,12 @@ class Assets {
 			$asset['version']
 		);
 
-				// Localize with REST info and initial settings.
+		// Localize with REST info and initial settings.
+		$settings = get_option( 'taxzen_settings', [] );
+
+		// Never expose secrets (e.g. the VATSense API key) to page JS.
+		unset( $settings['api_key'] );
+
 		wp_localize_script(
 			"taxzen-{$entry}",
 			'taxZenData',
@@ -87,7 +92,7 @@ class Assets {
 				'restUrl'  => rest_url( 'taxzen/v1/' ),
 				'nonce'    => wp_create_nonce( 'wp_rest' ),
 				'adminUrl' => admin_url(),
-				'settings' => get_option( 'taxzen_settings', [] ),
+				'settings' => $settings,
 			]
 		);
 	}

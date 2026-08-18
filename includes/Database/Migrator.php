@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\Database;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Creates and updates custom database tables via dbDelta.
  */
