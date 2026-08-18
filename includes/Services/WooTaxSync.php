@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\Services;
 
+defined( 'ABSPATH' ) || exit;
+
 // This service bulk-syncs with WC tables directly for performance.
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching

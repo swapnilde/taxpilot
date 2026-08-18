@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\Services;
 
+defined( 'ABSPATH' ) || exit;
+
 use TaxZen\Database\RatesTable;
 use TaxZen\Database\LogsTable;
 

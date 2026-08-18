@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\Services;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Provides tax rates from the bundled static JSON file.
  */

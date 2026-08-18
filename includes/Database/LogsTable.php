@@ -9,6 +9,8 @@ declare( strict_types=1 );
 
 namespace TaxZen\Database;
 
+defined( 'ABSPATH' ) || exit;
+
 // Custom database tables require direct queries.
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.NoCaching
