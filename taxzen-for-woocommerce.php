@@ -3,7 +3,7 @@
  * Plugin Name:       TaxZen for WooCommerce
  * Plugin URI:        https://swapnild.com/taxzen-for-woocommerce
  * Description:       Smart tax configuration wizard for WooCommerce — auto-detect rates, one-click setup, compliance monitoring & alerts.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 6.7
  * Requires PHP:      8.2
  * Requires Plugins:  woocommerce
@@ -14,7 +14,7 @@
  * Text Domain:       taxzen-for-woocommerce
  * Domain Path:       /languages
  * WC requires at least: 8.0
- * WC tested up to:   9.5
+ * WC tested up to:   11.0
  *
  * @package TaxZen
  */
@@ -24,7 +24,7 @@ declare( strict_types=1 );
 defined( 'ABSPATH' ) || exit;
 
 // Plugin constants.
-define( 'TAXZEN_VERSION', '1.0.0' );
+define( 'TAXZEN_VERSION', '1.0.1' );
 define( 'TAXZEN_FILE', __FILE__ );
 define( 'TAXZEN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TAXZEN_URL', plugin_dir_url( __FILE__ ) );

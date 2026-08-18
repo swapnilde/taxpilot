@@ -3,9 +3,9 @@ Contributors: swapnilde
 Donate link: https://paypal.me/SwapnilDeshpandeIN
 Tags: woocommerce, tax, vat, sales-tax, gst
 Requires at least: 6.7
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -175,6 +175,10 @@ TaxZen automatically assigns the Digital Goods tax class to virtual and download
 
 Yes. TaxZen for WooCommerce is fully compatible with HPOS and uses WooCommerce's order meta API for all order operations.
 
+= Does the VAT number field appear on the block-based Checkout block? =
+
+Currently the VAT number field is added to the classic/shortcode Checkout only. If your store uses the block-based Checkout (the WooCommerce Checkout block), the field will not appear there yet. Support for the block-based Checkout is planned for a future release; all other TaxZen features (rate calculation, tax classes, shipping tax) work the same on both checkout types.
+
 = How does the rate change monitoring work? =
 
 TaxZen runs a daily cron job that compares your applied rates against the current rate database. If any rates have changed, it creates an alert and optionally sends an email notification.
@@ -204,6 +208,13 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 
 == Changelog ==
 
+= 1.0.1 =
+
+* Verified compatibility with WordPress 7.1 and WooCommerce 11.0.
+* Security: removed the VATSense API key from the data localized to admin page JavaScript, and added missing direct file access guards.
+* Fixed several WordPress.org Plugin Directory Guidelines compliance issues, including an inaccurate description of the optional weekly rate sync and an unescaped URL in a WooCommerce Tax Settings notice.
+* Documented that the VAT number checkout field currently only appears on the classic/shortcode Checkout, not the block-based Checkout.
+
 = 1.0.0 =
 
 **Initial Release**
@@ -229,6 +240,9 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 * Fully translation-ready so you can use TaxZen in your local language
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Verified compatibility with WordPress 7.1 and WooCommerce 11.0, plus security and compliance hardening. Recommended update.
 
 = 1.0.0 =
 Initial release of TaxZen for WooCommerce — the smart tax configuration wizard for WooCommerce. Install and run the 5-step wizard to configure your store's tax rates in minutes.
