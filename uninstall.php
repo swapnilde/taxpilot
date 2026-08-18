@@ -54,3 +54,4 @@ $wpdb->query(
 // Clear scheduled cron events.
 wp_clear_scheduled_hook( 'taxzen_daily_rate_check' );
 wp_clear_scheduled_hook( 'taxzen_weekly_report' );
+wp_clear_scheduled_hook( 'taxzen_sync_dynamic_rates' );
