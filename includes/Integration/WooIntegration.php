@@ -647,7 +647,7 @@ class WooIntegration {
 					'text' => sprintf(
 						/* translators: %s: TaxZen dashboard link */
 						__( '🧙 Tax rates are managed by TaxZen for WooCommerce. <a href="%s">Open TaxZen Dashboard</a> to manage your rates.', 'taxzen-for-woocommerce' ),
-						admin_url( 'admin.php?page=taxzen' )
+						esc_url( admin_url( 'admin.php?page=taxzen' ) )
 					),
 				]
 			);

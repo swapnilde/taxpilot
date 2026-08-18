@@ -34,7 +34,7 @@ Re-run the wizard anytime. TaxZen cleans up old rates automatically — no dupli
 = ✨ Core Features =
 
 * **5-Step Setup Wizard:** Configure your store's tax rates for any country in minutes.
-* **Auto-Syncing Rates Engine:** The plugin automatically connects to reliable open-source APIs every week in the background, continuously keeping your free dynamic rates cached and up-to-date without needing plugin updates.
+* **Optional Auto-Syncing Rates Engine:** When enabled in Settings (disabled by default), the plugin connects to an open-source API once a week in the background, keeping your free dynamic rates cached and up-to-date without needing plugin updates.
 * **Smart Defaults:** Auto-detects your shop's base country and currency.
 * **Global Rate Database:** Built-in support for standard, reduced, and zero tax rates across 100+ countries.
 * **Deep WooCommerce Integration:** Automatically applies rates at checkout, manages shipping tax, and stamps orders with a custom "Tax Source" badge.
@@ -56,7 +56,7 @@ To provide accurate tax calculations, real-time address validation, and VAT numb
    * **What the service is:** A first-party static API service hosted on GitHub Pages by the plugin authors to deliver verified global sales tax and VAT rate updates.
    * **What it is used for:** Fetching the latest global sales tax rates database.
    * **What data is sent:** No user or store data is sent. Only a standard HTTP GET request is made.
-   * **When data is sent:** Manually when triggered from the dashboard, or once a week via a scheduled cron job only if the store administrator explicitly enables automatic weekly sync in settings (disabled by default).
+   * **When data is sent:** Once a week via a scheduled cron job, only if the store administrator explicitly enables automatic weekly sync in settings (disabled by default).
    * **Account needed:** None (Free Service).
    * **Terms & Privacy Policy:** https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement (GitHub platform policies).
 
@@ -145,7 +145,7 @@ Yes. WooCommerce 8.0 or later must be installed and activated. TaxZen for WooCom
 
 = Where do the tax rates come from? =
 
-TaxZen utilizes an In-Plugin Auto-Syncing element. It automatically runs a background task once a week to securely pull, format, and cache raw open-source rate data directly into your uploads folder. If the sync ever fails, it safely falls back to a bundled database. For strict real-time corporate compliance, you can optionally connect a VATSense API key.
+TaxZen ships with a bundled rate database covering 100+ countries. If you optionally enable weekly Auto-Sync in Settings (disabled by default), it runs a background task once a week to securely pull, format, and cache raw open-source rate data directly into your uploads folder, falling back to the bundled database if the sync ever fails. For strict real-time corporate compliance, you can optionally connect a VATSense API key instead.
 
 = How many countries are supported? =
 
@@ -206,27 +206,7 @@ Deactivating the plugin does not remove any data. Deleting the plugin removes al
 
 = 1.0.0 =
 
-**Initial Release**
-
-* 5-step setup wizard with smart defaults and auto-detection
-* Built-in tax rate database covering 100+ countries
-* Auto-Syncing Rates Engine pulls real-time updates from reliable open-source APIs to maintain free compliance continuously
-* Support for all WooCommerce tax classes: Standard, Reduced Rate, Digital Goods, Services, Zero Rate
-* One-click rate application with duplicate prevention and two-step confirmation
-* Deep WooCommerce integration ensures precise tax calculations and seamless checkout
-* EU VIES VAT number validation with real-time B2B tax exemption
-* Smart Address Validation checks shipping zip codes and cities using OpenStreetMap Nominatim
-* EU OSS/MOSS Report Generator to instantly aggregate and export EU B2C sales data for quarterly filings
-* Add a VAT number checkout field easily for EU target countries
-* Auto-assignment of Digital Goods tax class to virtual/downloadable products
-* Smart shipping tax handling correctly processes mixed physical and digital-only carts
-* Integrated directly into WooCommerce Analytics via a custom Reports tab
-* Intuitive dashboard with real-time rate statistics, activity logs, and an alert center
-* Daily rate change monitoring keeps you compliant, complete with automated email notifications
-* Downloadable CSV compliance exports and PDF reporting
-* Safe "Re-run Wizard" mode automatically cleans up old rates to prevent billing duplicates
-* Optimized for fast checkouts with WooCommerce High-Performance Order Storage (HPOS) support
-* Fully translation-ready so you can use TaxZen in your local language
+* Initial release.
 
 == Upgrade Notice ==
 
