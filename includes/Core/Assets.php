@@ -79,6 +79,8 @@ class Assets {
 			$asset['version']
 		);
 
+		wp_set_script_translations( "taxzen-{$entry}", 'taxzen-for-woocommerce', TAXZEN_PATH . 'languages' );
+
 				// Localize with REST info and initial settings.
 		wp_localize_script(
 			"taxzen-{$entry}",
