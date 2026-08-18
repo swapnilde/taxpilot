@@ -5,6 +5,22 @@ All notable changes to TaxZen for WooCommerce will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-08-18
+
+### Changed
+
+- Verified compatibility with WordPress 7.1 and WooCommerce 11.0 (including HPOS).
+
+### Fixed
+
+- Removed the VATSense API key from data localized to admin page JavaScript, and added missing `ABSPATH` direct file access guards.
+- Corrected an inaccurate readme description of the optional weekly rate sync, and cleared a cron hook that was missed on uninstall.
+- Escaped a URL in a WooCommerce Tax Settings admin notice.
+
+### Documentation
+
+- Documented that the VAT number checkout field currently only appears on the classic/shortcode Checkout, not the block-based Checkout.
+
 ## [1.0.0] - 2026-02-28
 
 ### Added

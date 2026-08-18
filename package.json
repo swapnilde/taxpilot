@@ -1,6 +1,6 @@
 {
 	"name": "taxzen-for-woocommerce",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Smart tax configuration wizard for WooCommerce.",
 	"scripts": {
 		"build": "wp-scripts build",
